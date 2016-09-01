@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- This is the view where 360 video will show up. -->
+    <fi.finwe.orion360.OrionVideoView
+        android:id="@+id/orion_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- This is a buffering indicator view on top of the video. -->
+    <ProgressBar
+        android:id="@+id/download_progress_indicator"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</FrameLayout>

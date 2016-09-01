@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="orion360-sdk-basic-1.2.00">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/fi.finwe.orion360/orion360-sdk-basic/1.2.00/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/fi.finwe.orion360/orion360-sdk-basic/1.2.00/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
