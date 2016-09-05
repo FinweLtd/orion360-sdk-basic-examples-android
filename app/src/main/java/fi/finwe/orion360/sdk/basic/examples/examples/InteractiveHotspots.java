@@ -265,6 +265,7 @@ public class InteractiveHotspots extends Activity {
         try {
             for (Hotspot hotspot : mHotspots) {
                 mOrionVideoView.createTag(hotspot.index);
+                // Here we load the image from the /assets:
                 mOrionVideoView.setTagAssetFilename(hotspot.index, hotspot.imageFilename);
                 mOrionVideoView.setTagLocation(hotspot.index, hotspot.location.x,
                         hotspot.location.y, hotspot.location.z);

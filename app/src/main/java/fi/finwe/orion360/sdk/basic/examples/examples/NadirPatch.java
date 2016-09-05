@@ -31,7 +31,10 @@ package fi.finwe.orion360.sdk.basic.examples.examples;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import fi.finwe.math.QuatF;
@@ -106,7 +109,8 @@ public class NadirPatch extends Activity {
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);
 
         // Add a nadir patch to the video view. All tags must be created before calling prepare()!
-        addNadirPatch(getString(R.string.asset_nadir_patch), 0.55f, 0.90f);
+        addNadirPatch(MainMenu.PUBLIC_EXTERNAL_PICTURES_ORION_PATH +
+                MainMenu.TEST_TAG_IMAGE_FILE_HQ, 0.55f, 0.90f);
 
         // Start playback when the player has initialized itself and buffered enough video frames.
         mOrionVideoView.setOnPreparedListener(new OrionVideoView.OnPreparedListener() {
@@ -198,8 +202,14 @@ public class NadirPatch extends Activity {
         // Set the location on the 360 image sphere where the tag will be drawn (nadir=down).
         mOrionVideoView.setTagLocation(IDX_NADIR_PATCH, Vec3F.AXIS_DOWN);
 
-        // Set the JPG/PNG image file that will be drawn to the tag location.
-        mOrionVideoView.setTagAssetFilename(IDX_NADIR_PATCH, imagePath);
+        // Set the PNG image file that will be drawn to the tag location.
+        // Here we load the image from the file system as a bitmap (RGBA_8888 format).
+        Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+        if (null != bitmap) {
+            mOrionVideoView.setTagBitmap(IDX_NADIR_PATCH, bitmap);
+        } else {
+            Log.e(TAG, "Could not decode bitmap " + imagePath);
+        }
 
         // Set the size of the tag by scaling the image horizontally and vertically.
         mOrionVideoView.setTagScale(IDX_NADIR_PATCH, scale, scale);

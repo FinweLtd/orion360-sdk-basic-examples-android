@@ -119,6 +119,9 @@ public class MainMenu extends ListActivity {
     /** Test image name for medium quality image that is bundled with the app in /assets. */
     public static final String TEST_IMAGE_FILE_MQ = "Orion360_test_image_1920x960.jpg";
 
+    /** Test image name for high quality tag image that is bundled with the app in /assets. */
+    public static final String TEST_TAG_IMAGE_FILE_HQ = "Orion360_nadir_patch_1024x1024.png";
+
     /** Orion360 directory name (to be created under device's public external files). */
     public static final String ORION_DIRECTORY_NAME = "Orion360/SDK";
 
@@ -323,6 +326,8 @@ public class MainMenu extends ListActivity {
                     PUBLIC_EXTERNAL_MOVIES_ORION_PATH + TEST_VIDEO_FILE_MQ));
             copyFiles.add(new FilePathPair(TEST_IMAGE_FILE_MQ,
                     PUBLIC_EXTERNAL_PICTURES_ORION_PATH + TEST_IMAGE_FILE_MQ));
+            copyFiles.add(new FilePathPair(TEST_TAG_IMAGE_FILE_HQ,
+                    PUBLIC_EXTERNAL_PICTURES_ORION_PATH + TEST_TAG_IMAGE_FILE_HQ));
         }
 
         // Create a progress bar to be shown while copying files.
