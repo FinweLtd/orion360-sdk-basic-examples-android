@@ -11,6 +11,7 @@ Table of Contents
 7. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
 8. [Example: Minimal Image File Player](#example-minimal-image-file-player)
 9. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
+10. [Example: Sensor Fusion](#example-sensor-fusion)
 
 Prerequisities
 --------------
@@ -107,9 +108,33 @@ Shows how to enable VR mode for viewing 360 videos with Google Cardboard or othe
 
 In short, the example shows how to:
 * Configure horizontally split video view with landscape orientation
-* Congfigure VR frame lens distortion compensation
+* Configure VR frame lens distortion compensation
 * Configure field-of-view
 * Hide system navigation bar
-* Create a gesture detector for toggling VR mode on/off with long taps anywhere on screen
+* Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with ordinary taps
 * Initialize the view orientation to World orientation (make video horizon perpendicular to gravity vector)
 * Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not confuse it
+
+Example: Sensor Fusion
+----------------------
+
+An example of a minimal Orion360 video player, with sensor fusion control.
+
+By default, the 360 view is automatically rotated based on device orientation. Hence, to look at a desired direction, user can turn the device towards it, or when viewing through a VR frame, simply turn her head.
+
+This feature requires movement sensors - most importantly, a gyroscope. Not all Android devices have one. The feature is automatically disabled on devices that do not have the necessary sensor hardware, with a fallback to touch-only control.
+
+The supported movement sensors include 
+* Accelerometer, which tells where is 'Down' direction, and linear acceleration
+* Magnetometer, which tells where is 'North' direction, and slow rotation
+* Gyroscope, which tells the rotation about the device's own axis very rapidly
+
+Using data from all the three sensors, a sophisticated sensor fusion algorithm calculates device orientation several hundreds of times per second. The sensor fusion algorithm is also responsible for merging end user's touch input drag events with the orientation calculated from movement sensor data (touch tapping events are handled separately).
+
+In short, the example shows how to:
+* Manually disable sensor control, to enable touch-only mode
+* Manually disable magnetometer input, to prevent issues with nearby magnetic objects and bad sensor calibration
+* Manually disable pinch rotate gesture
+* Manually configure pinch zoom gesture limits, or disable pinch zoom gesture
+* Listen for device orientation changes (sensor fusion events), for custom features
+
