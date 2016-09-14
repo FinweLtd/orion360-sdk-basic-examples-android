@@ -183,6 +183,8 @@ Example: Interactive Hotspots
 
 An example of a minimal Orion360 video player, with interactive hotspots.
 
-This example initializes 4 hotspots ("Start" buttons) at front, back, left & right directions. It dims and pauses the video, and waits for user to trigger start event by interacting with one of the hotspots. There is a fifth hotspot that acts as a reticle, continuously showing the position where the user is looking/pointing at. When the reticle is moved close enough to one of the "Start" hotspots, a pre-selection animation begins (roll). If the user keeps looking at the "Start" button long enough, it is triggered and a post-selection animation begins (escape), video dimming is removed and playback started. However, if the user moves away from the "Start" button before the pre-selection animation ends, selection is canceled.
+This example initializes 4 hotspots ("Start" buttons) at front, back, left & right directions. It dims and pauses the video, and waits for user to trigger start event by interacting with one of the hotspots. To get user's attention, the "Start" buttons are continuously animated (floating).
 
-This is a fairly complex example. To structure information into easily digestable pieces, a simple Hotspot class is first represented, and then improved by adding more and more features to it by the means of inheritance.
+There is a fifth hotspot that acts as a reticle, continuously showing the position where the user is looking/pointing at. When the reticle is moved close enough to one of the "Start" hotspots, a pre-selection animation begins (roll). If the user keeps looking at the "Start" button long enough, it is triggered and a post-selection animation begins (escape), video dimming is removed, and playback starts. However, if the user moves away from the "Start" button before the pre-selection animation ends, selection is canceled.
+
+This is a fairly complex example. To structure information into easily digestable pieces, a simple Hotspot class is represented, and then improved by adding more and more features to it by the means of inheritance.
