@@ -10,6 +10,7 @@ Table of Contents
 6. [Example: Minimal Video File Player](#example-minimal-video-file-player)
 7. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
 8. [Example: Minimal Image File Player](#example-minimal-image-file-player)
+9. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
 
 Prerequisities
 --------------
@@ -96,4 +97,27 @@ Showcases all supported file system locations and access methods (you need to se
 3. Application's public path on device's external memory
 
    Public external folder allows easy content sharing between apps and copying content from PC to a familiar location such as the /Pictures folder, but image viewing requires READ_EXTERNAL_STORAGE permission, which needs to be explicitly requested from user (starting from Android 6.0). This location is recommended for playing content that is sideloaded by end users.
+
+Example: Minimal VR Video File Player
+-------------------------------------
+
+An example of a minimal Orion360 video player, with VR mode enabled.
+
+Shows how to enable VR mode for viewing 360 videos with Google Cardboard or other VR frame where a smartphone can be slided in.
+
+In short, the example shows how to:
+
+* Disable magnetometer from sensor fusion so that Cardboard magnetic switch does not confuse it
+* Initialize the view orientation to World orientation
+* 
+
+
+
+
+
+
+
+
+
+
 
