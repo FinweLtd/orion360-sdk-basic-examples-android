@@ -106,18 +106,10 @@ An example of a minimal Orion360 video player, with VR mode enabled.
 Shows how to enable VR mode for viewing 360 videos with Google Cardboard or other VR frame where a smartphone can be slided in.
 
 In short, the example shows how to:
-
-* Disable magnetometer from sensor fusion so that Cardboard magnetic switch does not confuse it
-* Initialize the view orientation to World orientation
-* 
-
-
-
-
-
-
-
-
-
-
-
+* Configure horizontally split video view with landscape orientation
+* Congfigure VR frame lens distortion compensation
+* Configure field-of-view
+* Hide system navigation bar
+* Create a gesture detector for toggling VR mode on/off with long taps anywhere on screen
+* Initialize the view orientation to World orientation (make video horizon perpendicular to gravity vector)
+* Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not confuse it
