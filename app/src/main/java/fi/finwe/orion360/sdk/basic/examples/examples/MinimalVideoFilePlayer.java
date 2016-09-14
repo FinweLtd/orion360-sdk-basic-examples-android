@@ -48,7 +48,7 @@ import fi.finwe.orion360.sdk.basic.examples.R;
 /**
  * An example of a minimal Orion360 video player, for playing a video file from local file system.
  * <p/>
- * Showcases all supported file system locations and access methods.
+ * Showcases all supported file system locations and access methods (select one from code).
  * <p/>
  * Features:
  * <ul>
@@ -144,7 +144,7 @@ public class MinimalVideoFilePlayer extends Activity implements OrionVideoView.O
         //video = PUBLIC_EXTERNAL_VIDEO_PATH;
 
         // Private expansion package allows playing content embedded to the app's
-        // extra installation package (.obb) (up to 2 GB in total).
+        // extra installation package (.obb) (up to 2 GB per package, max 2 packages).
         //video = PRIVATE_EXPANSION_VIDEO_PATH;
 
         // Play the selected video file.

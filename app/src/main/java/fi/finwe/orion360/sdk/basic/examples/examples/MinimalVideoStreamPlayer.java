@@ -126,6 +126,10 @@ public class MinimalVideoStreamPlayer extends Activity {
         } catch (OrionVideoView.LicenseVerificationException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+
+        // When you run the app, you may get a warning from MediaPlayer component to the LogCat:
+        // W/MediaPlayer: Couldn't open []: java.io.FileNotFoundException: No content provider: []
+        // Here Android MediaPlayer is using an exception for control flow; you can disregard it.
 	}
 
     @Override

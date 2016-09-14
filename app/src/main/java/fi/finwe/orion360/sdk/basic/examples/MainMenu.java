@@ -69,7 +69,7 @@ import java.util.zip.ZipOutputStream;
 /**
  * Provides application's main menu: a list of selectable examples, each implemented as an activity.
  * <p/>
- * The activities are automatically searched from the package and added to the menu.
+ * The activities are automatically searched from the package (manifest) and added to the menu.
  */
 public class MainMenu extends ListActivity {
 
@@ -125,12 +125,12 @@ public class MainMenu extends ListActivity {
     /** Orion360 directory name (to be created under device's public external files). */
     public static final String ORION_DIRECTORY_NAME = "Orion360/SDK";
 
-    /** Device's public /Movies path with Orion360 subdirectory appended. */
+    /** Device's public /Movies path with Orion360 subdirectory appended to it. */
     public static final String PUBLIC_EXTERNAL_MOVIES_ORION_PATH =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES)
                     .getAbsolutePath() + File.separator + ORION_DIRECTORY_NAME + File.separator;
 
-    /** Device's public /Pictures path with Orion360 subdirectory appended. */
+    /** Device's public /Pictures path with Orion360 subdirectory appended to it. */
     public static final String PUBLIC_EXTERNAL_PICTURES_ORION_PATH =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
                     .getAbsolutePath() + File.separator + ORION_DIRECTORY_NAME + File.separator;
@@ -138,7 +138,7 @@ public class MainMenu extends ListActivity {
     /** Expansion package (.obb) path prefix. */
     private static final String EXPANSION_PACKAGES_PATH = "/Android/obb/";
 
-    /** Application's expansion package files path. */
+    /** Expansion package files path via content provider. */
     public static final String PRIVATE_EXPANSION_FILES_PATH = "content://" +
             ExpansionContentProvider.AUTHORITY + File.separator;
 
@@ -199,7 +199,7 @@ public class MainMenu extends ListActivity {
         // When the result is known, copy only the relevant files in the background.
         checkWritePermissionAndCopyContent();
 
-        // Find all other activities in our package.
+        // Find other activities in our package.
         List<ActivityData> activityDataList = findOtherActivities();
 
         // Setup an adapter for listing the activities in the UI.
@@ -214,9 +214,8 @@ public class MainMenu extends ListActivity {
     public void onListItemClick(ListView listView, View view, int position, long id) {
         view.setSelected(true);
 
-        ActivityData activityData = (ActivityData) listView.getItemAtPosition(position);
-
         // An activity was selected from the UI, try to start it now.
+        ActivityData activityData = (ActivityData) listView.getItemAtPosition(position);
         try {
             Intent intent = new Intent(this, Class.forName(
                     activityData.get(KEY_ACTIVITY_FULL_NAME)));
@@ -303,7 +302,7 @@ public class MainMenu extends ListActivity {
     }
 
     /**
-     * Copy test content to public directories. If write permission is missing, skips some files.
+     * Copy test content to public directories. If write permission is missing, skip some files.
      *
      * @param hasWritePermission Tells whether write permission has been granted, or not.
      */

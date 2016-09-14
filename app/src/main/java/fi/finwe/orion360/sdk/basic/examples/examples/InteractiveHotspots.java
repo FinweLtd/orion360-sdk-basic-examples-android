@@ -92,7 +92,7 @@ public class InteractiveHotspots extends Activity {
 	private OrionVideoView mOrionVideoView;
 
 	/** An array for the hotspot objects. */
-	private ArrayList<Hotspot> mHotspots = new ArrayList<Hotspot>();
+	private ArrayList<Hotspot> mHotspots = new ArrayList<>();
 
     /** Hotspot used as a gaze-selectable start button. */
     private class StartHotspot extends AnimatedSelectableHotspot {
@@ -103,7 +103,7 @@ public class InteractiveHotspots extends Activity {
          * @param index The Orion360 tag index to be set for this hotspot instance.
          * @param location The location where to place this hotspot instance.
          */
-        public StartHotspot(int index, Vec3F location) {
+        StartHotspot(int index, Vec3F location) {
             super(index);
 
             // Configure basic hotspot features.
@@ -403,7 +403,7 @@ public class InteractiveHotspots extends Activity {
          *
          * @param index The index to be set for this hotspot instance.
          */
-        public Reticle(int index) {
+        Reticle(int index) {
             super(index);
 
             // Configure basic hotspot features.
@@ -428,14 +428,14 @@ public class InteractiveHotspots extends Activity {
         /**
          * Make the reticle active by starting to listen view orientation changes.
          */
-        protected void activate() {
+        void activate() {
             mOrionVideoView.registerOrientationChangeListener(this);
         }
 
         /**
          * Make the reticle inactive by stopping to listen view orientation changes.
          */
-        protected void deactivate() {
+        void deactivate() {
             mOrionVideoView.unregisterOrientationChangeListener(this);
         }
 
@@ -446,10 +446,10 @@ public class InteractiveHotspots extends Activity {
             implements OrionSensorFusion.Listener {
 
         /** Sensitivity for receiving gazing focus. */
-        protected float gazeInSensitivity;
+        float gazeInSensitivity;
 
         /** Sensitivity for losing gazing focus. Should be larger than gazeInSensitivity. */
-        protected float gazeOutSensitivity;
+        float gazeOutSensitivity;
 
         /** Flag for indicating if the hotspot is currently being gazed at. */
         private boolean mIsGazedAt = false;
@@ -460,7 +460,7 @@ public class InteractiveHotspots extends Activity {
          *
          * @param index The index to be set for this hotspot instance.
          */
-        public InteractiveHotspot(int index) {
+        InteractiveHotspot(int index) {
             super(index);
         }
 
@@ -493,25 +493,16 @@ public class InteractiveHotspots extends Activity {
         public void onDeviceDisplayRotationChanged(int rotationDegrees) {}
 
         /**
-         * Check whether the hotspot is currently being gazed at, or not.
-         *
-         * @return true if currently gazed at, else false.
-         */
-        public boolean isGazedAt() {
-            return mIsGazedAt;
-        }
-
-        /**
          * Make the hotspot active by starting to listen view orientation changes.
          */
-        protected void activate() {
+        void activate() {
             mOrionVideoView.registerOrientationChangeListener(this);
         }
 
         /**
          * Make the hotspot inactive by stopping to listen view orientation changes.
          */
-        protected void deactivate() {
+        void deactivate() {
             mOrionVideoView.unregisterOrientationChangeListener(this);
         }
 
@@ -548,7 +539,7 @@ public class InteractiveHotspots extends Activity {
          *
          * @param index The index to be set for this hotspot instance.
          */
-        public AnimatedSelectableHotspot(int index) {
+        AnimatedSelectableHotspot(int index) {
             super(index);
         }
 
@@ -573,7 +564,7 @@ public class InteractiveHotspots extends Activity {
          * @param max The maximum enlarging factor for the pulsating effect.
          * @param periodMs The period in milliseconds for a single pulsating cycle.
          */
-        protected void initAttentionAnimation(float min, float max, long periodMs) {
+        void initAttentionAnimation(float min, float max, long periodMs) {
             mAttentionAnimator = ValueAnimator.ofFloat(min, max);
             mAttentionAnimator.setRepeatCount(ValueAnimator.INFINITE);
             mAttentionAnimator.setRepeatMode(ValueAnimator.REVERSE);
@@ -596,7 +587,7 @@ public class InteractiveHotspots extends Activity {
         /**
          * Start the attention animation, and stop all other animations (if any).
          */
-        protected void startAttentionAnimation() {
+        void startAttentionAnimation() {
             stopAllAnimations();
             if (null != mAttentionAnimator) {
                 mAttentionAnimator.start();
@@ -606,7 +597,7 @@ public class InteractiveHotspots extends Activity {
         /**
          * Stop the attention animation.
          */
-        protected void stopAttentionAnimation() {
+        void stopAttentionAnimation() {
             if (null != mAttentionAnimator) {
                 mAttentionAnimator.cancel();
             }
@@ -617,7 +608,7 @@ public class InteractiveHotspots extends Activity {
          *
          * @param selectionLatencyMs The amount of continuous gazing (ms) required for triggering.
          */
-        protected void initPreSelectionAnimation(long selectionLatencyMs) {
+        void initPreSelectionAnimation(long selectionLatencyMs) {
             mPreSelectionAnimator = ValueAnimator.ofFloat(0, (float) (2 * Math.PI));
             mPreSelectionAnimator.setRepeatCount(0);
             mPreSelectionAnimator.setRepeatMode(ValueAnimator.RESTART);
@@ -682,7 +673,7 @@ public class InteractiveHotspots extends Activity {
         /**
          * Start the pre-selection animation, and stop all other animations (if any).
          */
-        protected void startPreSelectionAnimation() {
+        void startPreSelectionAnimation() {
             stopAllAnimations();
             if (null != mPreSelectionAnimator) {
                 mPreSelectionAnimator.start();
@@ -692,7 +683,7 @@ public class InteractiveHotspots extends Activity {
         /**
          * Stop the pre-selection animation.
          */
-        protected void stopPreSelectionAnimation() {
+        void stopPreSelectionAnimation() {
             if (null != mPreSelectionAnimator) {
                 mPreSelectionAnimator.cancel();
             }
@@ -703,7 +694,7 @@ public class InteractiveHotspots extends Activity {
          *
          * @param escapeDuration The duration in milliseconds to remove the hotspot from view.
          */
-        protected void initPostSelectionAnimation(long escapeDuration) {
+        void initPostSelectionAnimation(long escapeDuration) {
             mPostSelectionAnimator = ValueAnimator.ofFloat(1.0f, 0.0f);
             mPostSelectionAnimator.setRepeatCount(0);
             mPostSelectionAnimator.setRepeatMode(ValueAnimator.RESTART);
@@ -759,7 +750,7 @@ public class InteractiveHotspots extends Activity {
         /**
          * Start the post-selection animation, and stop all other animations (if any).
          */
-        protected void startPostSelectionAnimation() {
+        void startPostSelectionAnimation() {
             stopAllAnimations();
             if (null != mPostSelectionAnimator) {
                 mPostSelectionAnimator.start();
@@ -769,7 +760,7 @@ public class InteractiveHotspots extends Activity {
         /**
          * Stop the post-selection animation.
          */
-        protected void stopPostSelectionAnimation() {
+        void stopPostSelectionAnimation() {
             if (null != mPostSelectionAnimator) {
                 mPostSelectionAnimator.cancel();
             }
@@ -778,7 +769,7 @@ public class InteractiveHotspots extends Activity {
         /**
          * Stop ALL hotspot animations.
          */
-        protected void stopAllAnimations() {
+        void stopAllAnimations() {
             stopAttentionAnimation();
             stopPreSelectionAnimation();
             stopPostSelectionAnimation();
