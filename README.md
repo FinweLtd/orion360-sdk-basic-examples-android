@@ -12,6 +12,7 @@ Table of Contents
 8. [Example: Minimal Image File Player](#example-minimal-image-file-player)
 9. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
 10. [Example: Sensor Fusion](#example-sensor-fusion)
+11. [Example: Nadir Patch](#example-nadir-patch)
 
 Prerequisities
 --------------
@@ -137,4 +138,17 @@ In short, the example shows how to:
 * Manually disable pinch rotate gesture
 * Manually configure pinch zoom gesture limits, or disable pinch zoom gesture
 * Listen for device orientation changes (sensor fusion events), for custom features
+
+Example: Nadir Patch
+--------------------
+
+An example of a minimal Orion360 video player, with a nadir patch image.
+
+Nadir patch is frequently used when 360 photo or video is captured with a camera setup that does not cover the full sphere (360x180). The purpose is to cover the hole in the natural direction (down) with content producer or customer brand logo.
+
+Orion360 allows adding 2D image panes to the 3D world; these are called tags. Adding a tag only requires a path to the image file, a direction vector, and a scale factor - the image pane is automatically set at the proper distance from the origin and kept facing to user at all times.
+
+This example uses the tag feature to add a nadir patch image on top of the video layer. While a tag image pane is always a rectangular area, the PNG image file format with alpha channel allows drawing non-rectangular shapes, here a circular patch.
+
+Orion360 tags must be created during view initialization, but they can be manipulated later. Here a standard Android object animator is used for fading in the patch image when the video playback begins. It is also possible to use current viewing direction as an input for tag manipulation, as shown here by keeping the patch upright at all times.
 
