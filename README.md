@@ -8,6 +8,8 @@ Table of Contents
 4. [Example: Minimal Video Stream Player](#example-minimal-video-stream-player)
 5. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
 6. [Example: Minimal Video File Player](#example-minimal-video-file-player)
+7. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
+8. [Example: Minimal Image File Player](#example-minimal-image-file-player)
 
 Prerequisities
 --------------
@@ -68,3 +70,30 @@ Showcases all supported file system locations and access methods (you need to se
 6. Application expansion package
 
    Private expansion package allows playing content embedded to the app's extra installation package (.obb) (up to 2 GB per package, max 2 packages). This is the recommended location when the application embeds video files to the installation package and is distributed via Google Play store.
+
+Example: Minimal Image Download Player
+--------------------------------------
+
+An example of a minimal Orion360 image player, for downloading an image file before playback.
+
+Notice that there is no "stream player" for 360 images; an equirectangular 360 image needs to be fully downloaded before it can be shown (viewing tiled images is not supported).
+
+Example: Minimal Image File Player
+----------------------------------
+
+An example of a minimal Orion360 video player, for playing a video file from local file system.
+
+Showcases all supported file system locations and access methods (you need to select one from code). The supported locations are:
+
+1. Application's private path on device's internal memory
+
+   Private internal folder is useful mainly when the app downloads an image file, as only the app itself can access that location (exception: rooted devices). This location is recommended only if downloaded content files need to be protected from ordinary users - although the protection is easy to circumvent with a rooted device.
+
+2. Application's private path on device's external memory
+
+   Private external folder allows copying images via file manager app or a USB cable, which can be useful for users who know their way in the file system and the package name of the app (e.g. developers). This location is recommended for caching downloaded content.
+
+3. Application's public path on device's external memory
+
+   Public external folder allows easy content sharing between apps and copying content from PC to a familiar location such as the /Pictures folder, but image viewing requires READ_EXTERNAL_STORAGE permission, which needs to be explicitly requested from user (starting from Android 6.0). This location is recommended for playing content that is sideloaded by end users.
+
