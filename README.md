@@ -14,6 +14,7 @@ Table of Contents
 10. [Example: Sensor Fusion](#example-sensor-fusion)
 11. [Example: Nadir Patch](#example-nadir-patch)
 12. [Example: Director's Cut](#example-directors-cut)
+13. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -176,3 +177,12 @@ After the question of the initial viewing rotation is settled, the director may 
 In order to perform such operations during video playback, we need to listen to the video position and check when a predefined moment of time has been reached. Unfortunately, the Android media player backend does not provide frame numbers, and even video position must be queried via polling. The example shows how to rotate the camera at certain positions of time (with respect to video player position).
 
 Finally, the director may want to perform animated camera operations, such as panning and zooming. These are somewhat controversial, but feel fairly good when the user is not taken completely out of control. Hence, we perform the panning and zooming as small animated steps by always modifying the latest value towards the target, thus allowing simultaneous control by user. The example shows how to do this.
+
+Example: Interactive Hotspots
+-----------------------------
+
+An example of a minimal Orion360 video player, with interactive hotspots.
+
+This example initializes 4 hotspots ("Start" buttons) at front, back, left & right directions. It dims and pauses the video, and waits for user to trigger start event by interacting with one of the hotspots. There is a fifth hotspot that acts as a reticle, continuously showing the position where the user is looking/pointing at. When the reticle is moved close enough to one of the "Start" hotspots, a pre-selection animation begins (roll). If the user keeps looking at the "Start" button long enough, it is triggered and a post-selection animation begins (escape), video dimming is removed and playback started. However, if the user moves away from the "Start" button before the pre-selection animation ends, selection is canceled.
+
+This is a fairly complex example. To structure information into easily digestable pieces, a simple Hotspot class is first represented, and then improved by adding more and more features to it by the means of inheritance.
