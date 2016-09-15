@@ -1,36 +1,72 @@
-# orion360-sdk-basic-examples-android
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18542079/8d2c1c86-7b31-11e6-856a-7b3fd5d9c1a7.png)
+
+# Examples for Orion360 SDK (Basic) for Android
+
+This repository contains a set of minimal examples for creating a 360 image/video player for the most common use cases (look for the word "minimal" in the example name). Start studying from these short and to-the-point examples, preferably in the presented order as the examples get gradually more complex.
+
+More advanced examples are included for improving the player with features such as VR mode and interactive hotspots. When you have mastered the basics, these examples will become valuable sources for adding new features to your 360 app.
+
+In order to make studying the examples as easy as possible, each one is implemented as an activity with very few dependencies outside of its own class, thorougly commented, and briefly explained in this README. 
+
+The examples are collected under a single application that can be compiled from this project, or installed from Google Play store [TODO: add link]
 
 Table of Contents
 -----------------
 1. [Prerequisities](#prerequisities)
 2. [Cloning the project](#cloning-the-project)
-3. [Studying the examples](#studying-the-examples)
-4. [Example: Minimal Video Stream Player](#example-minimal-video-stream-player)
-5. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
-6. [Example: Minimal Video File Player](#example-minimal-video-file-player)
-7. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
-8. [Example: Minimal Image File Player](#example-minimal-image-file-player)
-9. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
-10. [Example: Sensor Fusion](#example-sensor-fusion)
-11. [Example: Nadir Patch](#example-nadir-patch)
-12. [Example: Director's Cut](#example-directors-cut)
-13. [Example: Interactive Hotspots](#example-interactive-hotspots)
+3. [Example: Minimal Video Stream Player](#example-minimal-video-stream-player)
+4. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
+5. [Example: Minimal Video File Player](#example-minimal-video-file-player)
+6. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
+7. [Example: Minimal Image File Player](#example-minimal-image-file-player)
+8. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
+9. [Example: Sensor Fusion](#example-sensor-fusion)
+10. [Example: Nadir Patch](#example-nadir-patch)
+11. [Example: Director's Cut](#example-directors-cut)
+12. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
 
+Basic Android software development skills are enough for understanding and modifying the examples.
+
+Install Android Studio IDE (recommended version is 2.2 or newer):
+https://developer.android.com/studio/install.html
+
+Then, using the SDK Manager tool, install one or more Android SDKs. Notice that for Orion360 SDK Basic, minimum API level is 14: Android 4.0 IceCreamSandwitch.
+
+> If you haven't already studied the Hello World project for Orion360 SDK Basic, you should do that first and then continue with this examples project.
+> https://github.com/FinweLtd/orion360-sdk-basic-hello-android
+
 Cloning the project
 -------------------
 
-Studying the examples
----------------------
+To clone the project from GitHub, start Android Studio, select "Check out project from Version Control" and "Git" from the popup dialog.
 
-To get you started quickly, we have created a set of examples that show the very minimal player code for the most typical use cases (look for word "minimal" in the example name). You should start studying from these short and to-the-point examples, preferably in the presented order as the examples get gradually more complex.
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541651/2264faaa-7b2f-11e6-9a21-75182dcf9666.png)
 
-For more advanced usage, we have created a set of examples that focus on a particular Orion360 feature, such as VR mode or hotspots. When you have mastered the basics, these examples will become valuable sources for adding new features to your 360 player app.
+Set repository URL, parent directory, and project directory. 
+
+Notice that the repository URL is easy to copy-paste from browser to Android Studio: click the green "Clone or download" button on the project's GitHub page, copy the URL from the dialog that appears, and paste it to Android Studio's dialog.
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541713/a98e6ebc-7b2f-11e6-8c89-fa32266131e1.png)
+
+Cloning the project will take a moment. Android Studio then asks if you want to open the project. Answer "Yes".
+
+The project opens, and Android Studio performs Gradle sync that will take some time (please wait). After Gradle sync finishes, you can find the project files by opening the Project view on the left.
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541727/b5e46a72-7b2f-11e6-99df-3fe4ee471547.png)
+
+You can now proceed to connecting an Android device to your computer via a USB cable, and then run the app on device.
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544086/c8a52096-7b3b-11e6-8feb-18a8569250b6.png)
 
 Example: Minimal Video Stream Player
 ------------------------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544135/0068a3b8-7b3c-11e6-9bac-983f05fa144c.png)
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoStreamPlayer.java)
 
 An example of a minimal Orion360 video player, for streaming a video file over the network.
 
@@ -38,6 +74,8 @@ Plays a low-quality 360 video stream over the network, and shows how to create a
 
 Example: Minimal Video Download Player
 --------------------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoDownloadPlayer.java)
 
 An example of a minimal Orion360 video player, for downloading a video file before playback.
 
@@ -47,6 +85,8 @@ Since downloading a file will take some time, the example uses an AsyncTask to d
 
 Example: Minimal Video File Player
 ----------------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoFilePlayer.java)
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
@@ -79,12 +119,16 @@ Showcases all supported file system locations and access methods (you need to se
 Example: Minimal Image Download Player
 --------------------------------------
 
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageDownloadPlayer.java)
+
 An example of a minimal Orion360 image player, for downloading an image file before playback.
 
 Notice that there is no "stream player" for 360 images; an equirectangular 360 image needs to be fully downloaded before it can be shown (viewing tiled images is not supported).
 
 Example: Minimal Image File Player
 ----------------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageFilePlayer.java)
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
@@ -105,6 +149,10 @@ Showcases all supported file system locations and access methods (you need to se
 Example: Minimal VR Video File Player
 -------------------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544208/43e3850e-7b3c-11e6-947c-2fe01130b52d.png)
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVRVideoFilePlayer.java)
+
 An example of a minimal Orion360 video player, with VR mode enabled.
 
 Shows how to enable VR mode for viewing 360 videos with Google Cardboard or other VR frame where a smartphone can be slided in.
@@ -120,6 +168,8 @@ In short, the example shows how to:
 
 Example: Sensor Fusion
 ----------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/SensorFusion.java)
 
 An example of a minimal Orion360 video player, with sensor fusion control.
 
@@ -144,6 +194,10 @@ In short, the example shows how to:
 Example: Nadir Patch
 --------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544249/6fae14f6-7b3c-11e6-8c0b-ee322e53cdb2.png)
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/NadirPatch.java)
+
 An example of a minimal Orion360 video player, with a nadir patch image.
 
 Nadir patch is frequently used when 360 photo or video is captured with a camera setup that does not cover the full sphere (360x180). The purpose is to cover the hole in the natural direction (down) with content producer or customer brand logo.
@@ -156,6 +210,8 @@ Orion360 tags must be created during view initialization, but they can be manipu
 
 Example: Director's Cut
 -----------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/DirectorsCut.java)
 
 An example of a minimal Orion360 video player, with forced view rotation control.
 
@@ -180,6 +236,10 @@ Finally, the director may want to perform animated camera operations, such as pa
 
 Example: Interactive Hotspots
 -----------------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544261/84e2ad82-7b3c-11e6-87d6-0cc91eabfffe.png)
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/InteractiveHotspots.java)
 
 An example of a minimal Orion360 video player, with interactive hotspots.
 
