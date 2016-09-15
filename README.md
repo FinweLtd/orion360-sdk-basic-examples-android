@@ -55,9 +55,11 @@ Cloning the project will take a moment. Android Studio then asks if you want to 
 
 The project opens, and Android Studio performs Gradle sync that will take some time (please wait). After Gradle sync finishes, you can find the project files by opening the Project view on the left.
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541727/b5e46a72-7b2f-11e6-99df-3fe4ee471547.png)
+
 You can now proceed to connecting an Android device to your computer via a USB cable, and then run the app on device.
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541727/b5e46a72-7b2f-11e6-99df-3fe4ee471547.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544086/c8a52096-7b3b-11e6-8feb-18a8569250b6.png)
 
 Example: Minimal Video Stream Player
 ------------------------------------
