@@ -100,7 +100,10 @@ public class MinimalImageDownloadPlayer extends Activity {
         mOrionImageView = (OrionImageView) findViewById(R.id.orion_image_view);
 
         // Download the image file, then play it.
-        downloadAndPlay(MainMenu.TEST_IMAGE_URI_HQ);
+        downloadAndPlay(
+                MainMenu.EXAMPLE_IMAGE_1_URI_4K
+                //MainMenu.EXAMPLE_IMAGE_1_URI_8K
+        );
 	}
 
     @Override

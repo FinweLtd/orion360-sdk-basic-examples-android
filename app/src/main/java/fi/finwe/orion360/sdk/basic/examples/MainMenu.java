@@ -81,27 +81,36 @@ public class MainMenu extends ListActivity {
 
     /** Test video URI for low quality video that can be found from the network. */
     public static final String TEST_VIDEO_URI_LQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_video_1280x640.mp4";
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_video_1280x640.mp4";
 
     /** Test video URI for medium quality video that can be found from the network. */
     public static final String TEST_VIDEO_URI_MQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_video_1920x960.mp4";
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_video_1920x960.mp4";
 
     /** Test video URI for high quality video that can be found from the network. */
     public static final String TEST_VIDEO_URI_HQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_video_3840x1920.mp4";
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_video_3840x1920.mp4";
 
     /** Test image URI for low quality image that can be found from the network. */
     public static final String TEST_IMAGE_URI_LQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_image_1280x640.jpg";
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_image_1280x640.jpg";
 
     /** Test image URI for medium quality image that can be found from the network. */
     public static final String TEST_IMAGE_URI_MQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_image_1920x960.jpg";
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_image_1920x960.jpg";
 
     /** Test image URI for high quality image that can be found from the network. */
     public static final String TEST_IMAGE_URI_HQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_image_3840x1920.jpg";
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_image_3840x1920.jpg";
+
+    /** Example image 1 URI for high quality image that can be found from the network. */
+    public static final String EXAMPLE_IMAGE_1_URI_4K =
+            "https://s3.amazonaws.com/orion360-us/Orion360_example_image_1_4096x2048.jpg";
+
+    /** Example image 1 URI for 8k image that can be found from the network. */
+    public static final String EXAMPLE_IMAGE_1_URI_8K =
+            "https://s3.amazonaws.com/orion360-us/Orion360_example_image_1_8192x4096.jpg";
+
 
     /** Test video name for low quality video that is bundled with the app in /res/raw. */
     // Notice: As this file is located in the R.raw folder, we must access it without the
