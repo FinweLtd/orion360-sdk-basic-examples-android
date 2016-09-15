@@ -19,6 +19,15 @@ Table of Contents
 Prerequisities
 --------------
 
+Install Android Studio IDE (recommended version is 2.2 or newer):
+https://developer.android.com/studio/install.html
+
+Then, using the SDK Manager tool, install one or more Android SDKs. Notice that for Orion360 SDK Basic, minimum API level is 14: Android 4.0 IceCreamSandwitch.
+
+If you haven't already studied the Hello World project for Orion360 SDK Basic, you should do that first and then continue with this examples project.
+
+https://github.com/FinweLtd/orion360-sdk-basic-hello-android
+
 Cloning the project
 -------------------
 
