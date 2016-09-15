@@ -149,6 +149,8 @@ Showcases all supported file system locations and access methods (you need to se
 Example: Minimal VR Video File Player
 -------------------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544208/43e3850e-7b3c-11e6-947c-2fe01130b52d.png)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVRVideoFilePlayer.java)
 
 An example of a minimal Orion360 video player, with VR mode enabled.
@@ -192,6 +194,8 @@ In short, the example shows how to:
 Example: Nadir Patch
 --------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544249/6fae14f6-7b3c-11e6-8c0b-ee322e53cdb2.png)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/NadirPatch.java)
 
 An example of a minimal Orion360 video player, with a nadir patch image.
@@ -232,6 +236,8 @@ Finally, the director may want to perform animated camera operations, such as pa
 
 Example: Interactive Hotspots
 -----------------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544261/84e2ad82-7b3c-11e6-87d6-0cc91eabfffe.png)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/InteractiveHotspots.java)
 
