@@ -62,6 +62,8 @@ You can now proceed to connecting an Android device to your computer via a USB c
 Example: Minimal Video Stream Player
 ------------------------------------
 
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoStreamPlayer.java)
+
 An example of a minimal Orion360 video player, for streaming a video file over the network.
 
 Plays a low-quality 360 video stream over the network, and shows how to create a simple buffering indicator by listening to *OrionVideoView* buffering events.
