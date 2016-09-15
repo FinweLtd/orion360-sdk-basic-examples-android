@@ -71,6 +71,8 @@ Plays a low-quality 360 video stream over the network, and shows how to create a
 Example: Minimal Video Download Player
 --------------------------------------
 
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoDownloadPlayer.java)
+
 An example of a minimal Orion360 video player, for downloading a video file before playback.
 
 Notice that saving a copy of a video file while streaming it is not possible with Android MediaPlayer as a video backend. To obtain a local copy of a video file that resides in the network you need to download it separately, as shown in this example.
@@ -79,6 +81,8 @@ Since downloading a file will take some time, the example uses an AsyncTask to d
 
 Example: Minimal Video File Player
 ----------------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoFilePlayer.java)
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
@@ -111,12 +115,16 @@ Showcases all supported file system locations and access methods (you need to se
 Example: Minimal Image Download Player
 --------------------------------------
 
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageDownloadPlayer.java)
+
 An example of a minimal Orion360 image player, for downloading an image file before playback.
 
 Notice that there is no "stream player" for 360 images; an equirectangular 360 image needs to be fully downloaded before it can be shown (viewing tiled images is not supported).
 
 Example: Minimal Image File Player
 ----------------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageFilePlayer.java)
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
@@ -137,6 +145,8 @@ Showcases all supported file system locations and access methods (you need to se
 Example: Minimal VR Video File Player
 -------------------------------------
 
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVRVideoFilePlayer.java)
+
 An example of a minimal Orion360 video player, with VR mode enabled.
 
 Shows how to enable VR mode for viewing 360 videos with Google Cardboard or other VR frame where a smartphone can be slided in.
@@ -152,6 +162,8 @@ In short, the example shows how to:
 
 Example: Sensor Fusion
 ----------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/SensorFusion.java)
 
 An example of a minimal Orion360 video player, with sensor fusion control.
 
@@ -176,6 +188,8 @@ In short, the example shows how to:
 Example: Nadir Patch
 --------------------
 
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/NadirPatch.java)
+
 An example of a minimal Orion360 video player, with a nadir patch image.
 
 Nadir patch is frequently used when 360 photo or video is captured with a camera setup that does not cover the full sphere (360x180). The purpose is to cover the hole in the natural direction (down) with content producer or customer brand logo.
@@ -188,6 +202,8 @@ Orion360 tags must be created during view initialization, but they can be manipu
 
 Example: Director's Cut
 -----------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/DirectorsCut.java)
 
 An example of a minimal Orion360 video player, with forced view rotation control.
 
@@ -212,6 +228,8 @@ Finally, the director may want to perform animated camera operations, such as pa
 
 Example: Interactive Hotspots
 -----------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/InteractiveHotspots.java)
 
 An example of a minimal Orion360 video player, with interactive hotspots.
 
