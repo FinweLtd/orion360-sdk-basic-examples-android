@@ -4,7 +4,7 @@
 
 This repository contains a set of minimal examples for creating a 360 image/video player for the most common use cases (look for the word "minimal" in the example name). Start studying from these short and to-the-point examples, preferably in the presented order as the examples get gradually more complex.
 
-More advanced examples are included for improving the player with features such as VR mode and interactive hotspots. When you have mastered the basics, these examples will become valuable sources for adding new features to your 360 player app.
+More advanced examples are included for improving the player with features such as VR mode and interactive hotspots. When you have mastered the basics, these examples will become valuable sources for adding new features to your 360 app.
 
 In order to make studying the examples as easy as possible, each one is implemented as an activity with very few dependencies outside of its own class, thorougly commented, and briefly explained in this README. 
 
@@ -28,16 +28,15 @@ Table of Contents
 Prerequisities
 --------------
 
+Basic Android software development skills are enough for understanding and modifying the examples.
+
 Install Android Studio IDE (recommended version is 2.2 or newer):
 https://developer.android.com/studio/install.html
 
 Then, using the SDK Manager tool, install one or more Android SDKs. Notice that for Orion360 SDK Basic, minimum API level is 14: Android 4.0 IceCreamSandwitch.
 
-If you haven't already studied the Hello World project for Orion360 SDK Basic, you should do that first and then continue with this examples project.
-
-https://github.com/FinweLtd/orion360-sdk-basic-hello-android
-
-Basic Android software development skills are enough for understanding and modifying the examples.
+> If you haven't already studied the Hello World project for Orion360 SDK Basic, you should do that first and then continue with this examples project.
+> https://github.com/FinweLtd/orion360-sdk-basic-hello-android
 
 Cloning the project
 -------------------
