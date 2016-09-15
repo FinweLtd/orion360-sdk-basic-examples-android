@@ -2,7 +2,7 @@
 
 # Examples for Orion360 SDK (Basic) for Android
 
-This repository contains a set of examples for creating a 360 video player for the most common use cases, and improving it with more advanced features such as VR mode and interactive hotspots.
+This repository contains a set of examples for creating a 360 video player for the most common use cases, and improving it with more advanced features such as VR mode and interactive hotspots. To make studying the examples easy, each one is implemented as an activity with very few dependencies outside of its own class. The examples are collected under a single application that can be compiled from this project or installed from Google Play store.
 
 Table of Contents
 -----------------
