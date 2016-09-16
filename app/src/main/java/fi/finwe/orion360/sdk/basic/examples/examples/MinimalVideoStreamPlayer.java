@@ -122,7 +122,7 @@ public class MinimalVideoStreamPlayer extends Activity {
         // Notice that this call will fail if a valid Orion360 license file for the package name
         // (defined in the application's manifest file) cannot be found.
         try {
-            mOrionVideoView.prepare(MainMenu.TEST_VIDEO_URI_LQ);
+            mOrionVideoView.prepare(MainMenu.TEST_VIDEO_URI_1280x640);
         } catch (OrionVideoView.LicenseVerificationException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }

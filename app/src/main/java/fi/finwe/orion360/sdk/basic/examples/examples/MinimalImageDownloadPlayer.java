@@ -101,8 +101,8 @@ public class MinimalImageDownloadPlayer extends Activity {
 
         // Download the image file, then play it.
         downloadAndPlay(
-                MainMenu.EXAMPLE_IMAGE_1_URI_4K
-                //MainMenu.EXAMPLE_IMAGE_1_URI_8K
+                MainMenu.EXAMPLE_IMAGE_1_URI_4096x2048
+                //MainMenu.EXAMPLE_IMAGE_1_URI_8129x4096
         );
 	}
 

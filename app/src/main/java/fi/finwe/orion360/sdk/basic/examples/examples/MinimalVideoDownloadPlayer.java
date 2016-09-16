@@ -110,8 +110,8 @@ public class MinimalVideoDownloadPlayer extends Activity
 
         // Download the video file, then play it. Notice that this link points to a
         // 4k video file, older/mid-range devices may not be able to play it!
-        // In case of problems, try MainMenu.TEST_VIDEO_URI_MQ instead.
-        downloadAndPlay(MainMenu.TEST_VIDEO_URI_HQ);
+        // In case of problems, try MainMenu.TEST_VIDEO_URI_1920x960 instead.
+        downloadAndPlay(MainMenu.TEST_VIDEO_URI_3840x1920);
 	}
 
     @Override
