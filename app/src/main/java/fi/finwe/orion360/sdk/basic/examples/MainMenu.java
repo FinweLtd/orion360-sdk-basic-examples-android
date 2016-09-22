@@ -69,7 +69,7 @@ import java.util.zip.ZipOutputStream;
 /**
  * Provides application's main menu: a list of selectable examples, each implemented as an activity.
  * <p/>
- * The activities are automatically searched from the package and added to the menu.
+ * The activities are automatically searched from the package (manifest) and added to the menu.
  */
 public class MainMenu extends ListActivity {
 
@@ -80,28 +80,37 @@ public class MainMenu extends ListActivity {
     private static final int REQUEST_WRITE_STORAGE = 112;
 
     /** Test video URI for low quality video that can be found from the network. */
-    public static final String TEST_VIDEO_URI_LQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_video_1280x640.mp4";
+    public static final String TEST_VIDEO_URI_1280x640 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_video_2d_equi_360x180deg_1280x640pix_30fps_30sec_x264.mp4";
 
     /** Test video URI for medium quality video that can be found from the network. */
-    public static final String TEST_VIDEO_URI_MQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_video_1920x960.mp4";
+    public static final String TEST_VIDEO_URI_1920x960 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_video_2d_equi_360x180deg_1920x960pix_30fps_30sec_x264.mp4";
 
     /** Test video URI for high quality video that can be found from the network. */
-    public static final String TEST_VIDEO_URI_HQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_video_3840x1920.mp4";
+    public static final String TEST_VIDEO_URI_3840x1920 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_video_2d_equi_360x180deg_3840x1920pix_30fps_30sec_x264.mp4";
 
     /** Test image URI for low quality image that can be found from the network. */
-    public static final String TEST_IMAGE_URI_LQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_image_1280x640.jpg";
+    public static final String TEST_IMAGE_URI_1280x640 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_image_1280x640.jpg";
 
     /** Test image URI for medium quality image that can be found from the network. */
-    public static final String TEST_IMAGE_URI_MQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_image_1920x960.jpg";
+    public static final String TEST_IMAGE_URI_1920x960 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_image_1920x960.jpg";
 
     /** Test image URI for high quality image that can be found from the network. */
-    public static final String TEST_IMAGE_URI_HQ =
-            "http://www.finwe.fi/orion360/test/equi/Orion360_test_image_3840x1920.jpg";
+    public static final String TEST_IMAGE_URI_3840x1920 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_image_3840x1920.jpg";
+
+    /** Example image 1 URI for high quality image that can be found from the network. */
+    public static final String EXAMPLE_IMAGE_1_URI_4096x2048 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_example_image_1_4096x2048.jpg";
+
+    /** Example image 1 URI for 8k image that can be found from the network. */
+    public static final String EXAMPLE_IMAGE_1_URI_8129x4096 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_example_image_1_8192x4096.jpg";
+
 
     /** Test video name for low quality video that is bundled with the app in /res/raw. */
     // Notice: As this file is located in the R.raw folder, we must access it without the
@@ -125,12 +134,12 @@ public class MainMenu extends ListActivity {
     /** Orion360 directory name (to be created under device's public external files). */
     public static final String ORION_DIRECTORY_NAME = "Orion360/SDK";
 
-    /** Device's public /Movies path with Orion360 subdirectory appended. */
+    /** Device's public /Movies path with Orion360 subdirectory appended to it. */
     public static final String PUBLIC_EXTERNAL_MOVIES_ORION_PATH =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES)
                     .getAbsolutePath() + File.separator + ORION_DIRECTORY_NAME + File.separator;
 
-    /** Device's public /Pictures path with Orion360 subdirectory appended. */
+    /** Device's public /Pictures path with Orion360 subdirectory appended to it. */
     public static final String PUBLIC_EXTERNAL_PICTURES_ORION_PATH =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
                     .getAbsolutePath() + File.separator + ORION_DIRECTORY_NAME + File.separator;
@@ -138,7 +147,7 @@ public class MainMenu extends ListActivity {
     /** Expansion package (.obb) path prefix. */
     private static final String EXPANSION_PACKAGES_PATH = "/Android/obb/";
 
-    /** Application's expansion package files path. */
+    /** Expansion package files path via content provider. */
     public static final String PRIVATE_EXPANSION_FILES_PATH = "content://" +
             ExpansionContentProvider.AUTHORITY + File.separator;
 
@@ -199,7 +208,7 @@ public class MainMenu extends ListActivity {
         // When the result is known, copy only the relevant files in the background.
         checkWritePermissionAndCopyContent();
 
-        // Find all other activities in our package.
+        // Find other activities in our package.
         List<ActivityData> activityDataList = findOtherActivities();
 
         // Setup an adapter for listing the activities in the UI.
@@ -214,9 +223,8 @@ public class MainMenu extends ListActivity {
     public void onListItemClick(ListView listView, View view, int position, long id) {
         view.setSelected(true);
 
-        ActivityData activityData = (ActivityData) listView.getItemAtPosition(position);
-
         // An activity was selected from the UI, try to start it now.
+        ActivityData activityData = (ActivityData) listView.getItemAtPosition(position);
         try {
             Intent intent = new Intent(this, Class.forName(
                     activityData.get(KEY_ACTIVITY_FULL_NAME)));
@@ -303,7 +311,7 @@ public class MainMenu extends ListActivity {
     }
 
     /**
-     * Copy test content to public directories. If write permission is missing, skips some files.
+     * Copy test content to public directories. If write permission is missing, skip some files.
      *
      * @param hasWritePermission Tells whether write permission has been granted, or not.
      */

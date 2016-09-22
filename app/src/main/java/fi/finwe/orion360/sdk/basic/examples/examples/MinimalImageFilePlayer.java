@@ -106,7 +106,7 @@ public class MinimalImageFilePlayer extends Activity {
 
         // Private internal folder is useful mainly when the app downloads an image file,
         // as only the app itself can access that location (exception: rooted devices).
-        //image = PRIVATE_INTERNAL_IMAGE_PATH;
+        image = PRIVATE_INTERNAL_IMAGE_PATH;
 
         // Private external folder allows copying images via file manager app or a
         // USB cable, which can be useful for users who know their way in the file
@@ -116,7 +116,7 @@ public class MinimalImageFilePlayer extends Activity {
         // Public external folder allows easy content sharing between apps and copying
         // content from PC to a familiar location such as the /Movies folder, but image
         // playback requires READ_EXTERNAL_STORAGE permission.
-        image = PUBLIC_EXTERNAL_IMAGE_PATH;
+        //image = PUBLIC_EXTERNAL_IMAGE_PATH;
 
         // Show the selected image file.
         showImage(image);

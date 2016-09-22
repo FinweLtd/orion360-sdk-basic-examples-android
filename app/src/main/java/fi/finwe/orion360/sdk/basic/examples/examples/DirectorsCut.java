@@ -114,7 +114,7 @@ public class DirectorsCut extends Activity {
          * concern is that in case of video content the playback progresses at a constant pace,
          * and in order to keep up the rhythm the story telling must proceed as well - but at
          * the moment of a cut or a major event, the user may be looking at a 'wrong'
-         * direction and hence miss important cues, making the storyline feel confusing!
+         * direction and hence miss important cues, making the storyline feel very confusing!
          * <p/>
          * The solution is to force the view to certain direction at a certain moment of time.
          * This is, of course, a tool that should not be used without a very good reason, and

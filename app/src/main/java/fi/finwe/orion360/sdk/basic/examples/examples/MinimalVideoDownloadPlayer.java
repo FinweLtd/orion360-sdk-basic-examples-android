@@ -56,9 +56,9 @@ import static fi.finwe.orion360.sdk.basic.examples.MainMenu.PRIVATE_INTERNAL_FIL
 /**
  * An example of a minimal Orion360 video player, for downloading a video file before playback.
  * <p>
- * Notice that saving a copy of a video file while streaming it is not possible; to obtain
- * a local copy of video file that resides in the network you need to download it separately,
- * as shown in this example.
+ * Notice that saving a copy of a video file while streaming it is not possible with Android
+ * MediaPlayer as a video backend. To obtain a local copy of a video file that resides in the
+ * network you need to download it separately, as shown in this example.
  *
  * Features:
  * <ul>
@@ -110,8 +110,8 @@ public class MinimalVideoDownloadPlayer extends Activity
 
         // Download the video file, then play it. Notice that this link points to a
         // 4k video file, older/mid-range devices may not be able to play it!
-        // In case of problems, try MainMenu.TEST_VIDEO_URI_MQ instead.
-        downloadAndPlay(MainMenu.TEST_VIDEO_URI_HQ);
+        // In case of problems, try MainMenu.TEST_VIDEO_URI_1920x960 instead.
+        downloadAndPlay(MainMenu.TEST_VIDEO_URI_3840x1920);
 	}
 
     @Override
