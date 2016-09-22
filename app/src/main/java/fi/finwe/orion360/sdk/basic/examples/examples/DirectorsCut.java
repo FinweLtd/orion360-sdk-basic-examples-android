@@ -129,7 +129,7 @@ public class DirectorsCut extends Activity {
          *     ie. from the 'front' direction of the content. The experience would be the same
          *     for a user who is sitting in a bus and looking down-forward to a device that lies
          *     on her hand that is resting on her knees, and for a user who is lying on a
-         *     sofa and looking up-forward to a device held with a raised arm.
+         *     bed and looking up-forward to a device held with a raised arm.
          *     This is also the default configuration for Orion360, and the developer needs
          *     to do nothing to accomplish this.
          *     <ul/> Case B: In case the director wants to make an artistic decision in the
@@ -208,6 +208,9 @@ public class DirectorsCut extends Activity {
          * are when there is a cut and the viewer is taken to another place and time anyway -
          * it is not that disturbing if also the viewing direction is re-oriented at the same
          * exact moment.
+         * <p/>
+         * In case of VR viewing, only the yaw angle should be modified - manipulating roll and
+         * pitch angles results to tilting the horizon, which is very uncomfortable for users.
          * <p/>
          * In order to perform such operations during video playback, we need to listen to the
          * video position and check when a predefined moment of time has been reached.
@@ -385,6 +388,19 @@ public class DirectorsCut extends Activity {
 
         // Convert target yaw angle from degrees to radians.
         float newYawRad = (float) (Math.PI / 180.0f * yawDeg);
+
+        // Android ValueAnimators can only be run in the UI thread, hence any excessive
+        // load will make animations stutter, especially after a few seconds of inactivity
+        // when the device begins to throttle the CPU. You can observe this most easily with
+        // a pulsating or rotating animation: leave the device alone for a moment and
+        // keep watching an animated object - if the animation is first smooth, and after
+        // a few seconds starts to stutter, try touching the screen (e.g. pan a little)
+        // and observe if the animation now becomes smooth again.
+
+        // If this becomes a problem, you can try to use a background thread and a custom
+        // animator for making the animations smoother. Another option is to upgrade to
+        // Orion360 SDK Pro, which has built-in support for many animations and performs
+        // them with C++ code in the GL thread, in sync with frame rendering at 60 fps.
 
         // Setup camera animator.
         mCameraAnimator = ValueAnimator.ofFloat(currentYawRad, newYawRad);

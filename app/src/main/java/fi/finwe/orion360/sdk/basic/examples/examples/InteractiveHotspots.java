@@ -51,7 +51,13 @@ import fi.finwe.orion360.sdk.basic.examples.R;
 /**
  * An example of a minimal Orion360 video player, with interactive hotspots.
  * <p>
- * Hotspots are implemented using Orion360 tag feature (see Nadir Patch example).
+ * Here hotspots are implemented using Orion360 tag feature (see Nadir Patch example).
+ * While the features presented in this example work, they require quite a lot of
+ * code and the performance may suffer from other load on the UI thread that controls
+ * animations via frequent calls that update tag parameters. If you are series about
+ * interactive hotspots, consider upgrading to Orion360 SDK Pro, which has built-in
+ * support for interactive hotspots, animated reticle, etc. and runs the operations
+ * with C++ code in the GL thread to maintain good performance continuously.
  *
  * Features:
  * <ul>
@@ -520,6 +526,19 @@ public class InteractiveHotspots extends Activity {
 
     /** Adds selection and animation capabilities to an interactive hotspot. */
     private abstract class AnimatedSelectableHotspot extends InteractiveHotspot {
+
+        // Android ValueAnimators can only be run in the UI thread, hence any excessive
+        // load will make animations stutter, especially after a few seconds of inactivity
+        // when the device begins to throttle the CPU. You can observe this most easily with
+        // a pulsating or rotating animation: leave the device alone for a moment and
+        // keep watching an animated object - if the animation is first smooth, and after
+        // a few seconds starts to stutter, try touching the screen (e.g. pan a little)
+        // and observe if the animation now becomes smooth again.
+
+        // If this becomes a problem, you can try to use a background thread and a custom
+        // animator for making the animations smoother. Another option is to upgrade to
+        // Orion360 SDK Pro, which has built-in support for many animations and performs
+        // them with C++ code in the GL thread, in sync with frame rendering at 60 fps.
 
         /** An animator for drawing attention to the hotspot (pulsating FX). */
         private ValueAnimator mAttentionAnimator;

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fi.finwe.orion360.sdk.basic.examples">
 
@@ -19,11 +20,12 @@
 
         <!-- Main menu. -->
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.MainMenu"
+            android:name=".MainMenu"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,90 +33,71 @@
         <!-- Examples: -->
 
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.MinimalVideoStreamPlayer"
-            android:label="@string/app_name"
+            android:name=".examples.MinimalVideoStreamPlayer"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.MinimalVideoDownloadPlayer"
-            android:label="@string/app_name"
+            android:name=".examples.MinimalVideoDownloadPlayer"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.MinimalVideoFilePlayer"
-            android:label="@string/app_name"
+            android:name=".examples.MinimalVideoFilePlayer"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.MinimalImageDownloadPlayer"
-            android:label="@string/app_name"
+            android:name=".examples.MinimalImageDownloadPlayer"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.MinimalImageFilePlayer"
-            android:label="@string/app_name"
+            android:name=".examples.MinimalImageFilePlayer"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.MinimalVRVideoFilePlayer"
-            android:label="@string/app_name"
+            android:name=".examples.MinimalVRVideoFilePlayer"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.SensorFusion"
-            android:label="@string/app_name"
+            android:name=".examples.SensorFusion"
             android:configChanges="orientation|screenSize"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.NadirPatch"
-            android:label="@string/app_name"
+            android:name=".examples.NadirPatch"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.DirectorsCut"
-            android:label="@string/app_name"
+            android:name=".examples.DirectorsCut"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
-            android:name="fi.finwe.orion360.sdk.basic.examples.examples.InteractiveHotspots"
-            android:label="@string/app_name"
+            android:name=".examples.InteractiveHotspots"
             android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
 
         <!-- For playing videos from an (optional) expansion package (.obb) -->
         <provider
-            android:name="fi.finwe.orion360.sdk.basic.examples.ExpansionContentProvider"
+            android:name=".ExpansionContentProvider"
             android:authorities="fi.finwe.orion360.sdk.basic.examples.ExpansionContentProvider"
             android:exported="false"
-            android:multiprocess="true" >
+            android:multiprocess="true">
             <meta-data
                 android:name="mainVersion"
                 android:value="1000001" />
