@@ -74,6 +74,12 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
+            android:name=".examples.TouchInput"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
+        <activity
             android:name=".examples.NadirPatch"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
