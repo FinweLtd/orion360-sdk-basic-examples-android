@@ -29,7 +29,11 @@
 
 package fi.finwe.orion360.sdk.basic.examples.examples;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PointF;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,6 +46,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import fi.finwe.math.QuatF;
+import fi.finwe.math.Vec3F;
+import fi.finwe.orion360.OrionSurfaceView;
 import fi.finwe.orion360.OrionVideoView;
 import fi.finwe.orion360.OrionViewConfig;
 import fi.finwe.orion360.sdk.basic.examples.MainMenu;
@@ -50,9 +57,15 @@ import fi.finwe.orion360.sdk.basic.examples.R;
 /**
  * An example of a minimal Orion360 video player, with touch input.
  * <p/>
- * Uses single tapping for toggling between normal and full screen view,
+ * Notice that panning, zooming and rotating the view with swipe and pinch
+ * gestures are covered in SensorFusion example.
+ * <p/>
+ * This example uses single tapping for toggling between normal and full screen view,
  * double tapping for toggling between video playback start and pause,
  * and long tapping for toggling between normal and VR mode.
+ * <p/>
+ * In addition, left and right edge of the video view have hidden click area that
+ * seeks the video 10s backward or forward, respectively.
  *
  * Features:
  * <ul>
@@ -74,8 +87,14 @@ public class TouchInput extends Activity {
     /** Tag for logging. */
     public static final String TAG = TouchInput.class.getSimpleName();
 
-    /** Orion360 video player view. */
+	/** Orion360 tag index for the hotspot object. */
+	private static final int IDX_HOTSPOT = 0;
+
+	/** Orion360 video player view. */
 	private OrionVideoView mOrionVideoView;
+
+	/** A value animator for rotating the hotspot object when touched. */
+	private ValueAnimator mRotateAnimator;
 
 	/** Gesture detector for touch events. */
 	private GestureDetector mGestureDetector;
@@ -116,7 +135,11 @@ public class TouchInput extends Activity {
         // Get Orion360 video view that is defined in the XML layout.
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);
 
-        // Start playback when the player has initialized itself and buffered enough video frames.
+		// Add a hotspot to the video view.
+		addHotspot(MainMenu.PUBLIC_EXTERNAL_PICTURES_ORION_PATH +
+				MainMenu.TEST_TAG_IMAGE_FILE_HQ, 0.25f, 0.90f);
+
+		// Start playback when the player has initialized itself and buffered enough video frames.
         mOrionVideoView.setOnPreparedListener(new OrionVideoView.OnPreparedListener() {
             @Override
             public void onPrepared(OrionVideoView view) {
@@ -139,8 +162,9 @@ public class TouchInput extends Activity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
-		// To capture tapping events (from the whole video view area) with a gesture detector,
-		// first propagate touch events from the video view to a gesture detector.
+		// To handle tapping events from the whole video view area (without worrying about
+		// the position that user touched) with a gesture detector, propagate touch events
+		// from the video view to a gesture detector.
 		mOrionVideoView.setOnTouchListener(new View.OnTouchListener() {
 
 			@Override
@@ -150,7 +174,7 @@ public class TouchInput extends Activity {
 
 		});
 
-		// Then, handle tapping and long press events. Recommended setup is as follows:
+		// Handle tapping, double tapping and long press events. Recommended setup is as follows:
 		// - Single tap in normal mode shows/hides other UI components (normal/fullscreen),
 		//   and in VR mode shows a Toast hinting how to return to normal mode with a long press.
 		// - Long tap in normal and VR mode toggles between normal and VR mode.
@@ -208,6 +232,120 @@ public class TouchInput extends Activity {
 
 				});
 
+		// To handle tapping events based on the touch position on the video view widget
+		// (i.e. 2D coordinates relative video view top left corner), use OnClickListener
+		// for receiving ordinary motion events from the 2D view.
+		//
+		// This is useful for example if you want to create hidden or almost transparent
+		// click areas that perform a particular function, such as seek backward or
+		// forward when left or right edge of the view is tapped, as shown here.
+		// If you create hidden features, remember to instruct users!
+		mOrionVideoView.setOnClickListener(new OrionSurfaceView.OnClickListener() {
+
+			@Override
+			public void onClick(OrionSurfaceView view, MotionEvent event) {
+
+				// 2D touch position (X,Y) coordinates in pixels from inside the view,
+				// excluding possible margin and padding ie. visible video area only.
+				//Log.d(TAG, "onClick at " + event.getX() + ":" + event.getY());
+
+				int touchAreaWidth = (int)(0.10 * mOrionVideoView.getWidth());
+				int leftBoundary = touchAreaWidth;
+				int rightBoundary = mOrionVideoView.getWidth() - touchAreaWidth;
+				if (event.getX() < leftBoundary) {
+
+					// Try to seek 10 seconds backward. Notice that we can only seek to
+					// nearest keyframe in the video.
+					mOrionVideoView.seekTo(mOrionVideoView.getCurrentPosition() - 10000);
+
+					Toast.makeText(TouchInput.this, "Seek 10s back", Toast.LENGTH_SHORT).show();
+
+				} else if (event.getX() > rightBoundary) {
+
+					// Try to seek 10 seconds forward. Notice that we can only seek to
+					// nearest keyframe in the video.
+					mOrionVideoView.seekTo(mOrionVideoView.getCurrentPosition() + 10000);
+
+					Toast.makeText(TouchInput.this, "Seek 10s forward", Toast.LENGTH_SHORT).show();
+
+				}
+			}
+		});
+
+		// To handle tapping events based on pointing direction inside the 3D scene,
+		// use OnPointingListener.
+		mOrionVideoView.setOnPointingListener(new OrionSurfaceView.OnPointingListener() {
+			@Override
+			public void onPointingBegins(OrionSurfaceView view, PointF planeCoord,
+										 Vec3F camCoord, Vec3F sceneCoord) {
+				// 2D touch position (X,Y) coordinates in normalized coordinates
+				// from inside the view, excluding possible margin and padding ie.
+				// visible video area only. Normalized coordinates map longer side
+				// of the view to range [-1,1] and shorter side the same but scaled
+				// with aspect ratio. As an example, the edges of a 1000x500px view
+				// yield left=-1, right=1, top=0.5, and bottom=-0.5.
+				//Log.d(TAG, "onPointingBegins at " + planeCoord.x + ":" + planeCoord.y);
+
+				// 3D touch position (x,y,z) coordinates in perspective (3D camera)
+				// coordinates. Consider that the 3D camera is always at the origin
+				// looking forward towards -Z axis, and right hand rule applies.
+				// Therefore, touching the center of the viewport yields x=0,y=0,z=-1.
+				// Touching 90 degrees to left means -X axis and yields x=-1,y=0,z=0,
+				// and 90 degrees to right is naturally +X and yields x=1,y=0,z=0.
+				// Then, 90 degrees to top means +Y axis and yields x=0,y=1,z=0
+				// and 90 degrees to down x=0,y=-1,z=0. Notice that zooming the view
+				// affects to 3D camera field-of-view and thus modifies the reach,
+				// whereas rotating the content around the camera e.g. by panning
+				// does not have any effect as 3D camera is stationary.
+				//Log.d(TAG, "onPointingBegins at " + camCoord.x + ":" +
+				//		camCoord.y + ":" + camCoord.z);
+
+				// 3D touch position (x,y,z) coordinates in 3D scene coordinates.
+				// Consider looking at a traditional classroom globe from the inside.
+				// When you put your finger on top of a city, its coordinates
+				// remain the same even though you roll the ball or tilt/move your
+				// head. Scene coordinates work in a similar manner: the same point
+				// in the content always returns the same coordinates. For clarity,
+				// some examples using equirectangular projection:
+				// The center point of the original video/image yields x=0,y=0,z=-1.
+				// Left and right edge on the center line wrap around and meet each
+				// other at x=0,y=0,z=1. x=-1,y=0,z=0 can be found 1/4 to left from the
+				// center point, and x=1,y=0,z=0 is 1/4 to right, respectively.
+				// The top row of pixels diminishes to a single point, the zenith at
+				// x=0,y=1,z=0 and the bottom row to nadir at x=0,y=-1,z=0.
+				//Log.d(TAG, "onPointingBegins at " + sceneCoord.x + ":" +
+				//		sceneCoord.y + ":" + sceneCoord.z);
+
+				// If you wish to debug 3D scene touch position as lat,lon,
+				// you can use the following formula where image center = 0,0 and
+				// latitude range [-90,90] and longitude range [-180,180]:
+				// lat = atan(y/sqrt(x*x+z*z)) * 180 / pi
+				// lon = atan2(x,-z) * 180 / pi
+				Log.d(TAG, "onPointingBegins at " +
+						Math.atan(sceneCoord.y / (0.0001 + Math.sqrt(sceneCoord.x *
+								sceneCoord.x + sceneCoord.z * sceneCoord.z))) * 57.2957795
+						+ "° lat, " + Math.atan2(sceneCoord.x, -sceneCoord.z) *
+						57.2957795 + "° lon");
+
+				// Rotate hotspot when pointed at (using a simple approximation).
+				Vec3F front = Vec3F.AXIS_FRONT;
+				float tapDistance = 0.24f;
+				if ((       Math.abs(front.x - sceneCoord.x) < tapDistance)
+						&& (Math.abs(front.y - sceneCoord.y) < tapDistance)
+						&& (Math.abs(front.z - sceneCoord.z) < tapDistance) ) {
+
+					if (!mRotateAnimator.isRunning()) {
+						mRotateAnimator.start();
+					}
+
+				}
+			}
+			@Override
+			public void onPointingEnds(OrionSurfaceView view, PointF planeCoord,
+									   Vec3F camCoord, Vec3F sceneCoord) {
+			}
+		});
+
 		// Play overlay image and animation.
 		mPlayOverlay = (ImageView) findViewById(R.id.play_overlay);
 		mPlayAnimation = AnimationUtils.loadAnimation(this, R.anim.fast_fadeinout_animation);
@@ -263,6 +401,9 @@ public class TouchInput extends Activity {
 
 	@Override
 	public void onPause() {
+		// Cancel all animations before pausing the video view.
+		mRotateAnimator.cancel();
+
         // Propagate activity lifecycle events to Orion360 video view.
 		mOrionVideoView.onPause();
 
@@ -283,6 +424,50 @@ public class TouchInput extends Activity {
 		mOrionVideoView.onDestroy();
 
 		super.onDestroy();
+	}
+
+	/**
+	 * Adds a hotspot to the video view.
+	 *
+	 * @param imagePath The path to the image file to be used as the hotspot.
+	 * @param scale Scaling parameter for adjusting the size of the hotspot.
+	 * @param alpha Sets the transparency for the hotspot.
+	 */
+	private void addHotspot(String imagePath, float scale, float alpha) {
+
+		// Create a new tag to the video view, and give it a positive index as a parameter.
+		// The index will be used later whenever the tag object needs to be manipulated.
+		mOrionVideoView.createTag(IDX_HOTSPOT);
+
+		// Set the location on the 360 image sphere where the tag will be drawn.
+		mOrionVideoView.setTagLocation(IDX_HOTSPOT, Vec3F.AXIS_FRONT);
+
+		// Set the PNG image file that will be drawn to the tag location.
+		// Here we load the image from the file system as a bitmap (RGBA_8888 format).
+		Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+		if (null != bitmap) {
+			mOrionVideoView.setTagBitmap(IDX_HOTSPOT, bitmap);
+		} else {
+			Log.e(TAG, "Could not decode bitmap " + imagePath);
+		}
+
+		// Set the size of the tag by scaling the image horizontally and vertically.
+		mOrionVideoView.setTagScale(IDX_HOTSPOT, scale, scale);
+
+		// Set the transparency of the tag by adjusting the image alpha between [0.0f-1.0f]
+		mOrionVideoView.setTagAlpha(IDX_HOTSPOT, 1.0f);
+
+		// Set up animator for rolling the hotspot 360 degrees.
+		mRotateAnimator = ValueAnimator.ofFloat(0, (float)(2 * Math.PI));
+		mRotateAnimator.setDuration(1000);
+		mRotateAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+			public void onAnimationUpdate(ValueAnimator animation) {
+
+				QuatF rotation = QuatF.fromRotationAxisZ((float)animation.getAnimatedValue());
+				mOrionVideoView.setTagRotation(IDX_HOTSPOT, rotation);
+
+			}
+		});
 	}
 
 	/**
