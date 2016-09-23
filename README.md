@@ -194,15 +194,22 @@ In short, the example shows how to:
 * Manually configure pinch zoom gesture limits, or disable pinch zoom gesture
 * Listen for device orientation changes (sensor fusion events), for custom features
 
-Example: Sensor Fusion
+Example: Touch Input
 ----------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18792680/192f7b12-81c0-11e6-8fa3-81ae09e6c5c0.png)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/TouchInput.java)
 
 An example of a minimal Orion360 video player, with touch input.
 
+This example uses single tapping for toggling between normal and full screen view, double tapping for toggling between video playback and pause states, and long tapping for toggling between normal and VR mode rendering. These are tried-and-true mappings that are recommended for all 360/VR video apps.
 
+Left and right edge of the video view have hidden tapping areas that seek the video 10 seconds backward and forward, respectively. This is just an example of mapping different actions to tapping events based on touch position on screen, not a general recommendation.
 
+To showcase tapping inside the 3D scene, a hotspot is added to the video view and tapping the hotspot area will trigger roll animation. Notice that with Orion360 SDK Basic, the developer must manually combine hotspot and tapping near to its location, whereas Orion360 SDK Pro has built-in 3D objects and callbacks for their tapping and gaze selection events.
+
+For panning, zooming and rotating the view via swipe and pinch, see SensorFusion example.
 
 Example: Nadir Patch
 --------------------
