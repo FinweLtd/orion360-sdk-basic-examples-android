@@ -103,7 +103,7 @@ public class NadirPatch extends Activity {
 		super.onCreate(savedInstanceState);
 
         // Set layout.
-		setContentView(R.layout.activity_minimal_video_player);
+		setContentView(R.layout.activity_video_player);
 
         // Get Orion360 video view that is defined in the XML layout.
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);

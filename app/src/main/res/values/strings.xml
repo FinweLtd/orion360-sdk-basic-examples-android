@@ -20,6 +20,8 @@
     <string name="player_file_download_completed">%d file(s) were downloaded</string>
     <string name="player_long_tap_hint_enter_vr_mode">"Long tap to enter VR mode"</string>
     <string name="player_long_tap_hint_exit_vr_mode">"Long tap to exit VR mode"</string>
+    <string name="player_controls_play_overlay_desc">Play</string>
+    <string name="player_controls_pause_overlay_desc">Pause</string>
 
     <!-- Tag/Hotspot image files -->
     <string name="asset_nadir_patch">Orion360_nadir_patch_1024x1024.png</string>

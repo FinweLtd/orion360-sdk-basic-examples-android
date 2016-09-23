@@ -94,7 +94,7 @@ public class MinimalImageDownloadPlayer extends Activity {
 		super.onCreate(savedInstanceState);
 
         // Set layout.
-		setContentView(R.layout.activity_minimal_image_player);
+		setContentView(R.layout.activity_image_player);
 
         // Get Orion360 image view that is defined in the XML layout.
         mOrionImageView = (OrionImageView) findViewById(R.id.orion_image_view);

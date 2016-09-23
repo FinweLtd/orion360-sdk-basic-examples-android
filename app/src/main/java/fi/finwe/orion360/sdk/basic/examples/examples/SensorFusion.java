@@ -74,7 +74,7 @@ public class SensorFusion extends Activity implements OrionSensorFusion.Listener
 		super.onCreate(savedInstanceState);
 
         // Set layout.
-		setContentView(R.layout.activity_minimal_video_player);
+		setContentView(R.layout.activity_video_player);
 
         // Get Orion360 video view that is defined in the XML layout.
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);
@@ -211,8 +211,8 @@ public class SensorFusion extends Activity implements OrionSensorFusion.Listener
         /**
          * The two-finger rotate gesture is mapped to rotating the content along the roll
          * axis. This is handy especially when viewing content at the nadir direction
-         * and if applied temporarily, but it also can be confusing if applied elsewhere
-         * and left in use - for example, to tilt the horizon permanently (overrides
+         * and if applied temporarily. However, it can be confusing if applied elsewhere
+         * or left in use - for example, to tilt the horizon permanently (overrides
          * auto-horizon aligner).
          * <p/>
          * For consistency, the feature works everywhere within the 360 content, not just
