@@ -21,9 +21,10 @@ Table of Contents
 7. [Example: Minimal Image File Player](#example-minimal-image-file-player)
 8. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
 9. [Example: Sensor Fusion](#example-sensor-fusion)
-10. [Example: Nadir Patch](#example-nadir-patch)
-11. [Example: Director's Cut](#example-directors-cut)
-12. [Example: Interactive Hotspots](#example-interactive-hotspots)
+10. [Example: Touch Input](#example-touch-input)
+11. [Example: Nadir Patch](#example-nadir-patch)
+12. [Example: Director's Cut](#example-directors-cut)
+13. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -119,6 +120,8 @@ Showcases all supported file system locations and access methods (you need to se
 Example: Minimal Image Download Player
 --------------------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18792594/c6499950-81bf-11e6-85d1-8164f2517799.png)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageDownloadPlayer.java)
 
 An example of a minimal Orion360 image player, for downloading an image file before playback.
@@ -190,6 +193,16 @@ In short, the example shows how to:
 * Manually disable pinch rotate gesture
 * Manually configure pinch zoom gesture limits, or disable pinch zoom gesture
 * Listen for device orientation changes (sensor fusion events), for custom features
+
+Example: Sensor Fusion
+----------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/TouchInput.java)
+
+An example of a minimal Orion360 video player, with touch input.
+
+
+
 
 Example: Nadir Patch
 --------------------
