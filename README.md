@@ -21,9 +21,10 @@ Table of Contents
 7. [Example: Minimal Image File Player](#example-minimal-image-file-player)
 8. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
 9. [Example: Sensor Fusion](#example-sensor-fusion)
-10. [Example: Nadir Patch](#example-nadir-patch)
-11. [Example: Director's Cut](#example-directors-cut)
-12. [Example: Interactive Hotspots](#example-interactive-hotspots)
+10. [Example: Touch Input](#example-touch-input)
+11. [Example: Nadir Patch](#example-nadir-patch)
+12. [Example: Director's Cut](#example-directors-cut)
+13. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -119,6 +120,8 @@ Showcases all supported file system locations and access methods (you need to se
 Example: Minimal Image Download Player
 --------------------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18792594/c6499950-81bf-11e6-85d1-8164f2517799.png)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageDownloadPlayer.java)
 
 An example of a minimal Orion360 image player, for downloading an image file before playback.
@@ -190,6 +193,23 @@ In short, the example shows how to:
 * Manually disable pinch rotate gesture
 * Manually configure pinch zoom gesture limits, or disable pinch zoom gesture
 * Listen for device orientation changes (sensor fusion events), for custom features
+
+Example: Touch Input
+----------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18792680/192f7b12-81c0-11e6-8fa3-81ae09e6c5c0.png)
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/TouchInput.java)
+
+An example of a minimal Orion360 video player, with touch input.
+
+This example uses single tapping for toggling between normal and full screen view, double tapping for toggling between video playback and pause states, and long tapping for toggling between normal and VR mode rendering. These are tried-and-true mappings that are recommended for all 360/VR video apps.
+
+Left and right edge of the video view have hidden tapping areas that seek the video 10 seconds backward and forward, respectively. This is just an example of mapping different actions to tapping events based on touch position on screen, not a general recommendation.
+
+To showcase tapping inside the 3D scene, a hotspot is added to the video view and tapping the hotspot area will trigger roll animation. Notice that with Orion360 SDK Basic, the developer must manually combine hotspot and tapping near to its location, whereas Orion360 SDK Pro has built-in 3D objects and callbacks for their tapping and gaze selection events.
+
+For panning, zooming and rotating the view via swipe and pinch, see SensorFusion example.
 
 Example: Nadir Patch
 --------------------
