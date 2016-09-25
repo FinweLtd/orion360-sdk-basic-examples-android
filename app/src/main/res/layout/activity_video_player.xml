@@ -12,12 +12,49 @@
 
     <!-- This is a buffering indicator view on top of the video. -->
     <ProgressBar
-        android:id="@+id/download_progress_indicator"
+        android:id="@+id/buffering_indicator"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone" />
+
+    <!-- This is a buffering indicator view on top of the video, for VR mode. -->
+    <LinearLayout
+        android:id="@+id/buffering_indicator_vr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5">
+
+            <ProgressBar
+                android:id="@+id/buffering_indicator_vr_left_eye"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5">
+
+            <ProgressBar
+                android:id="@+id/buffering_indicator_vr_right_eye"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <!-- This is a 'playback started' indicator image. -->
     <ImageView

@@ -81,7 +81,7 @@ public class MinimalVideoStreamPlayer extends Activity {
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);
 
         // Get buffering indicator.
-        mBufferingIndicator = (ProgressBar) findViewById(R.id.download_progress_indicator);
+        mBufferingIndicator = (ProgressBar) findViewById(R.id.buffering_indicator);
 
         // Listen for buffering events, and show/hide the buffering indicator accordingly.
         mOrionVideoView.setOnBufferingStatusListener(new OrionVideoView.OnBufferingStatusListener() {
