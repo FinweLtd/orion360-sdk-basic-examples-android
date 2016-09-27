@@ -20,11 +20,12 @@ Table of Contents
 6. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
 7. [Example: Minimal Image File Player](#example-minimal-image-file-player)
 8. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
-9. [Example: Sensor Fusion](#example-sensor-fusion)
-10. [Example: Touch Input](#example-touch-input)
-11. [Example: Nadir Patch](#example-nadir-patch)
-12. [Example: Director's Cut](#example-directors-cut)
-13. [Example: Interactive Hotspots](#example-interactive-hotspots)
+9. [Example: Buffering Indicator](#example-buffering-indicator)
+10. [Example: Sensor Fusion](#example-sensor-fusion)
+11. [Example: Touch Input](#example-touch-input)
+12. [Example: Nadir Patch](#example-nadir-patch)
+13. [Example: Director's Cut](#example-directors-cut)
+14. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -168,6 +169,17 @@ In short, the example shows how to:
 * Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with ordinary taps
 * Initialize the view orientation to World orientation (make video horizon perpendicular to gravity vector)
 * Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not confuse it
+
+Example: Buffering Indicator
+----------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/BufferingIndicator.java)
+
+An example of a minimal Orion360 video player, with a buffering indicator.
+
+A buffering indicator tells end user that the video player is currently loading content and should start/continue soon. This example shows some tips on how to implement it properly.
+
+Buffering before and during video playback are covered, as well as pausing and resuming player activity, and toggling between normal and VR mode.
 
 Example: Sensor Fusion
 ----------------------
