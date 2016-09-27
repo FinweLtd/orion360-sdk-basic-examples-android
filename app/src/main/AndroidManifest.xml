@@ -51,6 +51,12 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
+            android:name=".examples.MinimalVideoControls"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
+        <activity
             android:name=".examples.MinimalImageDownloadPlayer"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"

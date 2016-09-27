@@ -44,6 +44,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.Toast;
 
 import fi.finwe.math.QuatF;
@@ -102,6 +103,9 @@ public class TouchInput extends Activity {
 	/** Orion360 video player view. */
 	private OrionVideoView mOrionVideoView;
 
+	/** Media controller. */
+	private MediaController mMediaController;
+
 	/** A value animator for rolling the hotspot object when touched. */
 	private ValueAnimator mRotateAnimator;
 
@@ -144,6 +148,15 @@ public class TouchInput extends Activity {
         // Get Orion360 video view that is defined in the XML layout.
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);
 
+		// Create a media controller.
+		mMediaController = new MediaController(this);
+
+		// Set video view as anchor view; media controller positions itself on screen on top of it.
+		mMediaController.setAnchorView(mOrionVideoView);
+
+		// Set video view as media player; media controller interacts with it.
+		mMediaController.setMediaPlayer(mOrionVideoView);
+
 		// Add a hotspot to the video view; this must be done before video is prepared.
 		addHotspot(IDX_HOTSPOT, LOC_HOTSPOT, MainMenu.PUBLIC_EXTERNAL_PICTURES_ORION_PATH +
 				MainMenu.TEST_TAG_IMAGE_FILE_HQ, 0.25f, 0.90f);
@@ -168,6 +181,9 @@ public class TouchInput extends Activity {
 
                 // Start video playback.
                 mOrionVideoView.start();
+
+                // Show media controls, for a moment.
+                showMediaControls();
 
             }
 		});
@@ -206,11 +222,17 @@ public class TouchInput extends Activity {
 					@Override
 					public boolean onSingleTapConfirmed(MotionEvent e) {
 
-						// Toggle title bar and navigation bar in normal mode; show hint in VR mode.
+						// Toggle title bar, navigation bar and media controls in normal mode.
+                        // Show hint in VR mode.
 						if (mOrionVideoView.getCurrentConfigCopy().getTargetLayout()
 								!= OrionViewConfig.Layout.SPLIT_HORIZONTAL) {
 							toggleTitleBar();
 							toggleNavigationBar();
+                            if (mIsTitleBarShowing) {
+                                showMediaControls();
+                            } else {
+                                hideMediaControls();
+                            }
 						} else {
 							String message = getString(R.string.player_long_tap_hint_exit_vr_mode);
 							Toast.makeText(TouchInput.this, message, Toast.LENGTH_SHORT).show();
@@ -634,6 +656,31 @@ public class TouchInput extends Activity {
 			v.setSystemUiVisibility(uiOptions);
 		}
 		mIsNavigationBarShowing = false;
+	}
+
+	/**
+	 * Toggle media controls.
+	 */
+	public void toggleMediaControls() {
+		if (mMediaController.isShowing()) {
+            hideMediaControls();
+		} else {
+            showMediaControls();
+		}
+	}
+
+	/**
+	 * Show media controls.
+	 */
+	public void showMediaControls() {
+		mMediaController.show();
+	}
+
+	/**
+	 * Hide media controls.
+	 */
+	public void hideMediaControls() {
+		mMediaController.hide();
 	}
 
 	/**
