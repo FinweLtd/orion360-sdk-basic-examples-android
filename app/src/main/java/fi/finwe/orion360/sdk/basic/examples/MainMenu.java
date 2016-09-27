@@ -128,6 +128,9 @@ public class MainMenu extends ListActivity {
     /** Test image name for medium quality image that is bundled with the app in /assets. */
     public static final String TEST_IMAGE_FILE_MQ = "Orion360_test_image_1920x960.jpg";
 
+    /** Test image name for medium quality preview image that is bundled with the app in /assets. */
+    public static final String TEST_PREVIEW_IMAGE_FILE_MQ = "Orion360_preview_image_1920x960.jpg";
+
     /** Test image name for high quality tag image that is bundled with the app in /assets. */
     public static final String TEST_TAG_IMAGE_FILE_HQ = "Orion360_nadir_patch_1024x1024.png";
 
@@ -327,6 +330,8 @@ public class MainMenu extends ListActivity {
                 PRIVATE_EXTERNAL_FILES_PATH + TEST_VIDEO_FILE_MQ));
         copyFiles.add(new FilePathPair(TEST_IMAGE_FILE_MQ,
                 PRIVATE_EXTERNAL_FILES_PATH + TEST_IMAGE_FILE_MQ));
+        copyFiles.add(new FilePathPair(TEST_PREVIEW_IMAGE_FILE_MQ,
+                PRIVATE_EXTERNAL_FILES_PATH + TEST_PREVIEW_IMAGE_FILE_MQ));
 
         // Add files to be copied to public area (needs write permission).
         if (hasWritePermission) {
