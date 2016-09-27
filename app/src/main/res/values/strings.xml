@@ -23,6 +23,12 @@
     <string name="player_controls_play_overlay_desc">Play</string>
     <string name="player_controls_pause_overlay_desc">Pause</string>
 
+    <!-- Custom Controls -->
+    <string name="controller_playbutton_desc">Play/pause</string>
+    <string name="controller_audiobutton_desc">Toggle mute on/off</string>
+    <string name="controller_position">-:--</string>
+    <string name="controller_duration">-:--</string>
+
     <!-- Tag/Hotspot image files -->
     <string name="asset_nadir_patch">Orion360_nadir_patch_1024x1024.png</string>
     <string name="asset_hotspot_reticle">Orion360_hotspot_reticle_256x256.png</string>

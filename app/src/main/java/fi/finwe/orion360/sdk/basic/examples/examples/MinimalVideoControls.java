@@ -48,7 +48,7 @@ import fi.finwe.orion360.sdk.basic.examples.R;
  * An example of a minimal Orion360 video player, with simple video controls.
  * <p/>
  * This example uses Android MediaController as a simple way to implement media controls.
- * For more advanced solution, see CustomMediaControls example.
+ * For more advanced solution, see CustomControls example.
  * <p/>
  * When seeking, notice that it is only possible to seek to video keyframes. The number of
  * keyframes and their positions depends on video content, video encoder, and encoder settings.
