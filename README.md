@@ -21,11 +21,12 @@ Table of Contents
 7. [Example: Minimal Image File Player](#example-minimal-image-file-player)
 8. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
 9. [Example: Buffering Indicator](#example-buffering-indicator)
-10. [Example: Sensor Fusion](#example-sensor-fusion)
-11. [Example: Touch Input](#example-touch-input)
-12. [Example: Nadir Patch](#example-nadir-patch)
-13. [Example: Director's Cut](#example-directors-cut)
-14. [Example: Interactive Hotspots](#example-interactive-hotspots)
+9. [Example: Preview Image](#example-preview-image)
+11. [Example: Sensor Fusion](#example-sensor-fusion)
+12. [Example: Touch Input](#example-touch-input)
+13. [Example: Nadir Patch](#example-nadir-patch)
+14. [Example: Director's Cut](#example-directors-cut)
+15. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -180,6 +181,28 @@ An example of a minimal Orion360 video player, with a buffering indicator.
 A buffering indicator tells end user that the video player is currently loading content and should start/continue soon. This example shows some tips on how to implement it properly.
 
 Buffering before and during video playback are covered, as well as pausing and resuming player activity, and toggling between normal and VR mode.
+
+Example: Preview Image
+----------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/PreviewImage.java)
+
+An example of a minimal Orion360 video player, with a preview image.
+
+The preview image is a full-size equirectangular image overlay on top of the video layer. Notice the difference to tags, which are origin-facing rectilinear images that cover only a part of the video layer. The preview image should be of the same resolution than the main video or image that it is applied to, while tags can be of any resolution.
+
+Similar to tags, the alpha value of the preview image can be freely adjusted. Therefore it is possible to completely cover the video layer, add a semi-transparent layer, and cross-fade between image and video (or two images when using OrionImageView instead of OrionVideoView). With a PNG image that has transparent areas, only selected parts of the video can be covered.
+
+The typical use case is to add a preview image that is shown in the beginning while the video is still being buffered from the network. For example, the image could contain a brand logo, instructions for panning and zooming within 360 view, or a reminder about placing the device inside a VR frame.
+
+However, the feature is actually much more versatile than that. Here are a few ideas:
+* Show an image also when the video completes to thank users for watching and to instruct what to do next.
+* If you have a playlist, show a hero image while buffering next video.
+* Show an image when user pauses the video, when the player stops for buffering, or when network connection issues or other problems occur.
+* Dim video easily by adjusting preview image alpha and NOT setting a preview image at all.
+* Add a color overlay FX with a single-color preview image and a small alpha value.
+* Show dynamically loaded ads during video playback.
+* Create a slideshow with cross-fade effect using OrionImageView and an audio track.
 
 Example: Sensor Fusion
 ----------------------
