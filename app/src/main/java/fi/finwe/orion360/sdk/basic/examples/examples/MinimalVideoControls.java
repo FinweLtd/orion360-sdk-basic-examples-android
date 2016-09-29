@@ -45,7 +45,7 @@ import fi.finwe.orion360.sdk.basic.examples.MainMenu;
 import fi.finwe.orion360.sdk.basic.examples.R;
 
 /**
- * An example of a minimal Orion360 video player, with simple video controls.
+ * An example of a minimal Orion360 video player, with minimal video controls.
  * <p/>
  * This example uses Android MediaController as a simple way to implement media controls.
  * For more advanced solution, see CustomControls example.
@@ -95,6 +95,15 @@ public class MinimalVideoControls extends Activity {
         // Get Orion360 video view that is defined in the XML layout.
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);
 
+        // Create a media controller.
+        mMediaController = new MediaController(this);
+
+        // Set video view as media player; media controller interacts with it.
+        mMediaController.setMediaPlayer(mOrionVideoView);
+
+        // Set video view as anchor view; media controller positions itself on screen on top of it.
+        mMediaController.setAnchorView(mOrionVideoView);
+
         // Start playback when the player has initialized itself and buffered enough video frames.
         mOrionVideoView.setOnPreparedListener(new OrionVideoView.OnPreparedListener() {
             @Override
@@ -113,15 +122,6 @@ public class MinimalVideoControls extends Activity {
         } catch (OrionVideoView.LicenseVerificationException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
-        // Create a media controller.
-        mMediaController = new MediaController(this);
-
-        // Set video view as anchor view; media controller positions itself on screen on top of it.
-        mMediaController.setAnchorView(mOrionVideoView);
-
-        // Set video view as media player; media controller interacts with it.
-        mMediaController.setMediaPlayer(mOrionVideoView);
 
         // Propagate all touch events from the video view to a gesture detector.
         mOrionVideoView.setOnTouchListener(new View.OnTouchListener() {

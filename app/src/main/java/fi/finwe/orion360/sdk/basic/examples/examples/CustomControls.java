@@ -59,7 +59,7 @@ import fi.finwe.orion360.sdk.basic.examples.MainMenu;
 import fi.finwe.orion360.sdk.basic.examples.R;
 
 /**
- * An example of a minimal Orion360 video player, with custom media controls.
+ * An example of a minimal Orion360 video player, with custom video controls.
  * <p/>
  * Features:
  * <ul>
@@ -84,7 +84,7 @@ public class CustomControls extends Activity {
     /** Orion360 video player view. */
 	private OrionVideoView mOrionVideoView;
 
-    /** Custom media controller. */
+    /** Custom controller. */
     private CustomController mCustomController;
 
     /** Gesture detector for tapping events. */
@@ -101,11 +101,17 @@ public class CustomControls extends Activity {
         // Get Orion360 video view that is defined in the XML layout.
         mOrionVideoView = (OrionVideoView) findViewById(R.id.orion_video_view);
 
-        // Initialize custom controller.
+        // Create a custom controller.
         mCustomController = new CustomController(this);
+
+        // Set video view as media player; custom controller interacts with it.
         mCustomController.setMediaPlayer(mOrionVideoView);
+
+        // Set video view as anchor view; custom controller positions itself on screen on top of it.
+        mCustomController.setAnchorView(mOrionVideoView);
+
+        // Set video view as itself, custom controller uses features beyond standard media player.
         mCustomController.setOrionVideoView(mOrionVideoView);
-        mCustomController.setAnchorView((ViewGroup)mOrionVideoView.getParent());
 
         // Start playback when the player has initialized itself and buffered enough video frames.
         mOrionVideoView.setOnPreparedListener(new OrionVideoView.OnPreparedListener() {
@@ -113,7 +119,6 @@ public class CustomControls extends Activity {
             public void onPrepared(OrionVideoView view) {
                 mOrionVideoView.start();
                 mCustomController.show();
-
             }
         });
 
@@ -137,7 +142,7 @@ public class CustomControls extends Activity {
 
         });
 
-        // Toggle media controls by tapping the screen.
+        // Toggle media controls visibility by tapping the screen.
         mGestureDetector = new GestureDetector(this,
                 new GestureDetector.SimpleOnGestureListener() {
 
@@ -173,7 +178,6 @@ public class CustomControls extends Activity {
 
         // Resume custom controls.
         mCustomController.onResume();
-
     }
 
 	@Override
@@ -204,13 +208,11 @@ public class CustomControls extends Activity {
 	}
 
     /**
-     * Class that implements custom media controls using a frame layout on top of video view.
+     * Custom media controls, implemented with a frame layout on top of video view.
      */
     class CustomController extends FrameLayout implements OrionVideoView.OnStatusChangeListener {
 
-        /**
-         * Tag for logging.
-         */
+        /** Tag for logging. */
         public final String TAG = CustomController.class.getSimpleName();
 
         // Message to handler: update progress.
@@ -219,75 +221,47 @@ public class CustomControls extends Activity {
         // Delay in ms for updating progress.
         private static final int UPDATE_PROGRESS_DELAY = 500;
 
-        /**
-         * Context.
-         */
+        /** Handler for timed operations. */
+        private CustomControllerHandler mHandler;
+
+        /** Context. */
         private Context mContext;
 
-        /**
-         * Orion360 video view.
-         */
+        /** Orion360 video view. */
         private OrionVideoView mOrionVideoView;
 
-        /**
-         * Media player control.
-         */
+        /** Media player control. */
         private MediaController.MediaPlayerControl mMediaPlayerControl;
 
-        /**
-         * Audio Manager.
-         */
-        private AudioManager mAudioManager;
-
-        /**
-         * Flag for indicating if audio is currently muted, or not.
-         */
-        private boolean mIsAudioMuted = false;
-
-        /**
-         * Handler for timed operations.
-         */
-        private PlayerControllerHandler mHandler;
-
-        /**
-         * Layout root view.
-         */
-        private View mRootView;
-
-        /**
-         * Anchor view group for custom controls.
-         */
+        /** Anchor view group. */
         private ViewGroup mAnchorViewGroup;
 
-        /**
-         * Flag for indicating if player controller is added to anchor, or not.
-         */
+        /** Flag for indicating if custom controller is added to anchor, or not. */
         private boolean mIsAddedToAnchor;
 
-        /**
-         * Play/pause button.
-         */
-        private ImageButton mPlayPauseButton;
+        /** Audio Manager. */
+        private AudioManager mAudioManager;
 
-        /**
-         * Video seek bar.
-         */
-        private SeekBar mSeekBar;
+        /** Flag for indicating if audio is currently muted, or not. */
+        private boolean mIsAudioMuted = false;
 
-        /**
-         * Video position label.
-         */
-        private TextView mPositionLabel;
+        /** Layout root view. */
+        private View mRootView;
 
-        /**
-         * Video duration label.
-         */
-        private TextView mDurationLabel;
+        /** Video play/pause button. */
+        private ImageButton mVideoPlayPauseButton;
 
-        /**
-         * Audio mute button.
-         */
-        private ImageButton mMuteButton;
+        /** Video seek bar. */
+        private SeekBar mVideoSeekBar;
+
+        /** Video position label. */
+        private TextView mVideoPositionLabel;
+
+        /** Video duration label. */
+        private TextView mVideoDurationLabel;
+
+        /** Audio mute button. */
+        private ImageButton mAudioMuteButton;
 
 
         /**
@@ -297,7 +271,6 @@ public class CustomControls extends Activity {
          */
         public CustomController(Context context) {
             super(context);
-
             initialize(context);
         }
 
@@ -309,7 +282,6 @@ public class CustomControls extends Activity {
          */
         public CustomController(Context context, AttributeSet attrs) {
             super(context, attrs);
-
             initialize(context);
         }
 
@@ -322,12 +294,11 @@ public class CustomControls extends Activity {
          */
         public CustomController(Context context, AttributeSet attrs, int defStyle) {
             super(context, attrs, defStyle);
-
             initialize(context);
         }
 
         /**
-         * Initialize the controller.
+         * Initialize.
          *
          * @param context
          */
@@ -340,7 +311,7 @@ public class CustomControls extends Activity {
             mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
 
             // Initialize handler for timed operations.
-            mHandler = new PlayerControllerHandler(this);
+            mHandler = new CustomControllerHandler(this);
 
         }
 
@@ -349,10 +320,10 @@ public class CustomControls extends Activity {
          */
         public void onResume() {
 
-            // Start updating video position.
+            // Start updating video position by polling it.
             mHandler.sendEmptyMessage(UPDATE_VIDEO_POSITION);
 
-            // Restore audio muting, if previously flagged.
+            // Restore audio muting, if previously flagged to be muted.
             if (mIsAudioMuted) {
                 //mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, true);
                 //above: deprecated in API level 23, use this instead:
@@ -367,10 +338,10 @@ public class CustomControls extends Activity {
          */
         public void onPause() {
 
-            // Stop updating video position.
+            // Stop updating video position by polling it.
             mHandler.removeMessages(UPDATE_VIDEO_POSITION);
 
-            // Clear audio muting, but do not clear the flag so we can restore state.
+            // Clear audio muting, but do not clear the flag so we can restore state later.
             if (mIsAudioMuted) {
                 //mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
                 //above: deprecated in API level 23, use this instead:
@@ -381,12 +352,80 @@ public class CustomControls extends Activity {
         }
 
         /**
-         * Set Orion Video View to listen.
+         * Set anchor view where to place us.
          *
-         * @param orionVideoView The Orion360 video view to listen.
+         * @param anchorView The anchor view.
          */
-        public void setOrionVideoView(OrionVideoView orionVideoView) {
-            mOrionVideoView = orionVideoView;
+        public void setAnchorView(View anchorView) {
+
+            // Stop listening events from current anchor view, if any.
+            if (mAnchorViewGroup != null) {
+                mAnchorViewGroup.removeOnLayoutChangeListener(mLayoutChangeListener);
+            }
+
+            // Remove all of our child views.
+            removeAllViews();
+
+            // (Re)initialize our child views and add them to our view hierarchy.
+            addView(createViews(), new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+
+            // Store handle for the new anchor view.
+            if (null != anchorView) {
+                mAnchorViewGroup = (ViewGroup) anchorView.getParent();
+            } else {
+                mAnchorViewGroup = null;
+            }
+
+            // Start listening events from the new anchor view.
+            if (mAnchorViewGroup != null) {
+                mAnchorViewGroup.addOnLayoutChangeListener(mLayoutChangeListener);
+            }
+
+            // Add us to anchor's view hierarchy, and position us to fill the bottom of the anchor.
+            mAnchorViewGroup.addView(this, new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    Gravity.BOTTOM));
+            mIsAddedToAnchor = true;
+
+            // Do not show us yet, wait for explicit request.
+            setVisibility(View.INVISIBLE);
+
+        }
+
+        /**
+         * Layout change listener.
+         */
+        private OnLayoutChangeListener mLayoutChangeListener = new OnLayoutChangeListener() {
+
+            @Override
+            public void onLayoutChange(View view, int left, int top, int right, int bottom,
+                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
+
+                // Handle layout changes here, if needed.
+
+            }
+
+        };
+
+        /**
+         * Set media player control.
+         *
+         * @param control The media player control.
+         */
+        public void setMediaPlayer(MediaController.MediaPlayerControl control) {
+            mMediaPlayerControl = control;
+        }
+
+        /**
+         * Set Orion video view.
+         *
+         * @param videoView The Orion360 video view.
+         */
+        public void setOrionVideoView(OrionVideoView videoView) {
+            mOrionVideoView = videoView;
             if (null != mOrionVideoView) {
                 mOrionVideoView.setOnStatusChangeListener(this);
             }
@@ -394,7 +433,7 @@ public class CustomControls extends Activity {
 
         @Override
         public void onStatusChange(OrionVideoView view, OrionVideoView.PlayerStatus status) {
-            Log.d(TAG, "onStatusChange(): new status = " + status.name());
+            Log.d(TAG, "onStatusChange(): " + status.name());
 
             switch (status) {
                 case INITIALIZED:
@@ -408,7 +447,7 @@ public class CustomControls extends Activity {
                     mHandler.removeMessages(UPDATE_VIDEO_POSITION);
                     break;
                 case COMPLETED:
-                    mMediaPlayerControl.start(); // Repeat.
+                    mMediaPlayerControl.start(); // Loop video
                     break;
                 case SEEK_COMPLETE:
                     break;
@@ -422,102 +461,36 @@ public class CustomControls extends Activity {
         }
 
         /**
-         * Set Media Player Control.
-         *
-         * @param control The media player control.
-         */
-        public void setMediaPlayer(MediaController.MediaPlayerControl control) {
-            mMediaPlayerControl = control;
-        }
-
-        /**
-         * Set anchor view where to place the custom controls.
-         *
-         * @param anchorView The anchor view group.
-         */
-        public void setAnchorView(ViewGroup anchorView) {
-
-            // Stop listening events from current anchor view, if any.
-            if (mAnchorViewGroup != null) {
-                mAnchorViewGroup.removeOnLayoutChangeListener(
-                        mLayoutChangeListener);
-            }
-
-            // Remove all of our child views.
-            removeAllViews();
-
-            // Adjust our size to match with the parent.
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-
-            // (Re)initialize our views and add to view hierarchy.
-            addView(createViews(), params);
-
-            // Store handle for the new anchor view.
-            mAnchorViewGroup = anchorView;
-
-            // Start listening events from the new anchor view.
-            if (mAnchorViewGroup != null) {
-                mAnchorViewGroup.addOnLayoutChangeListener(mLayoutChangeListener);
-            }
-
-            // Adjust custom controls size and position.
-            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    Gravity.BOTTOM);
-
-            // Add us to anchor's view hierarchy.
-            mAnchorViewGroup.addView(this, params2);
-            mIsAddedToAnchor = true;
-
-            // Do not show the controls yet.
-            setVisibility(View.INVISIBLE);
-        }
-
-        /**
-         * Layout change listener.
-         */
-        private OnLayoutChangeListener mLayoutChangeListener = new OnLayoutChangeListener() {
-
-            @Override
-            public void onLayoutChange(View view, int left, int top, int right, int bottom,
-                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
-            }
-
-        };
-
-        /**
          * Create views for custom controls.
          *
-         * @return root view.
+         * @return the root view.
          */
         private View createViews() {
 
+            // Inflate layout.
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
             mRootView = inflater.inflate(R.layout.custom_controls, null);
 
-            // Get handle for play button, listen for clicks and set icon.
-            mPlayPauseButton = (ImageButton) mRootView.findViewById(R.id.playbutton);
-            mPlayPauseButton.setOnClickListener(mPlayButtonListener);
+            // Get play/pause button, listen for clicks, and set icon.
+            mVideoPlayPauseButton = (ImageButton) mRootView.findViewById(R.id.playPauseButton);
+            mVideoPlayPauseButton.setOnClickListener(mPlayButtonListener);
             updatePlayPauseButtonIcon();
 
-            // Get handle for position and duration labels, and update them.
-            mPositionLabel = (TextView) mRootView.findViewById(R.id.position);
+            // Get position and duration labels, and update them.
+            mVideoPositionLabel = (TextView) mRootView.findViewById(R.id.position);
             updatePositionLabel();
-            mDurationLabel = (TextView) mRootView.findViewById(R.id.duration);
+            mVideoDurationLabel = (TextView) mRootView.findViewById(R.id.duration);
             updateDurationLabel();
 
-            // Get handle for seekbar, listen to its events, and update video position.
-            mSeekBar = (SeekBar) mRootView.findViewById(R.id.seek_bar);
-            mSeekBar.setOnSeekBarChangeListener(mSeekbarListener);
-            updateVideoPosition();
+            // Get seekbar, listen to its events, and update video position.
+            mVideoSeekBar = (SeekBar) mRootView.findViewById(R.id.seek_bar);
+            mVideoSeekBar.setOnSeekBarChangeListener(mSeekBarListener);
+            updateSeekBarPosition();
 
-            // Get handle for audio button, listen for clicks and set icon.
-            mMuteButton = (ImageButton) mRootView.findViewById(R.id.audiobutton);
-            mMuteButton.setOnClickListener(mMuteButtonListener);
+            // Get audio mute button, listen for clicks, and set icon.
+            mAudioMuteButton = (ImageButton) mRootView.findViewById(R.id.audiobutton);
+            mAudioMuteButton.setOnClickListener(mMuteButtonListener);
             updateMuteButtonIcon();
 
             return mRootView;
@@ -526,7 +499,6 @@ public class CustomControls extends Activity {
         private View.OnClickListener mPlayButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Play/pause: onClick()");
                 if (mMediaPlayerControl.isPlaying()) {
                     mMediaPlayerControl.pause();
                 } else {
@@ -537,47 +509,48 @@ public class CustomControls extends Activity {
 
         private void updatePlayPauseButtonIcon() {
             if (mMediaPlayerControl.isPlaying()) {
-                mPlayPauseButton.setImageResource(R.drawable.pause);
+                mVideoPlayPauseButton.setImageResource(R.drawable.pause);
             } else {
-                mPlayPauseButton.setImageResource(R.drawable.play);
+                mVideoPlayPauseButton.setImageResource(R.drawable.play);
             }
         }
 
-        private SeekBar.OnSeekBarChangeListener mSeekbarListener = new SeekBar.OnSeekBarChangeListener() {
+        private SeekBar.OnSeekBarChangeListener mSeekBarListener =
+                new SeekBar.OnSeekBarChangeListener() {
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    // Native media player is slow to seek...
-                    //mMediaPlayerControl.seekTo(seekBar.getProgress());
+                    // Here we could continuously track video position when user drags
+                    // seekbar handle, but won't as Android MediaPlayer is rather slow
+                    // to seek. Instead, we seek when user releases the seekbar handle.
                 }
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                Log.d(TAG, "onStartTrackingTouch()");
-                // Temporarily stop updating progress.
+                // Pause updating video position to the seekbar.
                 mHandler.removeMessages(UPDATE_VIDEO_POSITION);
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.d(TAG, "onStopTrackingTouch()");
-                // Seet to the point where tracking was stopped.
+                // Seek to the point where tracking was stopped.
                 mMediaPlayerControl.seekTo(seekBar.getProgress());
 
-                // Continue updating progress.
+                // Continue updating video position to the seekbar.
                 mHandler.sendEmptyMessage(UPDATE_VIDEO_POSITION);
             }
         };
 
-        private void updateVideoPosition() {
+        private void updateSeekBarPosition() {
             int duration = mMediaPlayerControl.getDuration();
             int position = mMediaPlayerControl.getCurrentPosition();
 
-            if (null != mSeekBar) {
+            if (null != mVideoSeekBar) {
                 if (duration > 0) {
-                    mSeekBar.setMax(duration);
-                    mSeekBar.setProgress(position);
+                    mVideoSeekBar.setMax(duration);
+                    mVideoSeekBar.setProgress(position);
                 }
             }
         }
@@ -589,7 +562,7 @@ public class CustomControls extends Activity {
                     - TimeUnit.MINUTES.toSeconds(minutes);
             String formattedTime = String.format(
                     Locale.US, "%d:%02d", minutes, seconds);
-            mPositionLabel.setText(formattedTime);
+            mVideoPositionLabel.setText(formattedTime);
         }
 
         private void updateDurationLabel() {
@@ -599,50 +572,64 @@ public class CustomControls extends Activity {
                     - TimeUnit.MINUTES.toSeconds(minutes);
             String formattedTime = String.format(
                     Locale.US, "%d:%02d", minutes, seconds);
-            mDurationLabel.setText(formattedTime);
+            mVideoDurationLabel.setText(formattedTime);
         }
 
         private View.OnClickListener mMuteButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Mute on/off: onClick()");
                 mIsAudioMuted = !mIsAudioMuted;
-                mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, mIsAudioMuted);
+                //mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, mIsAudioMuted);
+                //above: deprecated in API level 23, use this instead:
+                if (mIsAudioMuted) {
+                    mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                            AudioManager.ADJUST_MUTE, 0);
+                } else {
+                    mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                            AudioManager.ADJUST_UNMUTE, 0);
+                }
                 updateMuteButtonIcon();
             }
         };
 
         private void updateMuteButtonIcon() {
             if (mIsAudioMuted) {
-                mMuteButton.setImageResource(R.drawable.mute_on);
+                mAudioMuteButton.setImageResource(R.drawable.mute_on);
             } else {
-                mMuteButton.setImageResource(R.drawable.mute_off);
+                mAudioMuteButton.setImageResource(R.drawable.mute_off);
             }
         }
 
-        public void show() {
-            setVisibility(View.VISIBLE);
-
-            // Start updating progress.
-            mHandler.sendEmptyMessage(UPDATE_VIDEO_POSITION);
-        }
-
-        public void hide() {
-            Log.d(TAG, "hide()");
-            setVisibility(View.INVISIBLE);
-
-            // Stop updating progress.
-            mHandler.removeMessages(UPDATE_VIDEO_POSITION);
+        public void toggleControlsVisibility() {
+            if (isShowing()) {
+                mCustomController.hide();
+            } else {
+                mCustomController.show();
+            }
         }
 
         public boolean isShowing() {
             return mIsAddedToAnchor && this.getVisibility() == View.VISIBLE;
         }
 
-        private class PlayerControllerHandler extends Handler {
+        public void show() {
+            setVisibility(View.VISIBLE);
+
+            // Start updating video position.
+            mHandler.sendEmptyMessage(UPDATE_VIDEO_POSITION);
+        }
+
+        public void hide() {
+            setVisibility(View.INVISIBLE);
+
+            // Stop updating video position.
+            mHandler.removeMessages(UPDATE_VIDEO_POSITION);
+        }
+
+        private class CustomControllerHandler extends Handler {
             private WeakReference<CustomController> mParent;
 
-            public PlayerControllerHandler(CustomController parent) {
+            public CustomControllerHandler(CustomController parent) {
                 mParent = new WeakReference<CustomController>(parent);
             }
 
@@ -655,13 +642,12 @@ public class CustomControls extends Activity {
                 switch (message.what) {
                     case UPDATE_VIDEO_POSITION:
                         // Update progress now.
-                        parent.updateVideoPosition();
+                        parent.updateSeekBarPosition();
                         parent.updatePositionLabel();
                         parent.updateDurationLabel();
 
                         // Check whether progress should be updated again after a delay.
-                        if (/*!parent.mTracking && parent.mShowing &&*/
-                                parent.mMediaPlayerControl.isPlaying()) {
+                        if (parent.mMediaPlayerControl.isPlaying()) {
                             message = obtainMessage(UPDATE_VIDEO_POSITION);
                             sendMessageDelayed(message, UPDATE_PROGRESS_DELAY);
                         }
