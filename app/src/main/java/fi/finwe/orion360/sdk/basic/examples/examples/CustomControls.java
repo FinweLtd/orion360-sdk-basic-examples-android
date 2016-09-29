@@ -32,6 +32,7 @@ package fi.finwe.orion360.sdk.basic.examples.examples;
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -209,6 +210,9 @@ public class CustomControls extends Activity {
 
     /**
      * Custom media controls, implemented with a frame layout on top of video view.
+     *
+     * Typically this class would be in a separate file; here it is included as an inner
+     * class to embody the whole example.
      */
     class CustomController extends FrameLayout implements OrionVideoView.OnStatusChangeListener {
 
@@ -318,6 +322,7 @@ public class CustomControls extends Activity {
         /**
          * To be called from parent activity's onResume().
          */
+        @SuppressWarnings("deprecation")
         public void onResume() {
 
             // Start updating video position by polling it.
@@ -325,10 +330,12 @@ public class CustomControls extends Activity {
 
             // Restore audio muting, if previously flagged to be muted.
             if (mIsAudioMuted) {
-                //mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, true);
-                //above: deprecated in API level 23, use this instead:
-                mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                        AudioManager.ADJUST_MUTE, 0);
+                if (Build.VERSION.SDK_INT <= 23 ){
+                    mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+                } else {
+                    mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                            AudioManager.ADJUST_MUTE, 0);
+                }
             }
 
         }
@@ -336,6 +343,7 @@ public class CustomControls extends Activity {
         /**
          * To be called from parent activity's onPause().
          */
+        @SuppressWarnings("deprecation")
         public void onPause() {
 
             // Stop updating video position by polling it.
@@ -343,12 +351,13 @@ public class CustomControls extends Activity {
 
             // Clear audio muting, but do not clear the flag so we can restore state later.
             if (mIsAudioMuted) {
-                //mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
-                //above: deprecated in API level 23, use this instead:
-                mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                        AudioManager.ADJUST_UNMUTE, 0);
+                if (Build.VERSION.SDK_INT <= 23 ){
+                    mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
+                } else {
+                    mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                            AudioManager.ADJUST_UNMUTE, 0);
+                }
             }
-
         }
 
         /**
@@ -470,7 +479,7 @@ public class CustomControls extends Activity {
             // Inflate layout.
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
-            mRootView = inflater.inflate(R.layout.custom_controls, null);
+            mRootView = inflater.inflate(R.layout.custom_controls, this);
 
             // Get play/pause button, listen for clicks, and set icon.
             mVideoPlayPauseButton = (ImageButton) mRootView.findViewById(R.id.playPauseButton);
@@ -520,11 +529,13 @@ public class CustomControls extends Activity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                /*
                 if (fromUser) {
                     // Here we could continuously track video position when user drags
                     // seekbar handle, but won't as Android MediaPlayer is rather slow
                     // to seek. Instead, we seek when user releases the seekbar handle.
                 }
+                */
             }
 
             @Override
@@ -575,18 +586,26 @@ public class CustomControls extends Activity {
             mVideoDurationLabel.setText(formattedTime);
         }
 
+        @SuppressWarnings("deprecation")
         private View.OnClickListener mMuteButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mIsAudioMuted = !mIsAudioMuted;
-                //mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, mIsAudioMuted);
-                //above: deprecated in API level 23, use this instead:
+
                 if (mIsAudioMuted) {
-                    mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                            AudioManager.ADJUST_MUTE, 0);
+                    if (Build.VERSION.SDK_INT <= 23 ){
+                        mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+                    } else {
+                        mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                                AudioManager.ADJUST_MUTE, 0);
+                    }
                 } else {
-                    mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                            AudioManager.ADJUST_UNMUTE, 0);
+                    if (Build.VERSION.SDK_INT <= 23 ){
+                        mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
+                    } else {
+                        mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                                AudioManager.ADJUST_UNMUTE, 0);
+                    }
                 }
                 updateMuteButtonIcon();
             }
@@ -626,11 +645,12 @@ public class CustomControls extends Activity {
             mHandler.removeMessages(UPDATE_VIDEO_POSITION);
         }
 
+        // Note: This should be static; but as CustomController is an inner class, it can't.
         private class CustomControllerHandler extends Handler {
             private WeakReference<CustomController> mParent;
 
-            public CustomControllerHandler(CustomController parent) {
-                mParent = new WeakReference<CustomController>(parent);
+            CustomControllerHandler(CustomController parent) {
+                mParent = new WeakReference<>(parent);
             }
 
             @Override
