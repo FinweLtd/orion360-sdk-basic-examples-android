@@ -91,6 +91,10 @@ public class MainMenu extends ListActivity {
     public static final String TEST_VIDEO_URI_3840x1920 =
             "https://s3.amazonaws.com/orion360-us/Orion360_test_video_2d_equi_360x180deg_3840x1920pix_30fps_30sec_x264.mp4";
 
+    /** Test video URI for medium quality cropped video that can be found from the network. */
+    public static final String TEST_VIDEO_URI_1920x720 =
+            "https://s3.amazonaws.com/orion360-us/Orion360_test_video_2d_equi_360x135deg_1920x720pix_30fps_30sec_x264.mp4";
+
     /** Test image URI for low quality image that can be found from the network. */
     public static final String TEST_IMAGE_URI_1280x640 =
             "https://s3.amazonaws.com/orion360-us/Orion360_test_image_1280x640.jpg";
