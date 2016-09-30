@@ -8,7 +8,7 @@ Start studying from the minimal examples. These are short and to-the-point; they
 
 In order to make studying the examples as easy as possible, each example is implemented as an activity with very few dependencies outside of its own source code file. The examples are thorougly commented, and also briefly explained in this README. Finally, the examples are collected under a single application that can be compiled from this project, installed and run on your own Android device.
 
-Notice that you are allowed to utilize the example code in your own app project as described in the copyright section of source code files.
+Notice that you are allowed to utilize the example code in your own app project as described in the copyright section of the source code files.
 
 Table of Contents
 -----------------
@@ -73,7 +73,14 @@ Example: Minimal Video Stream Player
 
 An example of a minimal Orion360 video player, for streaming a video file over the network.
 
-Plays a low-quality 360 video stream over the network, and shows how to create a simple buffering indicator by listening to *OrionVideoView* buffering events.
+This example shows how to add an Orion360 video view to an XML layout, get a handle to it from Java code, request the video view to prepare an MP4 video file (that resides somewhere in the network) for playback, and start playback when an asynchronous callback tells that enough video frames have been downloaded and buffered.
+
+The example also shows how to create a simple buffering indicator by listening to video view buffering events, and how to propagate activity life cycle events to the video view so that it can automatically respond to them (for example pause video playback if user navigates to another app).
+
+Orion360 views have lots of features built-in; you will have all the following without writing any additional code:
+- Support for rendering full spherical (360x180) equirectangular video content with rectilinear projection
+- Panning, zooming and tilting the view with touch and movement sensors, which work seamlessly together
+- Auto Horizon Aligner (AHL) keeps the horizon straight by gently re-orienting it when necessary
 
 Example: Minimal Video Download Player
 --------------------------------------
