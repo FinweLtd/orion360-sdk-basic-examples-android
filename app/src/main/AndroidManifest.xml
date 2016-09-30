@@ -8,7 +8,7 @@
     <!-- For playing videos from local storage / memory card. -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <!-- For copying test content to local storage / memory card. -->
+    <!-- For copying test content to local storage / memory card, saving screenshots. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -111,6 +111,12 @@
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
         <activity
             android:name=".examples.Doughnut"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
+        <activity
+            android:name=".examples.Screenshot"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"

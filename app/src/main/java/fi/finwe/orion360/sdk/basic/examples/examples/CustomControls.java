@@ -479,7 +479,7 @@ public class CustomControls extends Activity {
             // Inflate layout.
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
-            mRootView = inflater.inflate(R.layout.custom_controls, this);
+            mRootView = inflater.inflate(R.layout.custom_controls, null);
 
             // Get play/pause button, listen for clicks, and set icon.
             mVideoPlayPauseButton = (ImageButton) mRootView.findViewById(R.id.playPauseButton);
