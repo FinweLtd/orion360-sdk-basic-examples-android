@@ -2,13 +2,13 @@
 
 # Examples for Orion360 SDK (Basic) for Android
 
-This repository contains a set of minimal examples for creating a 360 image/video player for the most common use cases (look for the word "minimal" in the example name). Start studying from these short and to-the-point examples, preferably in the presented order as the examples get gradually more complex.
+This repository contains a set of examples for creating a 360 image/video player using Orion360 SDK (Basic) for Android.
 
-More advanced examples are included for improving the player with features such as VR mode and interactive hotspots. When you have mastered the basics, these examples will become valuable sources for adding new features to your 360 app.
+Start studying from the minimal examples. These are short and to-the-point; they will help you to create a simple 360 player in no-time. When you have mastered the basics, proceed to the more advanced examples that focus on a particular topic, such as touch input, VR mode, custom controls, and hotspots. They will become valuable resources for adding new features to your 360 photo/video app.
 
-In order to make studying the examples as easy as possible, each one is implemented as an activity with very few dependencies outside of its own class, thorougly commented, and briefly explained in this README. 
+In order to make studying the examples as easy as possible, each example is implemented as an activity with very few dependencies outside of its own source code file. The examples are thorougly commented, and also briefly explained in this README. Finally, the examples are collected under a single application that can be compiled from this project, installed and run on your own Android device.
 
-The examples are collected under a single application that can be compiled from this project, or installed from Google Play store [TODO: add link]
+Notice that you are allowed to utilize the example code in your own app project as described in the copyright section of source code files.
 
 Table of Contents
 -----------------
@@ -31,14 +31,14 @@ Table of Contents
 Prerequisities
 --------------
 
-Basic Android software development skills are enough for understanding and modifying the examples.
+Basic Android software development skills are enough for understanding, modifying and running the examples.
 
-Install Android Studio IDE (recommended version is 2.2 or newer):
+As a first step, you should install Android Studio IDE (recommended version is 2.2 or newer):
 https://developer.android.com/studio/install.html
 
-Then, using the SDK Manager tool, install one or more Android SDKs. Notice that for Orion360 SDK Basic, minimum API level is 14: Android 4.0 IceCreamSandwitch.
+Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum Android API level is 14: Android 4.0 IceCreamSandwitch.
 
-> If you haven't already studied the Hello World project for Orion360 SDK Basic, you should do that first and then continue with this examples project.
+> If you haven't already studied the Hello World project for Orion360 SDK (Basic), you should do that first and then continue with this example project.
 > https://github.com/FinweLtd/orion360-sdk-basic-hello-android
 
 Cloning the project
