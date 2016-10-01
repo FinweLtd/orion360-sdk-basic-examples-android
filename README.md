@@ -2,7 +2,7 @@
 
 # Examples for Orion360 SDK (Basic) for Android
 
-This repository contains a set of examples for creating a 360 image/video player using Orion360 SDK (Basic) for Android.
+This repository contains a set of examples for creating a 360 image/video player using Orion360 SDK (Basic) for Android and Android Studio IDE.
 
 Preface
 -------
