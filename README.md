@@ -120,20 +120,6 @@ Example: Minimal Video File Player
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
-> In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you should consider embedding the content into the app. This approach provides several benefits:
-> - Simpler content deployment without a streaming server and a content-delivery network (CDN)
-> - Lower and more predictable content deployment cost - even FREE delivery via Google Play store
-> - Built-in offline mode without making the app more complex with content download and delete features
-> - Guaranteed to have no buffering pauses during video playback
-> 
-> However, there are also some major drawbacks:
-> - App installation package becomes large and potential users may skip the app based on its size
-> - After watching the embedded content the whole app needs to be uninstalled to remove the content
-> - Adding/updating content not possible without updating the app (many users will never update)
-> - Only a limited amount of content can be embedded to the app
-> 
-> Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
-
 This example showcases all supported file system locations and file access methods for video sources: the locations embedded to the app delivery packages, the app's private locations that become available after installation, and the locations that are more or less external to the app. To keep the example simple, only one source is active at a time and the others are commented out (you can easily select the active location from the source code). The supported locations are:
 
 1. Application installation package's _/assets_ folder
@@ -159,6 +145,20 @@ This example showcases all supported file system locations and file access metho
 6. Any public path on device's external memory
 
    Public external folders allow easy content sharing between apps and copying content from PC to a familiar location such as the /Movies folder, but reading from there requires READ_EXTERNAL_STORAGE permission (WRITE_EXTERNAL_STORAGE for writing) that needs to be explicitly requested from user, starting from Android 6.0. This location is recommended for playing content that is sideloaded by end users either by copying to device via a USB cable or read from a removable memory card.
+
+> In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you should consider embedding the content into the app. This approach provides several benefits:
+> - Simpler content deployment without a streaming server and a content-delivery network (CDN)
+> - Lower and more predictable content deployment cost - even FREE delivery via Google Play store
+> - Built-in offline mode without making the app more complex with content download and delete features
+> - Guaranteed to have no buffering pauses during video playback
+> 
+> However, there are also some major drawbacks:
+> - App installation package becomes large and potential users may skip the app based on its size
+> - After watching the embedded content the whole app needs to be uninstalled to remove the content
+> - Adding/updating content not possible without updating the app (many users will never update)
+> - Only a limited amount of content can be embedded to the app
+> 
+> Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
 
 Example: Minimal Image Download Player
 --------------------------------------
