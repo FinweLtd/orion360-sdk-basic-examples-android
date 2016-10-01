@@ -4,6 +4,9 @@
 
 This repository contains a set of examples for creating a 360 image/video player using Orion360 SDK (Basic) for Android.
 
+Preface
+-------
+
 Thank you for choosing Orion360, and welcome to learning Orion360 SDK (Basic) for Android! You have made a good choice: Orion360 is the leading purpose-built SDK for 360/VR video apps, with over 400 licensed apps and 10+ millions of downloads in total - and growing fast.
 
 We encourage you to begin studying from the _minimal_ examples. These are short and to-the-point; they will help you to create a simple 360 player in no-time. When you have mastered the basics, proceed to the more advanced examples that focus on a particular topic, such as touch input, VR mode, custom controls, and hotspots. The examples in this repository will become a valuable resource when you start adding features to your new 360 photo/video app, and will save you lots development time!
@@ -18,21 +21,23 @@ Happy coding!
 
 Table of Contents
 -----------------
-1. [Prerequisities](#prerequisities)
-2. [Cloning the project](#cloning-the-project)
-3. [Example: Minimal Video Stream Player](#example-minimal-video-stream-player)
-4. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
-5. [Example: Minimal Video File Player](#example-minimal-video-file-player)
-6. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
-7. [Example: Minimal Image File Player](#example-minimal-image-file-player)
-8. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
-9. [Example: Buffering Indicator](#example-buffering-indicator)
-9. [Example: Preview Image](#example-preview-image)
-11. [Example: Sensor Fusion](#example-sensor-fusion)
-12. [Example: Touch Input](#example-touch-input)
-13. [Example: Nadir Patch](#example-nadir-patch)
-14. [Example: Director's Cut](#example-directors-cut)
-15. [Example: Interactive Hotspots](#example-interactive-hotspots)
+1. [Preface](#preface)
+2. [Table of Content](#table-of-contents)
+3. [Prerequisities](#prerequisities)
+4. [Cloning the project](#cloning-the-project)
+5. [Example: Minimal Video Stream Player](#example-minimal-video-stream-player)
+6. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
+7. [Example: Minimal Video File Player](#example-minimal-video-file-player)
+8. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
+9. [Example: Minimal Image File Player](#example-minimal-image-file-player)
+10. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
+11. [Example: Buffering Indicator](#example-buffering-indicator)
+12. [Example: Preview Image](#example-preview-image)
+13. [Example: Sensor Fusion](#example-sensor-fusion)
+14. [Example: Touch Input](#example-touch-input)
+15. [Example: Nadir Patch](#example-nadir-patch)
+16. [Example: Director's Cut](#example-directors-cut)
+17. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
