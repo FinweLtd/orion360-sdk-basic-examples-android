@@ -74,13 +74,13 @@ When the project opens Android Studio performs Gradle sync that will take some t
 
 Next, connect an Android device to your computer via a USB cable, and then compile the project and run the app on your device by simply clicking the green *Play* button in the top toolbar. This will take a moment.
 
-> While 360 photo/video apps can in theory be developed using an emulator, real Android hardware is highly recommended! The Android emulator does not support video playback. Moreover, to work with sensor fusion, touch control and VR mode, the developer frequently needs to run the app on target device.
+> While 360 photo/video apps can in theory be developed using an emulator, real Android hardware is highly recommended. The Android emulator does not support video playback. Moreover, to work with sensor fusion, touch control and VR mode, the developer frequently needs to run the app on target device.
 
 When the app starts on your device, a menu of examples similar to the image below will be shown. Tap any example from the list to run it, and return to the examples menu by tapping the *Back* button from your device's Navigation Bar. In order to really understand what each example is about, you should always read the source code and comments!
 
-> Most examples require an Android device that can decode and play FullHD (1920x1080p) video, or less. However, some examples may utilize 4k resolution (3840x1920). If your development device does not support 4k video, simply change the content URI to another one with smaller resolution.
-
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544086/c8a52096-7b3b-11e6-8feb-18a8569250b6.png)
+
+> Most examples require an Android device that can decode and play FullHD (1920x1080p) video, or less. However, some examples may utilize 4k resolution (3840x1920). If your development device does not support 4k video, simply change the content URI to another one with smaller resolution.
 
 Example: Minimal Video Stream Player
 ------------------------------------
