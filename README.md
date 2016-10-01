@@ -134,31 +134,31 @@ However, there are also some major drawbacks:
 
 Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
 
-Showcases all supported file system locations and access methods (you need to select one from code). The supported locations are:
+This example showcases all supported file system locations and file access methods for video sources: the locations embedded to the app delivery packages, the app's private locations that become available after installation, and the locations that are more or less external to the app. To keep the example simple, only one source is active at a time and the others are commented out (you can easily select the active location from the source code). The supported locations are:
 
-1. Application installation package's /assets folder
+1. Application installation package's _/assets_ folder
 
-   Private asset folder allows playing content embedded to the apps's own installation package (.apk) (notice 100MB apk size limit in Google Play store). This is the recommended location when the application embeds video files to the installation package and is NOT distributed via Google Play store (single large .apk file delivery).
+   Private assets folder allows playing content embedded to the apps's own installation package (.apk). Notice 100MB .apk size limit in Google Play store. This is the recommended location when the application embeds video files to the installation package and is NOT distributed via Google Play store (single large .apk file delivery).
 
-2. Application installation package's /res/raw folder
+2. Application installation package's _/res/raw_ folder
 
-   Private raw resource folder allows playing content embedded to the app's own installation package (.apk) (notice 100MB apk size limit in Google Play). Use lowercase characters in filename, and access it without extension. This location is generally not recommended; use /assets folder instead for embedding media content.
+   Private raw resource folder allows playing content embedded to the app's own installation package (.apk). Notice 100MB .apk size limit in Google Play. Must use lowercase characters in filenames and access them without filename extension. This location is generally not recommended; use _/assets_ folder instead.
 
-3. Application's private path on device's internal memory
+3. Application expansion packages
 
-   Private internal folder is useful mainly when the app downloads a video file, as only the app itself can access that location (exception: rooted devices). This location is recommended only if downloaded content files need to be protected from ordinary users - although the protection is easy to circumvent with a rooted device.
+   Private expansion package allows playing content embedded to the app's extra installation package (.obb). Up to 2 GB per package, max 2 packages. This is the recommended location when the application embeds video files to the installation package and is distributed via Google Play store. Fairly complex but very useful solution. For more information, see https://developer.android.com/google/play/expansion-files.html
 
-4. Application's private path on device's external memory
+4. Application's private path on device's internal memory
 
-   Private external folder allows copying videos via file manager app or a USB cable, which can be useful for users who know their way in the file system and the package name of the app (e.g. developers). This location is recommended for caching downloaded content.
+   Private internal folder is useful mainly when the app _downloads_ a video file for offline mode or to be cached, as only the app itself can access that location (exception: rooted devices). This location is recommended only if downloaded content files need to be protected from ordinary users - although the protection is easy to circumvent with a rooted device.
 
-5. Application's public path on device's external memory
+5. Application's private path on device's external memory
 
-   Public external folder allows easy content sharing between apps and copying content from PC to a familiar location such as the /Movies folder, but video playback requires READ_EXTERNAL_STORAGE permission, which needs to be explicitly requested from user (starting from Android 6.0). This location is recommended for playing content that is sideloaded by end users.
+   Private external folder allows copying videos back and forth via file manager app or a USB cable, which can be useful for users who know their way in the file system and the package name of the app (e.g. developers). This location is recommended for caching downloaded content, as many devices have more external memory than internal memory.
 
-6. Application expansion package
+6. Application's public path on device's external memory
 
-   Private expansion package allows playing content embedded to the app's extra installation package (.obb) (up to 2 GB per package, max 2 packages). This is the recommended location when the application embeds video files to the installation package and is distributed via Google Play store.
+   Public external folder allows easy content sharing between apps and copying content from PC to a familiar location such as the /Movies folder, but reading requires READ_EXTERNAL_STORAGE permission that needs to be explicitly requested from user (starting from Android 6.0). This location is recommended for playing content that is sideloaded by end users.
 
 Example: Minimal Image Download Player
 --------------------------------------
