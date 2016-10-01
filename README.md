@@ -54,23 +54,25 @@ Then, using the SDK Manager tool that comes with the IDE, install one or more An
 Cloning and Running the Project
 -------------------------------
 
-To clone the project from GitHub, start Android Studio, select "Check out project from Version Control" and "Git" from the popup dialog.
+To clone the project from GitHub, start Android Studio, select *Check out project from Version Control* and *Git* from the popup dialog.
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541651/2264faaa-7b2f-11e6-9a21-75182dcf9666.png)
 
-Set repository URL, parent directory, and project directory. 
+Set repository URL, parent directory, and project directory.
 
-Notice that the repository URL is easy to copy-paste from browser to Android Studio: click the green "Clone or download" button on the project's GitHub page, copy the URL from the dialog that appears, and paste it to Android Studio's dialog.
+Notice that the repository URL is easy to copy-paste from browser to Android Studio: click the green *Clone or download* button on the project's GitHub page, copy the URL from the dialog that appears, and paste it to Android Studio's dialog as shown below. Hit *Clone* button to retrieve the repository content to your local machine.
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541713/a98e6ebc-7b2f-11e6-8c89-fa32266131e1.png)
 
-Cloning the project will take a moment. Android Studio then asks if you want to open the project. Answer "Yes".
+Cloning the project will take a moment. Android Studio then asks if you want to open the project, answer *Yes*.
 
-The project opens, and Android Studio performs Gradle sync that will take some time (please wait). After Gradle sync finishes, you can find the project files by opening the Project view on the left.
+When the project opens Android Studio performs Gradle sync that will take some time (please wait). After Gradle sync finishes, you can find the project files by opening the *Project* view on the left edge of the IDE window.
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541727/b5e46a72-7b2f-11e6-99df-3fe4ee471547.png)
 
-You can now proceed to connecting an Android device to your computer via a USB cable, and then run the app on device.
+Next, connect an Android device to your computer via a USB cable, and then compile the project and run the app on your device by simply clicking the green *Play* button in the top toolbar. This will take a moment.
+
+When the app starts on your device, a menu of examples similar to the image below will be shown. Tap any example from the list to run it, and return to the examples menu by tapping the *Back* button from your device's Navigation Bar.
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544086/c8a52096-7b3b-11e6-8feb-18a8569250b6.png)
 
