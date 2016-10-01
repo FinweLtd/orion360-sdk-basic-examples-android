@@ -120,16 +120,16 @@ Example: Minimal Video File Player
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
-In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you may want to consider embedding the content into the app. This approach provides serveral benefits:
-- Simpler content deployment as there is no need for a streaming server or a regional content-delivery network (CDN) service
-- Lower and more predictable content deployment cost - even FREE delivery via Google Play along with the app installation package
+In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you should consider embedding the content into the app. This approach provides several benefits:
+- Simpler content deployment as there is no need for a streaming server or a content-delivery network (CDN)
+- Lower and more predictable content deployment cost - even FREE delivery via Google Play store
 - Built-in offline mode without making the app more complex with content download and delete features
 - Guaranteed to have no buffering pauses during video playback
 
 However, there are also some major drawbacks:
 - The app installation package becomes very large and many potential users will skip the app based on its size
-- After user has watched the embedded content the whole app needs to be uninstalled to restore space consumed by the content
-- Adding or updating content is not possible without updating the app, and many users might never install the update
+- After user has watched the embedded content the whole app needs to be uninstalled to remove the content
+- Adding or updating content is not possible without updating the app, and many users might never update
 - Only a limited amount of content will fit to the installation package
 
 Typically one-shot apps that are intended for a particular event, product, or a short campaign use embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorial, and menu backgrounds.
