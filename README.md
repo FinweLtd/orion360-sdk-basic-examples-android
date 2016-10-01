@@ -24,7 +24,7 @@ Table of Contents
 1. [Preface](#preface)
 2. [Table of Contents](#table-of-contents)
 3. [Prerequisities](#prerequisities)
-4. [Cloning the project](#cloning-the-project)
+4. [Cloning and Running the Project](#cloning-and-running-the-project)
 5. [Example: Minimal Video Stream Player](#example-minimal-video-stream-player)
 6. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
 7. [Example: Minimal Video File Player](#example-minimal-video-file-player)
@@ -47,13 +47,12 @@ Basic Android software development skills are enough for understanding, modifyin
 As a first step, you should install Android Studio IDE (recommended version is 2.2 or newer):
 https://developer.android.com/studio/install.html
 
-Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum is *Android API level 14: Android 4.0 IceCreamSandwitch*.
+Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum is **Android API level 14: Android 4.0 IceCreamSandwitch**.
 
-> If you haven't already studied the Hello World project for Orion360 SDK (Basic), you should do that first and then continue with this example project.
-> https://github.com/FinweLtd/orion360-sdk-basic-hello-android
+> If you haven't already studied the Hello World project for Orion360 SDK (Basic), you should do that first and then continue with this example project. https://github.com/FinweLtd/orion360-sdk-basic-hello-android
 
-Cloning the project
--------------------
+Cloning and Running the Project
+-------------------------------
 
 To clone the project from GitHub, start Android Studio, select "Check out project from Version Control" and "Git" from the popup dialog.
 
