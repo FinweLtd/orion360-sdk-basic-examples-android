@@ -130,9 +130,9 @@ However, there are also some major drawbacks:
 - The app installation package becomes very large and many potential users will skip the app based on its size
 - After user has watched the embedded content the whole app needs to be uninstalled to remove the content
 - Adding or updating content is not possible without updating the app, and many users might never update
-- Only a limited amount of content will fit to the installation package
+- Only a limited amount of content can be embedded to the app
 
-Typically one-shot apps that are intended for a particular event, product, or a short campaign use embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorial, and menu backgrounds.
+Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
 
 Showcases all supported file system locations and access methods (you need to select one from code). The supported locations are:
 
