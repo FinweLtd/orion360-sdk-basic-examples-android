@@ -196,7 +196,7 @@ This example shows how to enable VR mode from an Orion360 video view for viewing
 - Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not interfere with it
 - Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with single tap
 
-> For high-quality VR experience, consider using a high-end Samsung smartphone and active GearVR frame together with the Pro version of the Orion360 SDK. The equipment cost is significantly higher, but also the improvement in quality is remarkable and well worth it. In general, Cardboard-style VR is recommended when you want to provide the VR viewing experience for a large audience by giving out free VR frames, while GearVR-style VR is best for trade shows, shop desks and one-to-one marketing where quality counts the most.
+> For high-quality VR experience, consider using a high-end Samsung smartphone and an active GearVR frame (you will also need to use the Pro version of the Orion360 SDK). The equipment cost will be significantly higher, but also the improvement in quality is remarkable and well worth it. GearVR frame has great optics, high speed sensors and touch controls. They only work with specific Samsung models that have a number of performance tunings built-in and drivers for the GearVR frame. In general, Cardboard-style VR is recommended when you want to provide the VR viewing experience for a large audience by giving out free VR frames, while GearVR-style VR is best for trade shows, shop desks and one-to-one marketing where quality counts the most!
 
 Example: Minimal Image Download Player
 --------------------------------------
