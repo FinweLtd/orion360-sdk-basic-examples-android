@@ -168,9 +168,9 @@ Example: Minimal Video Controls
 
 An example of a minimal Orion360 video player, with minimal video controls.
 
-> For a more advanced solution, see CustomControls example.
-
 This example uses _MediaController_ class as a simple way to add controls into a 360 video player. This method requires only a few lines of code: first a new media controller is instantiated, and then Orion360 video view is added to it as a media player to control, and as a UI anchor view where to position the control widget. Finally, a gesture detector is used for showing and hiding the controls when the video view is tapped. By default, the media controller automatically hides itself after a moment of inactivity.
+
+The control widget includes play/pause button, rewind and fast forward buttons, a seek bar, and labels for elapsed and total playing time. If you want to customize the look&feel of the control widget or add your own buttons, see CustomControls example where video controls are created from scratch.
 
 > When seeking within a video, notice that it is only possible to seek to keyframes - the player will automatically jump to a nearest one. The number of keyframes and their positions depend on video content, used video encoder, and encoder settings. In general, the more keyframes are added the larger the video file becomes. The Orion360 example video is fairly static and thus has very few keyframes, allowing the user to seek to only a few positions.
 
