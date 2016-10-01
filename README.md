@@ -156,9 +156,9 @@ This example showcases all supported file system locations and file access metho
 
    Private external folder allows copying videos back and forth via file manager app or a USB cable, which can be useful for users who know their way in the file system and the package name of the app (e.g. developers). This location is recommended for caching downloaded content, as many devices have more external memory than internal memory.
 
-6. Application's public path on device's external memory
+6. Any public path on device's external memory
 
-   Public external folder allows easy content sharing between apps and copying content from PC to a familiar location such as the /Movies folder, but reading requires READ_EXTERNAL_STORAGE permission that needs to be explicitly requested from user (starting from Android 6.0). This location is recommended for playing content that is sideloaded by end users.
+   Public external folders allow easy content sharing between apps and copying content from PC to a familiar location such as the /Movies folder, but reading from there requires READ_EXTERNAL_STORAGE permission (WRITE_EXTERNAL_STORAGE for writing) that needs to be explicitly requested from user, starting from Android 6.0. This location is recommended for playing content that is sideloaded by end users either by copying to device via a USB cable or read from a removable memory card.
 
 Example: Minimal Image Download Player
 --------------------------------------
