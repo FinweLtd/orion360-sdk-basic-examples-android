@@ -28,16 +28,17 @@ Table of Contents
 5. [Example: Minimal Video Stream Player](#example-minimal-video-stream-player)
 6. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
 7. [Example: Minimal Video File Player](#example-minimal-video-file-player)
-8. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
-9. [Example: Minimal Image File Player](#example-minimal-image-file-player)
-10. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
-11. [Example: Buffering Indicator](#example-buffering-indicator)
-12. [Example: Preview Image](#example-preview-image)
-13. [Example: Sensor Fusion](#example-sensor-fusion)
-14. [Example: Touch Input](#example-touch-input)
-15. [Example: Nadir Patch](#example-nadir-patch)
-16. [Example: Director's Cut](#example-directors-cut)
-17. [Example: Interactive Hotspots](#example-interactive-hotspots)
+8. [Example: Minimal Video Controls](#example-minimal-video-controls)
+9. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
+10. [Example: Minimal Image File Player](#example-minimal-image-file-player)
+12. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
+13. [Example: Buffering Indicator](#example-buffering-indicator)
+14. [Example: Preview Image](#example-preview-image)
+15. [Example: Sensor Fusion](#example-sensor-fusion)
+16. [Example: Touch Input](#example-touch-input)
+17. [Example: Nadir Patch](#example-nadir-patch)
+18. [Example: Director's Cut](#example-directors-cut)
+19. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -159,6 +160,19 @@ This example showcases all supported file system locations and file access metho
 > - Only a limited amount of content can be embedded to the app
 > 
 > Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
+
+Example: Minimal Video Controls
+-------------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoControls.java)
+
+An example of a minimal Orion360 video player, with minimal video controls.
+
+> For a more advanced solution, see CustomControls example.
+
+This example uses _MediaController_ class as a simple way to add controls into a 360 video player. This method requires only a few lines of code: first a new media controller is instantiated, and then Orion360 video view is added to it as a media player to control, and as a UI anchor view where to position the control widget. Finally, a gesture detector is used for showing and hiding the controls when the video view is tapped. By default, the media controller automatically hides itself after a moment of inactivity.
+
+> When seeking within a video, notice that it is only possible to seek to keyframes - the player will automatically jump to a nearest one. The number of keyframes and their positions depend on video content, used video encoder, and encoder settings. In general, the more keyframes are added the larger the video file becomes. The Orion360 example video is fairly static and thus has very few keyframes, allowing the user to seek to only a few positions.
 
 Example: Minimal Image Download Player
 --------------------------------------
