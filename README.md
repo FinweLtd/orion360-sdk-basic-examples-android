@@ -9,7 +9,7 @@ Preface
 
 Thank you for choosing Orion360, and welcome to learning Orion360 SDK (Basic) for Android! You have made a good choice: Orion360 is the leading purpose-built SDK for 360/VR video apps, with over 400 licensed apps and 10+ millions of downloads in total - and growing fast.
 
-We encourage you to begin studying from the _minimal_ examples. These are short and to-the-point; they will help you to create a simple 360 player in no-time. When you have mastered the basics, proceed to the more advanced examples that focus on a particular topic, such as touch input, VR mode, custom controls, and hotspots. The examples in this repository will become a valuable resource when you start adding features to your new 360 photo/video app, and will save you lots development time!
+We encourage you to begin studying from the _minimal_ examples. These are short and to-the-point; they will help you to create a simple 360 player in no-time. When you have mastered the basics, proceed to the more advanced examples that focus on a particular topic, such as touch input, VR mode, custom controls, and hotspots. The examples in this repository will become a valuable resource when you start adding features to your new 360 photo/video app, and will save you lots of development time!
 
 In order to make studying the examples as easy as possible, each example has been implemented as an individual activity with very few dependencies outside of its own source code file - everything you need for a particular feature can be found from one place. To keep the examples short and easy to grasp, different topics are covered in separate examples. You don't need to go through them in order; just keep building your own app by adding features one-by-one based on your needs and priorities.
 
@@ -60,9 +60,9 @@ To clone the project from GitHub, start Android Studio, select *Check out projec
 
 Set repository URL, parent directory, and project directory.
 
->Notice that the repository URL is easy to copy-paste from browser to Android Studio: click the green *Clone or download* button on the project's GitHub page, copy the URL from the dialog that appears, and paste it to Android Studio's dialog as shown below. 
+>Notice that the repository URL is easy to copy-paste from a web browser to Android Studio: click the green *Clone or download* button on the project's GitHub page, copy the URL from the dialog that appears, and paste it to Android Studio's dialog as shown below. 
 
-Hit *Clone* button to retrieve the repository content to your local machine.
+Hit *Clone* button to retrieve the repository contents to your local machine.
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541713/a98e6ebc-7b2f-11e6-8c89-fa32266131e1.png)
 
@@ -80,7 +80,7 @@ When the app starts on your device, a menu of examples similar to the image belo
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544086/c8a52096-7b3b-11e6-8feb-18a8569250b6.png)
 
-> Most examples use demo content that require an Android device that can decode and play FullHD (1920x1080p) video, or less. However, some examples may require 4k resolution (3840x1920). If your development device does not support 4k video, simply change the content URI to another one with smaller resolution (you can find plenty of demo content links from the *MainMenu* class).
+> Most examples use demo content that requires an Android device that can decode and play FullHD (1920x1080p) video, or less. However, a few examples may require UHD (3840x1920) resolution playback. If your development device does not support 4k UHD video, simply change the content URI to another one with smaller resolution (you can find plenty of demo content links from the *MainMenu* source code file).
 
 Example: Minimal Video Stream Player
 ------------------------------------
@@ -109,7 +109,7 @@ An example of a minimal Orion360 video player, for downloading a video file befo
 
 Available network bandwith often becomes an issue when streaming video over the network (especially true with high-resolution 4k content). Unfortunately, saving a copy of a video file while streaming it is not possible with Android MediaPlayer as a video backend. Hence, if you need to obtain a local copy of a video file that resides in the network either for offline use or to be cached, download it separately as shown in this example.
 
-Since downloading a large file will take a considerable amount of time, the example uses an AsyncTask to download the file in the background and updates download progress on screen. In this simple example, user needs to wait for the download to complete and the playback to begin as there is nothing else to do. However, you should consider placing a small download indicator somewhere in your app and allowing the user to continue using the app while the download is in progress. A high quality app has a download queue for downloading multiple files sequentially, is able to continue a download if it gets terminated early for example because of a network issue, allows user to cancel downloads, and uses platform notifications for indicating download progress and completion of a download. These features go beyond this example.
+Since downloading a large file will take a considerable amount of time, the example uses an AsyncTask to download the file in the background and updates download progress on screen. In this simple example, user needs to wait for the download to complete and the playback to begin as there is nothing else to do. However, you should consider placing a small download indicator somewhere in your app and allowing the user to continue using the app while the download is in progress. A high quality app has a download queue for downloading multiple files sequentially, is able to continue a download if it gets terminated early for example because of a network issue, allows user to cancel ongoing downloads, and uses platform notifications for indicating download progress and completion of a download. These features go beyond this example.
 
 Video files are large and device models with small amounts of storage space tend to be popular as they are priced competitively. Consider saving the downloaded video file to external memory if it is currently present. It is also a good idea to offer a method for deleting downloaded content without uninstalling the whole app; this way users can still keep your app installed when they need to restore some storage space.
 
@@ -120,19 +120,19 @@ Example: Minimal Video File Player
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
-In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you should consider embedding the content into the app. This approach provides several benefits:
-- Simpler content deployment as there is no need for a streaming server or a content-delivery network (CDN)
-- Lower and more predictable content deployment cost - even FREE delivery via Google Play store
-- Built-in offline mode without making the app more complex with content download and delete features
-- Guaranteed to have no buffering pauses during video playback
-
-However, there are also some major drawbacks:
-- The app installation package becomes very large and many potential users will skip the app based on its size
-- After user has watched the embedded content the whole app needs to be uninstalled to remove the content
-- Adding or updating content is not possible without updating the app, and many users might never update
-- Only a limited amount of content can be embedded to the app
-
-Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
+> In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you should consider embedding the content into the app. This approach provides several benefits:
+> - Simpler content deployment as there is no need for a streaming server or a content-delivery network (CDN)
+> - Lower and more predictable content deployment cost - even FREE delivery via Google Play store
+> - Built-in offline mode without making the app more complex with content download and delete features
+> - Guaranteed to have no buffering pauses during video playback
+> 
+> However, there are also some major drawbacks:
+> - The app installation package becomes very large and many potential users will skip the app based on its size
+> - After user has watched the embedded content the whole app needs to be uninstalled to remove the content
+> - Adding or updating content is not possible without updating the app, and many users might never update
+> - Only a limited amount of content can be embedded to the app
+> 
+> Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
 
 This example showcases all supported file system locations and file access methods for video sources: the locations embedded to the app delivery packages, the app's private locations that become available after installation, and the locations that are more or less external to the app. To keep the example simple, only one source is active at a time and the others are commented out (you can easily select the active location from the source code). The supported locations are:
 
