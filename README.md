@@ -4,11 +4,17 @@
 
 This repository contains a set of examples for creating a 360 image/video player using Orion360 SDK (Basic) for Android.
 
-Start studying from the minimal examples. These are short and to-the-point; they will help you to create a simple 360 player in no-time. When you have mastered the basics, proceed to the more advanced examples that focus on a particular topic, such as touch input, VR mode, custom controls, and hotspots. They will become valuable resources for adding new features to your 360 photo/video app.
+Thank you for choosing Orion360, and welcome to learning Orion360 SDK (Basic) for Android! You have made a good choice: Orion360 is the leading purpose-built SDK for 360/VR video apps, with over 400 licensed apps and 10+ millions of downloads in total - and growing fast.
 
-In order to make studying the examples as easy as possible, each example is implemented as an activity with very few dependencies outside of its own source code file. The examples are thorougly commented, and also briefly explained in this README. Finally, the examples are collected under a single application that can be compiled from this project, installed and run on your own Android device.
+We encourage you to begin studying from the _minimal_ examples. These are short and to-the-point; they will help you to create a simple 360 player in no-time. When you have mastered the basics, proceed to the more advanced examples that focus on a particular topic, such as touch input, VR mode, custom controls, and hotspots. The examples in this repository will become a valuable resource when you start adding features to your new 360 photo/video app, and will save you lots development time!
 
-Notice that you are allowed to utilize the example code in your own app project as described in the copyright section of the source code files.
+In order to make studying the examples as easy as possible, each example has been implemented as an individual activity with very few dependencies outside of its own source code file - everything you need for a particular feature can be found from one place. To keep the eaxmples short and easy to grasp, different topics are covered in separate examples. You don't need to go through them in order; just keep building your own app by adding features one-by-one based on your needs and priorities.
+
+The aim of the examples is to show how the most common features can be implemented easily with Orion360, but also to help you understand _why_ something is done. Therefore, the examples are thorougly commented and also briefly explained in this README. Sometimes, a particular feature can be implemented much better with the Pro version of the SDK, in such case this is mentioned in the example.
+
+Finally, all the examples are collected under a single application that can be compiled from this project, installed and run on your own Android device. This way you can try out the reference implementation with ease, and also experiment by modifying the examples. Notice that you are allowed to utilize the example code and resources in your own app project as described in the copyright section of the source code files.
+
+Happy coding! 
 
 Table of Contents
 -----------------
