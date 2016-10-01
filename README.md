@@ -60,7 +60,9 @@ To clone the project from GitHub, start Android Studio, select *Check out projec
 
 Set repository URL, parent directory, and project directory.
 
-Notice that the repository URL is easy to copy-paste from browser to Android Studio: click the green *Clone or download* button on the project's GitHub page, copy the URL from the dialog that appears, and paste it to Android Studio's dialog as shown below. Hit *Clone* button to retrieve the repository content to your local machine.
+>Notice that the repository URL is easy to copy-paste from browser to Android Studio: click the green *Clone or download* button on the project's GitHub page, copy the URL from the dialog that appears, and paste it to Android Studio's dialog as shown below. 
+
+Hit *Clone* button to retrieve the repository content to your local machine.
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12032146/18541713/a98e6ebc-7b2f-11e6-8c89-fa32266131e1.png)
 
