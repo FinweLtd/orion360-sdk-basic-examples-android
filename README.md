@@ -183,18 +183,20 @@ Example: Minimal VR Video File Player
 
 An example of a minimal Orion360 video player, with VR mode enabled.
 
-The most impressive way to experience 360 photos and videos is through virtual reality (VR). Unfortunately, not that many people have the necessary equipment yet. However, there is a _very_ cost efficient method: simply slide your existing smartphone inside a VR frame that essentially consists of a plastic or cardboard frame and a pair of convex lenses, and enable VR mode from an app that supports split-screen view. 
+The most impressive way to experience 360 photos and videos is through virtual reality (VR). Unfortunately, not that many people have the necessary equipment yet. However, there is a _very_ cost efficient method: users can simply slide their existing smartphone inside a VR frame that essentially consists of a plastic or cardboard frame and a pair of convex lenses, and enable VR mode from an app that supports split-screen viewing.
 
-Currently the most popular VR frame is Google Cardboard (https://vr.google.com/cardboard) - millions of them have been made already. There are plenty of Cardboard clones available, and it is fairly common to create a custom-printed Cardboard-style VR frame for a dollar or two, and give them out to users for free along with a 360/VR video app and content. That is a great tool for marketing.
+Currently the most popular VR frame by far is Google Cardboard (https://vr.google.com/cardboard); millions of them have been made already. There are also plenty of Cardboard clones available from different manufacturers. It is fairly common practice to create a custom-printed Cardboard-style VR frame for a dollar or two per piece, and give them out to users for free along with a 360/VR video app and content. That makes a really great marketing tool!
 
-This example shows how to enable VR mode for viewing 360 videos with Google Cardboard or other similar VR frame where a smartphone can be slided in. In short, the example shows how to:
+This example shows how to enable VR mode from an Orion360 video view for viewing content with Google Cardboard or other similar VR frame where smartphone can be slided in. In short, the example shows how to:
 - Configure horizontally split video view in landscape orientation
+- Configure (and lock) the field-of-view into a realistic setting
 - Configure VR frame lens distortion compensation for improved image quality
-- Configure and lock field-of-view
-- Hide system navigation bar for occlusion free viewing
-- Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with single taps
-- Initialize the view orientation to World orientation ie. make video horizon perpendicular to gravity vector
-- Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not confuse it
+- Initialize the view orientation to World orientation ie. keep video horizon perpendicular to gravity vector
+- Hide the system navigation bar for occlusion free viewing in devices where it is made by software
+- Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not interfere with it
+- Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with single tap
+
+> For high-quality VR experience, consider using a high-end Samsung smartphone and active GearVR frame together with the Pro version of the Orion360 SDK. The equipment cost is significantly higher, but also the improvement in quality is remarkable and well worth it. In general, Cardboard-style VR is recommended when you want to provide the VR viewing experience for a large audience by giving out free VR frames, while GearVR-style VR is best for trade shows, shop desks and one-to-one marketing where quality counts the most.
 
 Example: Minimal Image Download Player
 --------------------------------------
