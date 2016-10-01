@@ -29,16 +29,16 @@ Table of Contents
 6. [Example: Minimal Video Download Player](#example-minimal-video-download-player)
 7. [Example: Minimal Video File Player](#example-minimal-video-file-player)
 8. [Example: Minimal Video Controls](#example-minimal-video-controls)
-9. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
-10. [Example: Minimal Image File Player](#example-minimal-image-file-player)
-12. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
-13. [Example: Buffering Indicator](#example-buffering-indicator)
-14. [Example: Preview Image](#example-preview-image)
-15. [Example: Sensor Fusion](#example-sensor-fusion)
-16. [Example: Touch Input](#example-touch-input)
-17. [Example: Nadir Patch](#example-nadir-patch)
-18. [Example: Director's Cut](#example-directors-cut)
-19. [Example: Interactive Hotspots](#example-interactive-hotspots)
+9. [Example: Minimal VR Video File Player](#example-minimal-vr-video-file-player)
+10. [Example: Minimal Image Download Player](#example-minimal-image-download-player)
+11. [Example: Minimal Image File Player](#example-minimal-image-file-player)
+12. [Example: Buffering Indicator](#example-buffering-indicator)
+13. [Example: Preview Image](#example-preview-image)
+14. [Example: Sensor Fusion](#example-sensor-fusion)
+15. [Example: Touch Input](#example-touch-input)
+16. [Example: Nadir Patch](#example-nadir-patch)
+17. [Example: Director's Cut](#example-directors-cut)
+18. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -174,6 +174,28 @@ The control widget includes play/pause button, rewind and fast forward buttons, 
 
 > When seeking within a video, notice that it is only possible to seek to keyframes - the player will automatically jump to a nearest one. The number of keyframes and their positions depend on video content, used video encoder, and encoder settings. In general, the more keyframes are added the larger the video file becomes. The Orion360 example video is fairly static and thus has very few keyframes, allowing the user to seek to only a few positions.
 
+Example: Minimal VR Video File Player
+-------------------------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544208/43e3850e-7b3c-11e6-947c-2fe01130b52d.png)
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVRVideoFilePlayer.java)
+
+An example of a minimal Orion360 video player, with VR mode enabled.
+
+The most impressive way to experience 360 photos and videos is through virtual reality (VR). Unfortunately, not that many people have the necessary equipment yet. However, there is a _very_ cost efficient method: simply slide your existing smartphone inside a VR frame that essentially consists of a plastic or cardboard frame and a pair of convex lenses, and enable VR mode from an app that supports split-screen view. 
+
+Currently the most popular VR frame is Google Cardboard (https://vr.google.com/cardboard) - millions of them have been made already. There are plenty of Cardboard clones available, and it is fairly common to create a custom-printed Cardboard-style VR frame for a dollar or two, and give them out to users for free along with a 360/VR video app and content. That is a great tool for marketing.
+
+This example shows how to enable VR mode for viewing 360 videos with Google Cardboard or other similar VR frame where a smartphone can be slided in. In short, the example shows how to:
+- Configure horizontally split video view in landscape orientation
+- Configure VR frame lens distortion compensation for improved image quality
+- Configure and lock field-of-view
+- Hide system navigation bar for occlusion free viewing
+- Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with single taps
+- Initialize the view orientation to World orientation ie. make video horizon perpendicular to gravity vector
+- Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not confuse it
+
 Example: Minimal Image Download Player
 --------------------------------------
 
@@ -205,26 +227,6 @@ Showcases all supported file system locations and access methods (you need to se
 3. Application's public path on device's external memory
 
    Public external folder allows easy content sharing between apps and copying content from PC to a familiar location such as the /Pictures folder, but image viewing requires READ_EXTERNAL_STORAGE permission, which needs to be explicitly requested from user (starting from Android 6.0). This location is recommended for playing content that is sideloaded by end users.
-
-Example: Minimal VR Video File Player
--------------------------------------
-
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544208/43e3850e-7b3c-11e6-947c-2fe01130b52d.png)
-
-[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVRVideoFilePlayer.java)
-
-An example of a minimal Orion360 video player, with VR mode enabled.
-
-Shows how to enable VR mode for viewing 360 videos with Google Cardboard or other VR frame where a smartphone can be slided in.
-
-In short, the example shows how to:
-* Configure horizontally split video view with landscape orientation
-* Configure VR frame lens distortion compensation
-* Configure field-of-view
-* Hide system navigation bar
-* Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with ordinary taps
-* Initialize the view orientation to World orientation (make video horizon perpendicular to gravity vector)
-* Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not confuse it
 
 Example: Buffering Indicator
 ----------------------------
