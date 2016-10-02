@@ -322,16 +322,16 @@ Using data from all the three sensors, a sophisticated in-house developed sensor
 
 > If you experience issues with sensor fusion, it is usually because 1) one of the mandatory sensors is not present on the target device and sensor fusion is automatically disabled, or 2) magnetometer sensor is poorly calibrated; disable it or calibrate it by drawing 8-figures in the air with the device, rotating it along its three axis.
 
-The sensor fusion algorithm is also responsible for merging user's touch input drag events with the orientation calculated from movement sensor data (touch tapping events are handled separately elsewhere). Touch drag events are interpreted as panning (drag), zooming (pinch), and rolling (pinch rotate). Touch drag events update an offset that is applied to the orientation calculated by movement sensors. There is also another offset called _default view rotation_, which can be used for adjusting the initial (content) rotation.
+The sensor fusion algorithm is also responsible for merging user's touch input drag events with the orientation calculated from movement sensor data (touch tapping events are handled separately elsewhere). Touch drag events are interpreted here as panning (drag), zooming (pinch), and rolling (pinch rotate). In practice, touch drag events update an offset that is applied to the calculated device orientation.
 
 In short, the example shows how to:
 * Manually disable sensor control, to enable touch-only mode
-* Manually disable magnetometer input, to prevent issues with nearby magnetic objects and bad sensor calibration
+* Manually disable magnetometer input, to prevent issues with nearby magnetic objects and bad calibration
 * Manually disable pinch rotate gesture
 * Manually configure pinch zoom gesture limits, or disable pinch zoom gesture altogether
 * Listen for device orientation changes (sensor fusion events), to implement custom features
 
-> In mathematics, there are multiple alternatives for describing rotations. Probably the most well-known are Euler angles (yaw, pitch, roll). Unfortunately, Euler angle representation has severe issues, and thus professionally written algorithms typically use quaternions or rotation matrixes instead. Also the rotation order is _very_ significant. Hence, it is very common to get more than confused when trying to figure out the rotations! As a developer, you don't need to worry about these much as Orion360 handles all the complexity. The example also shows how to convert a quaternion representation of the current device rotation to angle degrees.
+> In mathematics, there are multiple alternatives for describing rotations. Probably the most well-known is Euler angles (yaw, pitch, roll). Unfortunately, Euler angle representation has severe issues, and thus professionally written algorithms typically use quaternions or rotation matrixes instead. Also the rotation order is _very_ significant. Hence, it is quite common to get more than confused when trying to figure out rotations! As a developer, you don't need to worry about these much as Orion360 SDK handles all the complexity on behalf of you. The example also shows how to convert a quaternion representation of the current device rotation to angle degrees.
 
 Example: Touch Input
 ----------------------
