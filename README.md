@@ -320,18 +320,18 @@ The supported movement sensors include
 
 Using data from all the three sensors, a sophisticated in-house developed sensor fusion algorithm calculates device orientation several hundreds of times per second. Considering the complexity of the topic, this works surprisingly well. Beware that there are hardware specific differences on the data rate, data accuracy, and calibration quality, as well as local magnetic interference that may change significantly when the device is moved just a few inches.
 
-> If you experience issues with sensor fusion, it is usually because 1) one of the mandatory sensors is not present on the target device and sensor fusion is automatically disabled, or 2) magnetometer sensor is poorly calibrated; disable it or calibrate it by drawing 8-figures in the air with the device, rotating it along its three axis.
+> If you experience issues with sensor fusion, it is usually because 1) one of the mandatory sensors is not present on the target device and sensor fusion is automatically disabled, or 2) magnetometer sensor is poorly calibrated; disable it or calibrate it by drawing 8-figures in the air with the device, rotating along its three axis.
 
 The sensor fusion algorithm is also responsible for merging user's touch input drag events with the orientation calculated from movement sensor data (touch tapping events are handled separately elsewhere). Touch drag events are interpreted here as panning (drag), zooming (pinch), and rolling (pinch rotate). In practice, touch drag events update an offset that is applied to the calculated device orientation.
 
 In short, the example shows how to:
 * Manually disable sensor control, to enable touch-only mode
 * Manually disable magnetometer input, to prevent issues with nearby magnetic objects and bad calibration
-* Manually disable pinch rotate gesture
-* Manually configure pinch zoom gesture limits, or disable pinch zoom gesture altogether
+* Manually disable pinch rotate gesture, if you don't want this feature
+* Manually configure pinch zoom gesture limits, or disable pinch zoom feature altogether
 * Listen for device orientation changes (sensor fusion events), to implement custom features
 
-> In mathematics, there are multiple alternatives for describing rotations. Probably the most well-known is Euler angles (yaw, pitch, roll). Unfortunately, Euler angle representation has severe issues, and thus professionally written algorithms typically use quaternions or rotation matrixes instead. Also the rotation order is _very_ significant. Hence, it is quite common to get more than confused when trying to figure out rotations! As a developer, you don't need to worry about these much as Orion360 SDK handles all the complexity on behalf of you. The example also shows how to convert a quaternion representation of the current device rotation to angle degrees.
+> In mathematics, there are multiple alternatives for describing rotations. Probably the most well-known is Euler angles (yaw, pitch, roll). Unfortunately, Euler angle representation has severe issues, and thus professionally written algorithms typically use quaternions or rotation matrixes instead. Also the rotation order is _very_ significant. Hence, it is quite common to get more than confused when trying to figure out rotations! As a developer, you don't need to worry about these much as Orion360 SDK handles all the complexity on behalf of you. In addition, this example shows how to convert a quaternion representation of the current device rotation to angle degrees, which can be understood much more easily.
 
 Example: Touch Input
 ----------------------
