@@ -286,18 +286,19 @@ The preview image is a full-size equirectangular image overlay on top of the mai
 
 Similar to tags, the alpha value of the preview image can be freely adjusted. Hence, it is possible to completely cover the main image/video layer, add a semi-transparent layer, or cross-fade between image and video (or two images when using OrionImageView instead of OrionVideoView). Furthermore, with a PNG image that has transparent areas, only selected parts of the main layer can be covered.
 
-> The preview image layer does not support video; only an image can be used. Therefore it is not possible to cross-fade from one video to another. The underlying reason is that many Android devices do not support playing more than one video at a time.
+> The preview image layer does not support video; only an image can be used. Therefore, it is not possible to cross-fade from one video to another. The underlying reason is that many Android devices do not support playing more than one video at a time. However, you can always fade to a preview image, quickly switch the video URI in the main layer, and then fade back to the video layer.
 
-The typical use case is to add a preview image that is shown in the beginning while the video is still being buffered from the network. For example, the image could contain a brand logo, instructions for panning and zooming within the 360 view, or a reminder about placing the device inside a VR frame.
+The typical use case is to add a preview image that is shown in the beginning while the video is still being buffered from the network. This is very useful. For example, the image could contain a brand logo, instructions for panning and zooming within the 360 view, or a reminder about placing the device inside a VR frame.
 
-However, the feature is actually much more versatile than that. Here are a few ideas:
+In fact, the feature is even more versatile than that. Here are a few ideas:
 * Show an image also when the video completes to thank users for watching and to instruct what to do next.
-* If you have a playlist, show a hero image while buffering next video.
-* Show an image when user pauses the video, when the player stops for buffering, or when network connection issues or other problems occur.
-* Dim video easily by adjusting preview image alpha and NOT setting a preview image at all (defaults to black color).
+* If you have a video playlist, show a hero image of the next video while buffering it.
+* Show an image when user pauses the video, when the player stops for buffering, or when network is lost.
+* Dim video easily by adjusting preview image alpha and _NOT_ setting a preview image at all.
 * Add a color overlay FX with a single-color preview image and a small alpha value.
+* Use a binocular style mask image as an FX that ensures that users focus on a something important.
 * Show dynamically loaded ads during video playback.
-* Create a slideshow with cross-fade effect using OrionImageView, preview image feature, and an audio track.
+* Create a slideshow with cross-fade effect using OrionImageView, preview image, and an audio track.
 
 Example: Sensor Fusion
 ----------------------
