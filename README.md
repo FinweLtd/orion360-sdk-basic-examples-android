@@ -256,7 +256,7 @@ This example showcases all supported file system locations and file access metho
 > 
 > Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
 
-> Current version of Orion360 SDK (Basic) for Android does not support playing 360 images directly from the application installation package or expansion package. This feature will be added later in an update to the SDK. However, it is possible to embed content to these locations, and copy the image file before it is used for example to application's private path on external memory.
+> *Current version of Orion360 SDK (Basic) for Android does not support playing 360 images directly from the application installation package or expansion package. This feature will be added later in an update to the SDK. However, it is possible to embed content to these locations, and copy the image file before it is used, for example to application's private path on external memory.*
 
 Example: Buffering Indicator
 ----------------------------
@@ -265,9 +265,15 @@ Example: Buffering Indicator
 
 An example of a minimal Orion360 video player, with a buffering indicator.
 
-A buffering indicator tells end user that the video player is currently loading content and should start/continue soon. This example shows some tips on how to implement it properly.
+A buffering indicator tells user that the video player is currently loading or preparing content, and playback will start/continue soon. This way user does not assume that she is supposed to do something more. It also shows that the application is working although nothing else seems to be happening on screen, which is quite important.
 
-Buffering before and during video playback are covered, as well as pausing and resuming player activity, and toggling between normal and VR mode.
+While the _MinimalVideoStreamPlayer_ example shows how to listen to buffering events and show/hide the buffering indicator accordingly, this example goes further to implement a buffering indicator that is shown also when the video view itself is being initialized, and that supports switching to VR mode where both left and right eye need their own copy of the indicator widget.
+
+The buffering indicator can be easily realized with an Android progress bar widget. Take a look at the _activity_video_player.xml_ file, which uses a _FrameLayout_ to add an indeterminate progress bar widget on top of the Orion360 video view, centered on screen. For VR mode, there is a slightly more complex setup: a horizontal _LinearLayout_ contains two _RelativeLayout_ containers, which each take 50% of the width and set up a centered progress bar widget for left and right eye. When the buffering indicator needs to be shown, we check from the video view configuration if VR mode is currently active or not, and select whether to make VR mode or normal indicator visible, respectively. Finally, when user toggles between normal and VR mode, we must remember to update the buffering indicator if it is currently visible.
+
+When video is being prepared for playback over the network, it can take a long time before Android MediaPlayer reports that buffering has started. Hence, it is a good idea to show the buffering indicator immediately after calling prepare() for a video view - without waiting for the callback that tells that buffering has started. Since the activity can get paused and resumed at any time, and the video playback is usually auto-started when the player activity is resumed, it is often simplest to show the buffering indicator in onResume() and hide it when the playback begins.
+
+Unfortunately, some Android devices have a buggy implementation of video buffering events and the event that tells that buffering has stopped might never come! We have noticed this behavior occasionally when the player is buffering the very beginning of the video. To prevent the buffering indicator for staying on screen forever, you can for example use a simple handler that polls when the video playback has progressed, and thus ensures that the buffering indicator gets removed when playback begins.
 
 Example: Preview Image
 ----------------------
