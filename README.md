@@ -207,7 +207,15 @@ Example: Minimal Image Download Player
 
 An example of a minimal Orion360 image player, for downloading an image file before playback.
 
-Notice that there is no "stream player" for 360 images; an equirectangular 360 image needs to be fully downloaded before it can be shown (viewing tiled images is not supported).
+> Notice that there is no example of a streaming player for 360 images, as an image always needs to be downloaded completely before it can be shown (tiled 360 images are not supported in the Basic version of the Orion360 SDK).
+
+This example is similar to _MinimalVideoDownloadPlayer_, but showcases how to use _OrionImageView_ component instead of _OrionVideoView_ for showing a 360 image.
+
+Since downloading a large file will take a considerable amount of time, the example uses an AsyncTask to download the file in the background and updates download progress on screen. In this simple example, user needs to wait for the download to complete and the playback to begin as there is nothing else to do. However, you should consider placing a small download indicator somewhere in your app and allowing the user to continue using the app while the download is in progress. A high quality app has a download queue for downloading multiple files sequentially, is able to continue a download if it gets terminated early for example because of a network issue, allows user to cancel ongoing downloads, and uses platform notifications for indicating download progress and completion of a download. These features go beyond this example.
+
+Image files are large and device models with small amounts of storage space tend to be popular as they are priced competitively. Consider saving the downloaded image file to external memory if it is currently present. It is also a good idea to offer a method for deleting downloaded content without uninstalling the whole app; this way users can still keep your app installed when they need to restore some storage space.
+
+> While Android device's hardware video decoder always sets a limit for the maximum resolution / bitrate of a video file that can be played, the limits for images come from available memory for decoding the image file and storing it inside a single texture. In case of a single 360 image memory usually isn't an issue, and Orion360 automatically scales the image to fit to device's maximum texture size. Older devices may have 2048x2048 pixel texture size (4 megapixels), while new devices have up to 16384x16384 pixels (256 megapixels). Obviously, the difference in image quality can be remarkable when using high-resolution source image.
 
 Example: Minimal Image File Player
 ----------------------------------
