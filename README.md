@@ -269,11 +269,11 @@ A buffering indicator tells user that the video player is currently loading or p
 
 While the _MinimalVideoStreamPlayer_ example shows how to listen to buffering events and show/hide the buffering indicator accordingly, this example goes further to implement a buffering indicator that is shown also when the video view itself is being initialized, and that supports switching to VR mode where both left and right eye need their own copy of the indicator widget.
 
-The buffering indicator can be easily realized with an Android progress bar widget. Take a look at the _activity_video_player.xml_ file, which uses a _FrameLayout_ to add an indeterminate progress bar widget on top of the Orion360 video view, centered on screen. For VR mode, there is a slightly more complex setup: a horizontal _LinearLayout_ contains two _RelativeLayout_ containers, which each take 50% of the width and set up a centered progress bar widget for left and right eye. When the buffering indicator needs to be shown, we check from the video view configuration if VR mode is currently active or not, and select whether to make VR mode or normal indicator visible, respectively. Finally, when user toggles between normal and VR mode, we must remember to update the buffering indicator if it is currently visible.
+The buffering indicator can be easily realized with an Android progress bar widget. Take a look at the _activity_video_player.xml_ file, which uses a _FrameLayout_ to add an indeterminate progress bar widget on top of the Orion360 video view, centered on screen. For VR mode, there is a slightly more complex setup: a horizontal _LinearLayout_ contains two _RelativeLayout_ containers, which each take 50% of the width and set up a centered progress bar widget for left and right eye, respectively. When the buffering indicator needs to be shown, we check from the video view configuration if VR mode is currently active or not, and select whether to make VR mode or normal indicator visible, respectively. Finally, when user toggles between normal and VR mode, we must remember to update the buffering indicator if it is currently visible.
 
 When video is being prepared for playback over the network, it can take a long time before Android MediaPlayer reports that buffering has started. Hence, it is a good idea to show the buffering indicator immediately after calling prepare() for a video view - without waiting for the callback that tells that buffering has started. Since the activity can get paused and resumed at any time, and the video playback is usually auto-started when the player activity is resumed, it is often simplest to show the buffering indicator in onResume() and hide it when the playback begins.
 
-Unfortunately, some Android devices have a buggy implementation of video buffering events and the event that tells that buffering has stopped might never come! We have noticed this behavior occasionally when the player is buffering the very beginning of the video. To prevent the buffering indicator for staying on screen forever, you can for example use a simple handler that polls when the video playback has progressed, and thus ensures that the buffering indicator gets removed when playback begins.
+Unfortunately, some Android devices have a buggy implementation of video buffering events and the event that tells that buffering has stopped might never come! We have noticed this behavior occasionally when the player is buffering the very beginning of the video. To prevent the buffering indicator for staying on screen forever, you can for example use a simple handler that polls when the video playback has progressed, and thus ensures that the buffering indicator gets always removed when playback begins/continues.
 
 Example: Preview Image
 ----------------------
@@ -282,20 +282,22 @@ Example: Preview Image
 
 An example of a minimal Orion360 video player, with a preview image.
 
-The preview image is a full-size equirectangular image overlay on top of the video layer. Notice the difference to tags, which are origin-facing rectilinear images that cover only a part of the video layer. The preview image should be of the same resolution than the main video or image that it is applied to, while tags can be of any resolution.
+The preview image is a full-size equirectangular image overlay on top of the main image/video layer (notice the difference to tags, which are origin-facing rectilinear images that cover only _a part_ of the main image/video layer).
 
-Similar to tags, the alpha value of the preview image can be freely adjusted. Therefore it is possible to completely cover the video layer, add a semi-transparent layer, and cross-fade between image and video (or two images when using OrionImageView instead of OrionVideoView). With a PNG image that has transparent areas, only selected parts of the video can be covered.
+Similar to tags, the alpha value of the preview image can be freely adjusted. Hence, it is possible to completely cover the main image/video layer, add a semi-transparent layer, or cross-fade between image and video (or two images when using OrionImageView instead of OrionVideoView). Furthermore, with a PNG image that has transparent areas, only selected parts of the main layer can be covered.
 
-The typical use case is to add a preview image that is shown in the beginning while the video is still being buffered from the network. For example, the image could contain a brand logo, instructions for panning and zooming within 360 view, or a reminder about placing the device inside a VR frame.
+> The preview image layer does not support video; only an image can be used. Therefore it is not possible to cross-fade from one video to another. The underlying reason is that many Android devices do not support playing more than one video at a time.
+
+The typical use case is to add a preview image that is shown in the beginning while the video is still being buffered from the network. For example, the image could contain a brand logo, instructions for panning and zooming within the 360 view, or a reminder about placing the device inside a VR frame.
 
 However, the feature is actually much more versatile than that. Here are a few ideas:
 * Show an image also when the video completes to thank users for watching and to instruct what to do next.
 * If you have a playlist, show a hero image while buffering next video.
 * Show an image when user pauses the video, when the player stops for buffering, or when network connection issues or other problems occur.
-* Dim video easily by adjusting preview image alpha and NOT setting a preview image at all.
+* Dim video easily by adjusting preview image alpha and NOT setting a preview image at all (defaults to black color).
 * Add a color overlay FX with a single-color preview image and a small alpha value.
 * Show dynamically loaded ads during video playback.
-* Create a slideshow with cross-fade effect using OrionImageView and an audio track.
+* Create a slideshow with cross-fade effect using OrionImageView, preview image feature, and an audio track.
 
 Example: Sensor Fusion
 ----------------------
