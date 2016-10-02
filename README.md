@@ -101,7 +101,7 @@ Orion360 views have lots of features built-in; you will have all the following w
 - Panning, zooming and tilting the view with touch and movement sensors, which work seamlessly together
 - Auto Horizon Aligner (AHL) keeps the horizon straight by gently re-orienting it when necessary
 
-> Android device's hardware video decoder sets a limit for the maximum resolution / bitrate of a video file that can be decoded, but to be rendered on screen, the decoded video frame also needs to fit inside a single OpenGL texture. In 2016, new mid-range devices support FullHD video and high-end devices 4k UHD video, while some popular older models cannot decode even FullHD. The maximum texture size in new devices ranges from 4096x4096 to 16386x16384, while some popular older models have 2048x2048 texture size. To be on the safe side, recommendation is to use 1920x960 video resolution and a moderate bitrate. If necessary, offer another 3840x1920 stream for high-end devices.
+> Android device's hardware video decoder sets a limit for the maximum resolution / bitrate of a video file that can be decoded, but to be rendered on screen, the decoded video frame also needs to fit inside a single OpenGL texture. In 2016, new mid-range devices support FullHD video and high-end devices 4k UHD video, while some popular older models cannot decode even FullHD. The maximum texture size in new devices ranges from 4096x4096 to 16384x16384, while some popular older models have 2048x2048 texture size. To be on the safe side, recommendation is to use 1920x960 video resolution and a moderate bitrate. If necessary, offer another 3840x1920 stream for high-end devices.
 
 Example: Minimal Video Download Player
 --------------------------------------
@@ -217,28 +217,46 @@ Since downloading a large file will take a considerable amount of time, the exam
 
 Image files are large and device models with small amounts of storage space tend to be popular as they are priced competitively. Consider saving the downloaded image file to external memory if it is currently present. It is also a good idea to offer a method for deleting downloaded content without uninstalling the whole app; this way users can still keep your app installed when they need to restore some storage space.
 
-> The hardware limits for 360 image resolution come from available memory for decoding the image file and maximum texture size for storing and rendering it. Notice that Orion360 automatically scales the image to fit to device's maximum texture size if necessary. In 2016, some popular older devices have 2048x2048 pixel texture size (4 megapixels), while new devices range from 4096x4096 (16 megapixels) to 16384x16384 pixels (256 megapixels). Obviously, depending on target device, the difference in rendered image quality can be remarkable with a high-resolution source image.
+> The hardware limits for 360 image resolution come from available memory for decoding the image file and maximum texture size for storing and rendering it. Notice that Orion360 automatically scales the image to fit to device's maximum texture size if necessary. In 2016, some popular older devices have 2048x2048 pixel texture size (4 megapixels), while new devices range from 4096x4096 (16 megapixels) to 16384x16384 pixels (256 megapixels). Obviously, depending on target device, the difference in rendered image quality can be quite remarkable with a high-resolution source image.
 
 Example: Minimal Image File Player
 ----------------------------------
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageFilePlayer.java)
 
-An example of a minimal Orion360 video player, for playing a video file from local file system.
+An example of a minimal Orion360 image player, for playing an image file from local file system.
 
-Showcases all supported file system locations and access methods (you need to select one from code). The supported locations are:
+This example is similar to _MinimalVideoFilePlayer_, but showcases how to use _OrionImageView_ component instead of _OrionVideoView_ for showing a 360 image.
+
+This example showcases all supported file system locations and file access methods for image sources: the locations embedded to the app distribution packages, the app's private locations that become available after installation, and the locations that are more or less external to the app. To keep the example simple, only one location is active at a time and the others are commented out (you can easily select the active location from the source code). The supported locations are:
 
 1. Application's private path on device's internal memory
 
-   Private internal folder is useful mainly when the app downloads an image file, as only the app itself can access that location (exception: rooted devices). This location is recommended only if downloaded content files need to be protected from ordinary users - although the protection is easy to circumvent with a rooted device.
+   Private internal folder is useful mainly when the app _downloads_ an image file for offline mode or to be cached, as only the app itself can access that location (exception: rooted devices). This location is recommended only if downloaded content files need to be protected from ordinary users - although the protection is easy to circumvent with a rooted device.
 
-2. Application's private path on device's external memory
+5. Application's private path on device's external memory
 
-   Private external folder allows copying images via file manager app or a USB cable, which can be useful for users who know their way in the file system and the package name of the app (e.g. developers). This location is recommended for caching downloaded content.
+   Private external folder allows copying images back and forth via file manager app or a USB cable, which can be useful for users who know their way in the file system and the package name of the app (e.g. developers). This location is recommended for caching downloaded content, as many devices have more external memory than internal memory.
 
-3. Application's public path on device's external memory
+6. Any public path on device's external memory
 
-   Public external folder allows easy content sharing between apps and copying content from PC to a familiar location such as the /Pictures folder, but image viewing requires READ_EXTERNAL_STORAGE permission, which needs to be explicitly requested from user (starting from Android 6.0). This location is recommended for playing content that is sideloaded by end users.
+   Public external folders allow easy content sharing between apps and copying content from PC to a familiar location such as the /Pictures folder, but reading from there requires READ_EXTERNAL_STORAGE permission (WRITE_EXTERNAL_STORAGE for writing) that needs to be explicitly requested from user, starting from Android 6.0. This location is recommended for playing content that is sideloaded by end users either by copying to device via a USB cable or read directly from a removable memory card.
+
+> In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you should consider embedding the content into the app. This approach provides several benefits:
+> - Simpler content deployment without a web server and a content-delivery network (CDN)
+> - Lower and more predictable content deployment cost - even FREE delivery via Google Play store
+> - Built-in offline mode without making the UI more complex with content download and delete features
+> - Guaranteed to have no buffering pauses during video playback
+> 
+> However, there are also some major drawbacks:
+> - App installation package becomes large and potential users may skip the app based on its size
+> - After watching the embedded content the whole app needs to be uninstalled to remove the content
+> - Adding/updating content not possible without updating the app (many users will never update)
+> - Only a limited amount of content can be embedded to the app
+> 
+> Typically one-shot apps that are intended for a particular event, product campaign, or offline use have embedded content. However, also apps that mostly use streamed content may include a few embedded items that are frequently needed and rarely updated, such as brand introduction, user tutorials, and menu backgrounds.
+
+> Current version of Orion360 SDK (Basic) for Android does not support playing 360 images directly from the application installation package or expansion package. This feature will be added later in an update to the SDK. However, it is possible to embed content to these locations, and copy the image file before it is used for example to application's private path on external memory.
 
 Example: Buffering Indicator
 ----------------------------
