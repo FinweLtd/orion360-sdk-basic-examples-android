@@ -36,9 +36,13 @@ Table of Contents
 13. [Example: Preview Image](#example-preview-image)
 14. [Example: Sensor Fusion](#example-sensor-fusion)
 15. [Example: Touch Input](#example-touch-input)
-16. [Example: Nadir Patch](#example-nadir-patch)
-17. [Example: Director's Cut](#example-directors-cut)
-18. [Example: Interactive Hotspots](#example-interactive-hotspots)
+16. [Example: Custom Controls](#example-custom-controls)
+17. [Example: Projection](#example-projection)
+18. [Example: Doughnut](#example-doughnut)
+19. [Example: Screenshot](#example-screenshot)
+20. [Example: Nadir Patch](#example-nadir-patch)
+21. [Example: Director's Cut](#example-directors-cut)
+22. [Example: Interactive Hotspots](#example-interactive-hotspots)
 
 Prerequisities
 --------------
@@ -350,7 +354,7 @@ In most video player applications, user is offered an option to toggle between a
 
 When something doesn't seem to work, users tend to try again with an amplified manner and multiple times. Since toggling between play and pause states are the most common control operation in a video player application, we recommend mapping double tapping events for this purpose. This allows controlling play/pause state even in full-screen mode (without bringing the controls in view), is easy to learn, and quicly becomes very natural. However, it is crucial to add a short animation that indicates the state change when the double tapping event has been recognized. A professionally made application also shows a hint about this hidden feature when user is learning to use the app.
 
-When user enters VR mode, all standard controls must be hidden and the whole screen reserved for split screen rendering. But when it is time to exit VR mode, it is not at all obvious to user how to do that! She will probably try to tap the screen, but we recommend not to exit VR mode from single tapping event, as it is very easy to accidentally tap the screen already when sliding the smartphone inside a VR frame. Instead, use single tapping event for showing a short-lived notification that hints about using long tapping for exiting VR mode - this prevents exiting VR mode accidentally, but allows users to find the way to exit VR mode with ease. Additional benefit is that long tapping can be used as a shortcut also for enabling VR mode, i.e. same gesture should always work both ways.
+When user enters VR mode, all standard controls must be hidden and the whole screen reserved for split screen rendering. But when it is time to exit VR mode, it is not at all obvious to user how to do that! She will probably try to tap the screen, but we recommend not to exit VR mode from single tapping event, as it is very easy to accidentally tap the screen already when sliding the smartphone inside a VR frame. Instead, use single tapping event for showing a short-lived notification that hints about using long tapping for exiting VR mode - this prevents exiting VR mode accidentally, but allows users to find the way to exit VR mode with ease. Additional benefit is that long tapping can be used as a shortcut also for enabling VR mode (same gesture should always work both ways).
 
 Sometimes a developer wants more refined control of touch events. Maybe he wants to reserve a part of the screen for a special action, or perform some operation when a particular area of the 360 content is tapped (notice the difference between the two).
 
@@ -359,6 +363,34 @@ In this example, left and right edge of the video view have hidden tapping areas
 To showcase tapping _something within the 3D scene_, a hotspot is added to the video view (tapping the hotspot area will trigger roll animation). Notice that with Orion360 SDK Basic, the developer must manually combine hotspot and tapping near to its location, whereas Orion360 SDK Pro has built-in 3D objects and callbacks for their tapping as well as gaze selection events.
 
 > To keep the example simple, all tapping features work simultaneously. In a real application the tapping events must be filtered to prevent multiple actions occurring from one tapping event. For example, tapping a hotspot should not trigger toggling between normal and full-screen mode (unless you have created a hotspot just for that purpose!)
+
+Example: Custom Controls
+------------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/CustomControls.java)
+
+TODO
+
+Example: Projection
+-------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Projection.java)
+
+TODO
+
+Example: Doughnut
+-----------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Doughnut.java)
+
+TODO
+
+Example: Screenshot
+-------------------
+
+[View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Screenshot.java)
+
+TODO
 
 Example: Nadir Patch
 --------------------
