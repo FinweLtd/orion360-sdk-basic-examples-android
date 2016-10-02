@@ -121,11 +121,11 @@ Example: Minimal Video File Player
 
 An example of a minimal Orion360 video player, for playing a video file from local file system.
 
-This example showcases all supported file system locations and file access methods for video sources: the locations embedded to the app delivery packages, the app's private locations that become available after installation, and the locations that are more or less external to the app. To keep the example simple, only one source is active at a time and the others are commented out (you can easily select the active location from the source code). The supported locations are:
+This example showcases all supported file system locations and file access methods for video sources: the locations embedded to the app distribution packages, the app's private locations that become available after installation, and the locations that are more or less external to the app. To keep the example simple, only one location is active at a time and the others are commented out (you can easily select the active location from the source code). The supported locations are:
 
 1. Application installation package's _/assets_ folder
 
-   Private assets folder allows playing content embedded to the apps's own installation package (.apk). Notice 100MB .apk size limit in Google Play store. This is the recommended location when the application embeds video files to the installation package and is NOT distributed via Google Play store (single large .apk file delivery).
+   Private assets folder allows playing content embedded to the apps's own installation package (.apk). Notice 100MB .apk size limit in Google Play store. This is the recommended location when the application embeds video files to the installation package and _is NOT_ distributed via Google Play store (single large .apk file delivery).
 
 2. Application installation package's _/res/raw_ folder
 
@@ -133,7 +133,7 @@ This example showcases all supported file system locations and file access metho
 
 3. Application expansion packages
 
-   Private expansion package allows playing content embedded to the app's extra installation package (.obb). Up to 2 GB per package, max 2 packages. This is the recommended location when the application embeds video files to the installation package and is distributed via Google Play store. Fairly complex but very useful solution. For more information, see https://developer.android.com/google/play/expansion-files.html
+   Private expansion package allows playing content embedded to the app's extra installation package (.obb). Up to 2 GB per package, max 2 packages. This is the recommended location when the application embeds video files to the installation package and _is_ distributed via Google Play store. Fairly complex but very useful solution. For more information, see https://developer.android.com/google/play/expansion-files.html
 
 4. Application's private path on device's internal memory
 
@@ -145,12 +145,12 @@ This example showcases all supported file system locations and file access metho
 
 6. Any public path on device's external memory
 
-   Public external folders allow easy content sharing between apps and copying content from PC to a familiar location such as the /Movies folder, but reading from there requires READ_EXTERNAL_STORAGE permission (WRITE_EXTERNAL_STORAGE for writing) that needs to be explicitly requested from user, starting from Android 6.0. This location is recommended for playing content that is sideloaded by end users either by copying to device via a USB cable or read from a removable memory card.
+   Public external folders allow easy content sharing between apps and copying content from PC to a familiar location such as the /Movies folder, but reading from there requires READ_EXTERNAL_STORAGE permission (WRITE_EXTERNAL_STORAGE for writing) that needs to be explicitly requested from user, starting from Android 6.0. This location is recommended for playing content that is sideloaded by end users either by copying to device via a USB cable or read directly from a removable memory card.
 
 > In case your app is intended for playing a couple of short fixed 360 videos or a fixed set of 360 photos, then you should consider embedding the content into the app. This approach provides several benefits:
 > - Simpler content deployment without a streaming server and a content-delivery network (CDN)
 > - Lower and more predictable content deployment cost - even FREE delivery via Google Play store
-> - Built-in offline mode without making the app more complex with content download and delete features
+> - Built-in offline mode without making the UI more complex with content download and delete features
 > - Guaranteed to have no buffering pauses during video playback
 > 
 > However, there are also some major drawbacks:
@@ -168,11 +168,11 @@ Example: Minimal Video Controls
 
 An example of a minimal Orion360 video player, with minimal video controls.
 
-This example uses _MediaController_ class as a simple way to add controls into a 360 video player. This method requires only a few lines of code: first a new media controller is instantiated, and then Orion360 video view is added to it as a media player to control, and as a UI anchor view where to position the control widget. Finally, a gesture detector is used for showing and hiding the controls when the video view is tapped. By default, the media controller automatically hides itself after a moment of inactivity.
+This example uses _MediaController_ class as a simple way to add controls into a 360 video player. This approach requires only a few lines of code: first a new media controller is instantiated, and then Orion360 video view is added to it as a media player to control, and as a UI anchor view where to position the control widget. Finally, a gesture detector is used for showing and hiding the controls when the video view is tapped (by default, the media controller automatically hides itself after a moment of inactivity).
 
-The control widget includes play/pause button, rewind and fast forward buttons, a seek bar, and labels for elapsed and total playing time. If you want to customize the look&feel of the control widget or add your own buttons, see CustomControls example where video controls are created from scratch.
+The control widget includes play/pause button, rewind and fast forward buttons, a seek bar, and labels for elapsed and total playing time. If you want to customize the look&feel of the control widget or add your own buttons, see _CustomControls_ example where video controls are created from scratch.
 
-> When seeking within a video, notice that it is only possible to seek to keyframes - the player will automatically jump to a nearest one. The number of keyframes and their positions depend on video content, used video encoder, and encoder settings. In general, the more keyframes are added the larger the video file becomes. The Orion360 example video is fairly static and thus has very few keyframes, allowing the user to seek to only a few positions.
+> When seeking within a video, notice that it is only possible to seek to keyframes - the player will automatically jump to the nearest one. The number of keyframes and their positions depend on video content, used video encoder, and encoder settings. In general, the more keyframes are added the larger the video file will be. The Orion360 example video is mostly static and thus has very few keyframes, allowing the user to seek only to a few positions.
 
 Example: Minimal VR Video File Player
 -------------------------------------
@@ -183,9 +183,9 @@ Example: Minimal VR Video File Player
 
 An example of a minimal Orion360 video player, with VR mode enabled.
 
-The most impressive way to experience 360 photos and videos is through virtual reality (VR). Unfortunately, not that many people have the necessary equipment yet. However, there is a _very_ cost efficient method: users can simply slide their existing smartphone inside a VR frame that essentially consists of a plastic or cardboard frame and a pair of convex lenses, and enable VR mode from an app that supports split-screen viewing.
+The most impressive way to experience 360 photos and videos is through virtual reality (VR). Unfortunately, most people do not have the necessary equipment yet. However, there is a _very_ cost efficient method: users can simply slide their existing smartphone inside a VR frame that essentially consists of a plastic or cardboard frame and a pair of convex lenses, and enable VR mode from an app that supports split-screen viewing.
 
-Currently the most popular VR frame by far is Google Cardboard (https://vr.google.com/cardboard); millions of them have been made already. There are also plenty of Cardboard clones available from different manufacturers. It is fairly common practice to create a custom-printed Cardboard-style VR frame for a dollar or two per piece, and give them out to users for free along with a 360/VR video app and content. That makes a really great marketing tool!
+Currently the most popular VR frame by far is Google Cardboard (https://vr.google.com/cardboard); millions of them have been distributed to users already. There are also plenty of Cardboard clones available from different manufacturers. It is a fairly common practice to create a custom-printed Cardboard-style VR frame for a dollar or two per piece, and give them out to users for free along with a 360/VR video app and content. That combo makes a really great marketing tool.
 
 This example shows how to enable VR mode from an Orion360 video view for viewing content with Google Cardboard or other similar VR frame where smartphone can be slided in. In short, the example shows how to:
 - Configure horizontally split video view in landscape orientation
@@ -194,9 +194,9 @@ This example shows how to enable VR mode from an Orion360 video view for viewing
 - Initialize the view orientation to World orientation ie. keep video horizon perpendicular to gravity vector
 - Hide the system navigation bar for occlusion free viewing in devices where it is made by software
 - Disable magnetometer from sensor fusion so that Cardboard's magnetic switch does not interfere with it
-- Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with single tap
+- Create a gesture detector for toggling VR mode on/off with long taps and a hint about it with a single tap
 
-> For high-quality VR experience, consider using a high-end Samsung smartphone and an active GearVR frame (you will also need to use the Pro version of the Orion360 SDK). The equipment cost will be significantly higher, but also the improvement in quality is remarkable and well worth it. GearVR frame has great optics, high speed sensors and touch controls. They only work with specific Samsung models that have a number of performance tunings built-in and drivers for the GearVR frame. In general, Cardboard-style VR is recommended when you want to provide the VR viewing experience for a large audience by giving out free VR frames, while GearVR-style VR is best for trade shows, shop desks and one-to-one marketing where quality counts the most!
+> For high-quality VR experiences, consider using a high-end Samsung smartphone and an active GearVR frame (you will also need to use the Pro version of the Orion360 SDK). The equipment cost will be significantly higher, but also the improvement in quality is remarkable and well worth it. GearVR frame has great optics, high speed sensors and touch controls built-in. They only work with specific Samsung models that have a number of performance tunings built-in and drivers for the GearVR frame. In general, Cardboard-style VR is recommended when you want to provide the VR viewing experience for a large audience by giving out free VR frames, while GearVR-style VR is best for trade shows, shop desks and one-to-one marketing where quality counts the most!
 
 Example: Minimal Image Download Player
 --------------------------------------
