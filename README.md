@@ -342,13 +342,23 @@ Example: Touch Input
 
 An example of a minimal Orion360 video player, with touch input.
 
-This example uses single tapping for toggling between normal and full screen view, double tapping for toggling between video playback and pause states, and long tapping for toggling between normal and VR mode rendering. These are tried-and-true mappings that are recommended for all 360/VR video apps.
+Touch screen is the primary interaction mechanism of modern smartphones and tablets. Orion360 image and video views reserve touch drag gestures for panning, zooming and rolling the view (see _SensorFusion_ example for details), but tapping events are fully configurable by the app developer. Typically apps utilize single tapping, double tapping, and long tapping events.
 
-Left and right edge of the video view have hidden tapping areas that seek the video 10 seconds backward and forward, respectively. This is just an example of mapping different actions to tapping events based on touch position on screen, not a general recommendation.
+This example uses single tapping for toggling between normal and full screen view, double tapping for toggling between video playback and pause states, and long tapping for toggling between normal and VR mode rendering. These are tried-and-true mappings that are recommended for all 360/VR video apps, and explained in detail next.
 
-To showcase tapping inside the 3D scene, a hotspot is added to the video view and tapping the hotspot area will trigger roll animation. Notice that with Orion360 SDK Basic, the developer must manually combine hotspot and tapping near to its location, whereas Orion360 SDK Pro has built-in 3D objects and callbacks for their tapping and gaze selection events.
+In most video player applications, user is offered an option to toggle between a normal view with controls and another, occlusion-free view where all widgets are hidden. Some applications implement this with a maximize-button and a notification telling how to return from the full-screen view. That is all good, but it is easy to miss or forget the instructions, and what users tend to try first is tapping the screen. Thus, it is a good idea to map single tapping for toggling between normal and full-screen view. On Android, this means showing and hiding together 1) video controls, 2) system navigation bar, 3) system title bar, 4) system action bar, 5) custom application title bar. Of course, most applications use only some of these elements. The complexity increases when video controls are hidden with a timer, and some elements use transition animation. Notice that this example focuses on demonstrating the feature, not on user experience.
 
-For panning, zooming and rotating the view via swipe and pinch, see SensorFusion example.
+When something doesn't seem to work, users tend to try again with an amplified manner and multiple times. Since toggling between play and pause states are the most common control operation in a video player application, we recommend mapping double tapping events for this purpose. This allows controlling play/pause state even in full-screen mode (without bringing the controls in view), is easy to learn, and quicly becomes very natural. However, it is crucial to add a short animation that indicates the state change when the double tapping event has been recognized. A professionally made application also shows a hint about this hidden feature when user is learning to use the app.
+
+When user enters VR mode, all standard controls must be hidden and the whole screen reserved for split screen rendering. But when it is time to exit VR mode, it is not at all obvious to user how to do that! She will probably try to tap the screen, but we recommend not to exit VR mode from single tapping event, as it is very easy to accidentally tap the screen already when sliding the smartphone inside a VR frame. Instead, use single tapping event for showing a short-lived notification that hints about using long tapping for exiting VR mode - this prevents exiting VR mode accidentally, but allows users to find the way to exit VR mode with ease. Additional benefit is that long tapping can be used as a shortcut also for enabling VR mode, i.e. same gesture should always work both ways.
+
+Sometimes a developer wants more refined control of touch events. Maybe he wants to reserve a part of the screen for a special action, or perform some operation when a particular area of the 360 content is tapped (notice the difference between the two).
+
+In this example, left and right edge of the video view have hidden tapping areas that seek the video 10 seconds backward and forward, respectively. This is just an example of mapping different actions to tapping events based on _touch position on screen_.
+
+To showcase tapping _something within the 3D scene_, a hotspot is added to the video view (tapping the hotspot area will trigger roll animation). Notice that with Orion360 SDK Basic, the developer must manually combine hotspot and tapping near to its location, whereas Orion360 SDK Pro has built-in 3D objects and callbacks for their tapping as well as gaze selection events.
+
+> To keep the example simple, all tapping features work simultaneously. In a real application the tapping events must be filtered to prevent multiple actions occurring from one tapping event. For example, tapping a hotspot should not trigger toggling between normal and full-screen mode (unless you have created a hotspot just for that purpose!)
 
 Example: Nadir Patch
 --------------------
