@@ -101,6 +101,8 @@ Orion360 views have lots of features built-in; you will have all the following w
 - Panning, zooming and tilting the view with touch and movement sensors, which work seamlessly together
 - Auto Horizon Aligner (AHL) keeps the horizon straight by gently re-orienting it when necessary
 
+> Android device's hardware video decoder sets a limit for the maximum resolution / bitrate of a video file that can be decoded, but to be rendered on screen, the decoded video frame also needs to fit inside a single OpenGL texture. In 2016, new mid-range devices support FullHD video and high-end devices 4k UHD video, while some popular older models cannot decode even FullHD. The maximum texture size in new devices ranges from 4096x4096 to 16386x16384, while some popular older models have 2048x2048 texture size. To be on the safe side, recommendation is to use 1920x960 video resolution and a moderate bitrate. If necessary, offer another 3840x1920 stream for high-end devices.
+
 Example: Minimal Video Download Player
 --------------------------------------
 
@@ -215,7 +217,7 @@ Since downloading a large file will take a considerable amount of time, the exam
 
 Image files are large and device models with small amounts of storage space tend to be popular as they are priced competitively. Consider saving the downloaded image file to external memory if it is currently present. It is also a good idea to offer a method for deleting downloaded content without uninstalling the whole app; this way users can still keep your app installed when they need to restore some storage space.
 
-> While Android device's hardware video decoder sets a limit for the maximum resolution / bitrate of a video file that can be played, the limits for images come from available memory for decoding the image file and storing it inside a texture. In case of a single 360 image memory usually isn't an issue, and Orion360 automatically scales the image to fit to device's maximum texture size. Older devices may have 2048x2048 pixel texture size (4 megapixels), while new devices have up to 16384x16384 pixels (256 megapixels). Obviously, the difference in image quality can be remarkable with high-resolution source image.
+> The hardware limits for 360 image resolution come from available memory for decoding the image file and maximum texture size for storing and rendering it. In case of a single 360 image, memory usually isn't an issue. Moreover, Orion360 automatically scales the image to fit to device's maximum texture size if necessary, so there isn't much to be worried for the developer. Older devices may have 2048x2048 pixel texture size (4 megapixels), while new devices have up to 16384x16384 pixels (256 megapixels). Obviously, the difference in image quality can be remarkable with high-resolution source image.
 
 Example: Minimal Image File Player
 ----------------------------------
