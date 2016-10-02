@@ -217,7 +217,7 @@ Since downloading a large file will take a considerable amount of time, the exam
 
 Image files are large and device models with small amounts of storage space tend to be popular as they are priced competitively. Consider saving the downloaded image file to external memory if it is currently present. It is also a good idea to offer a method for deleting downloaded content without uninstalling the whole app; this way users can still keep your app installed when they need to restore some storage space.
 
-> The hardware limits for 360 image resolution come from available memory for decoding the image file and maximum texture size for storing and rendering it. In case of a single 360 image, memory usually isn't an issue. Moreover, Orion360 automatically scales the image to fit to device's maximum texture size if necessary, so there isn't much to be worried for the developer. Older devices may have 2048x2048 pixel texture size (4 megapixels), while new devices have up to 16384x16384 pixels (256 megapixels). Obviously, the difference in image quality can be remarkable with high-resolution source image.
+> The hardware limits for 360 image resolution come from available memory for decoding the image file and maximum texture size for storing and rendering it. Notice that Orion360 automatically scales the image to fit to device's maximum texture size if necessary. In 2016, some popular older devices have 2048x2048 pixel texture size (4 megapixels), while new devices range from 4096x4096 (16 megapixels) to 16384x16384 pixels (256 megapixels). Obviously, depending on target device, the difference in rendered image quality can be remarkable with a high-resolution source image.
 
 Example: Minimal Image File Player
 ----------------------------------
