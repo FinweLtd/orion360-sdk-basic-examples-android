@@ -369,7 +369,13 @@ Example: Custom Controls
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/CustomControls.java)
 
-TODO
+An example of a minimal Orion360 video player, with custom controls.
+
+The _MinimalVideoControls_ example already showed how easy it is to add video controls to Orion360 video view, with just a couple of lines of code. However, the app developer frequently wants to customize the controls, for example to add a button for toggling video looping, full-screen view, VR mode, or projection. Also the buttons and seekbar look&feel are usually customized to reflect brand colors and style. This example showcases how a custom controller class can be written from scratch and easily swapped in place of Android MediaController - only the class name needs to be changed and _OrionVideoView_ passed as an additional parameter to make use of features that go beyond the Android media player.
+
+In this example custom controls are implemented by extending the _FrameLayout_ class. Typically the custom controls class would be in its own source code file, but here it is placed as an inner class to the player activity to keep the whole example code in one place. The custom controls class uses the same principles for integrating with the video view than Android's own MediaController class: controllable media player is given as a parameter (here Orion video view), as well as an anchor view for positioniong the controls (again Orion video view). Finally, there is an additional method call just for passing Orion video view as itself, for gaining control of the features specific Orion360 views (such as projection and VR mode).
+
+The implementation contains a play/pause button, a seekbar, elapsed and total time labels, and an audio mute on/off button. All graphical elements are custom made, and interaction is built on top of the available APIs. You will find it easy to further customize and develop this controller for your own needs.
 
 Example: Projection
 -------------------
