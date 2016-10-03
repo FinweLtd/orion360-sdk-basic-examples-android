@@ -19,7 +19,7 @@ Finally, all the examples are collected under a single application that can be c
 
 Happy coding! 
 
-> The application is also available in [Google Play](https://play.google.com/store/apps/details?id=fi.finwe.orion360.sdk.basic.examples)
+> This application is available in [Google Play](https://play.google.com/store/apps/details?id=fi.finwe.orion360.sdk.basic.examples)
 
 
 Table of Contents
