@@ -412,12 +412,18 @@ This example showcases how to configure Orion360 video view for a doughnut shape
 
 - There is one more important thing: how to handle rolling the device between landscape and portrait orientations? Surely a wider vertical span will be rendered when device is rotated from landscape to portrait, so this action should reveal some black areas? The solution in Orion360 is to use 16 control points at the edges of the viewport to automatically adjusts the zooming (field-of-view) so that black areas won't be revealed. Another option is to disable the part of the sensor fusion algorithm that tells which way is down, and thus prevent the issue from appearing at all.
 
+> If you wish to use doughnut video in VR mode, consider applying a nadir and zenith patches instead of limiting the viewable scene.
+
 Example: Screenshot
 -------------------
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Screenshot.java)
 
-TODO
+An example of a minimal Orion360 video player, with screenshot capture by tapping.
+
+If you wish to capture a screenshot directly from Orion360 renderer, this example shows how to do it. There are two alternatives, a synchronous method call that captures the screenshot immediately and returns it as a bitmap, and an asynchronous alternative that uses a callback for providing the bitmap when the screenshot is ready.
+
+> Orion360 SDK Basic uses OpenGL ES 2.0 that does not support fast reading from GPU memory to CPU memory via pixel buffer objects (PBO). Hence, the implementation is slow and stops the renderer for the duration of the screen capture. It is useful mostly for development purposes.
 
 Example: Nadir Patch
 --------------------
