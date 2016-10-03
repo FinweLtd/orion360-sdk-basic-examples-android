@@ -410,7 +410,7 @@ This example showcases how to configure Orion360 video view for a doughnut shape
 
 - Now that we have a doughnut shape canvas, the user should not be able to pan outside of the canvas or else black areas will become visible! Fortunately, Orion360 allows configuring limits for the viewable scene: when user is about to pan too far, the panning will stop automatically (and the view will be dragged along with the device).
 
-- There is one more important thing: how to handle rolling the device between landscape and portrait orientations? Surely a wider vertical span will be revealed when device is rotated from landscape to portrait. Orion360 uses 16 control points at the edges of the viewport and automatically adjusts the zooming (field-of-view) so that black areas won't be revealed. Another option is disable the part of the sensor fusion algorithm that tells which way is down, and thus prevent the issue from appearing at all.
+- There is one more important thing: how to handle rolling the device between landscape and portrait orientations? Surely a wider vertical span will be rendered when device is rotated from landscape to portrait, so this action should reveal some black areas? The solution in Orion360 is to use 16 control points at the edges of the viewport to automatically adjusts the zooming (field-of-view) so that black areas won't be revealed. Another option is to disable the part of the sensor fusion algorithm that tells which way is down, and thus prevent the issue from appearing at all.
 
 Example: Screenshot
 -------------------
