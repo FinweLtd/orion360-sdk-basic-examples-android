@@ -83,14 +83,14 @@ Next, connect an Android device to your computer via a USB cable, and then compi
 
 When the app starts on your device, a menu of examples similar to the image below will be shown. Tap any example from the list to run it, and return to the examples menu by tapping the *Back* button from your device's Navigation Bar. In order to really understand what each example is about, you should always read the source code and comments.
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544086/c8a52096-7b3b-11e6-8feb-18a8569250b6.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034066/49117eb4-896a-11e6-8277-864ba36f9e1a.jpg)
 
 > Most examples use demo content that requires an Android device that can decode and play FullHD (1920x1080p) video, or less. However, a few examples may require UHD (3840x1920) resolution playback. If your development device does not support 4k UHD video, simply change the content URI to another one with smaller resolution (you can find plenty of demo content links from the *MainMenu* source code file).
 
 Example: Minimal Video Stream Player
 ------------------------------------
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544135/0068a3b8-7b3c-11e6-9bac-983f05fa144c.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034085/5a676494-896a-11e6-878a-6f210a25ab27.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoStreamPlayer.java)
 
@@ -110,6 +110,8 @@ Orion360 views have lots of features built-in; you will have all the following w
 Example: Minimal Video Download Player
 --------------------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034093/6aeb1fea-896a-11e6-90c3-0930c80eccd6.jpg)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoDownloadPlayer.java)
 
 An example of a minimal Orion360 video player, for downloading a video file before playback.
@@ -122,6 +124,8 @@ Video files are large and device models with small amounts of storage space tend
 
 Example: Minimal Video File Player
 ----------------------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034111/7b9fa784-896a-11e6-9fa9-67404a1df041.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoFilePlayer.java)
 
@@ -170,6 +174,8 @@ This example showcases all supported file system locations and file access metho
 Example: Minimal Video Controls
 -------------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034118/8a0634dc-896a-11e6-8878-8ecdc13549d4.jpg)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVideoControls.java)
 
 An example of a minimal Orion360 video player, with minimal video controls.
@@ -183,7 +189,7 @@ The control widget includes play/pause button, rewind and fast forward buttons, 
 Example: Minimal VR Video File Player
 -------------------------------------
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544208/43e3850e-7b3c-11e6-947c-2fe01130b52d.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034144/a45fb86c-896a-11e6-905c-c538897c20ad.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalVRVideoFilePlayer.java)
 
@@ -207,7 +213,7 @@ This example shows how to enable VR mode from an Orion360 video view for viewing
 Example: Minimal Image Download Player
 --------------------------------------
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18792594/c6499950-81bf-11e6-85d1-8164f2517799.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034160/b779c2e4-896a-11e6-978b-354ba1962177.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageDownloadPlayer.java)
 
@@ -225,6 +231,8 @@ Image files are large and device models with small amounts of storage space tend
 
 Example: Minimal Image File Player
 ----------------------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034171/c8331e82-896a-11e6-970c-052b498a2344.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/MinimalImageFilePlayer.java)
 
@@ -265,6 +273,8 @@ This example showcases all supported file system locations and file access metho
 Example: Buffering Indicator
 ----------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034193/d91729aa-896a-11e6-8150-ed986d9483e3.jpg)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/BufferingIndicator.java)
 
 An example of a minimal Orion360 video player, with a buffering indicator.
@@ -281,6 +291,8 @@ Unfortunately, some Android devices have a buggy implementation of video bufferi
 
 Example: Preview Image
 ----------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034201/e5e86ba8-896a-11e6-978d-be7384be2f08.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/PreviewImage.java)
 
@@ -308,6 +320,8 @@ In this example, the main use case of the feature is demonstrated: a preview ima
 
 Example: Sensor Fusion
 ----------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034208/f4220166-896a-11e6-89b8-0c899729ce33.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/SensorFusion.java)
 
@@ -340,7 +354,7 @@ In short, the example shows how to:
 Example: Touch Input
 ----------------------
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18792680/192f7b12-81c0-11e6-8fa3-81ae09e6c5c0.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034213/012d3f2e-896b-11e6-9b45-e6328a185a32.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/TouchInput.java)
 
@@ -367,6 +381,8 @@ To showcase tapping _something within the 3D scene_, a hotspot is added to the v
 Example: Custom Controls
 ------------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034225/10751826-896b-11e6-9719-9764cb05ec65.jpg)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/CustomControls.java)
 
 An example of a minimal Orion360 video player, with custom controls.
@@ -379,6 +395,10 @@ The implementation contains a play/pause button, a seekbar, elapsed and total ti
 
 Example: Projection
 -------------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034244/2532f7c4-896b-11e6-934e-e1744694ed30.jpg)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034254/3113dab8-896b-11e6-909d-c6af8ed810a4.jpg)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034266/3d8c78c2-896b-11e6-8cbc-f4eedc2b4516.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Projection.java)
 
@@ -393,6 +413,8 @@ The supported projections and their main use cases are:
 
 Example: Doughnut
 -----------------
+
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034278/5153f09c-896b-11e6-8273-890220e129c4.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Doughnut.java)
 
@@ -412,17 +434,25 @@ This example showcases how to configure Orion360 video view for a doughnut shape
 
 - There is one more important thing: how to handle rolling the device between landscape and portrait orientations? Surely a wider vertical span will be rendered when device is rotated from landscape to portrait, so this action should reveal some black areas? The solution in Orion360 is to use 16 control points at the edges of the viewport to automatically adjusts the zooming (field-of-view) so that black areas won't be revealed. Another option is to disable the part of the sensor fusion algorithm that tells which way is down, and thus prevent the issue from appearing at all.
 
+> If you wish to use doughnut video in VR mode, consider applying a nadir and zenith patches instead of limiting the viewable scene.
+
 Example: Screenshot
 -------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034298/647beea4-896b-11e6-8aad-def7f1cefc05.jpg)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Screenshot.java)
 
-TODO
+An example of a minimal Orion360 video player, with screenshot capture by tapping.
+
+If you wish to capture a screenshot directly from the Orion360 renderer, this example shows how to do it. There are two alternatives, a synchronous method call that captures the screenshot immediately and returns it as a bitmap, and an asynchronous alternative that uses a callback for providing the bitmap when the screenshot is ready. The example saves the captured screenshots as PNG images.
+
+> Orion360 SDK Basic uses OpenGL ES 2.0 that does not support fast asynchronous reading from GPU memory to CPU memory via pixel buffer objects (PBO). Hence, the implementation is slow and stops the renderer for the duration of the screen capture. As such, it is useful mostly for development purposes. Orion360 SDK Pro uses OpenGL ES 3.0, and does not suffer from this issue.
 
 Example: Nadir Patch
 --------------------
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544249/6fae14f6-7b3c-11e6-8c0b-ee322e53cdb2.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034314/71a43a78-896b-11e6-9112-57c838501cc3.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/NadirPatch.java)
 
@@ -439,22 +469,24 @@ Orion360 tags must be created during view initialization, but they can be manipu
 Example: Director's Cut
 -----------------------
 
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034322/7dc6f584-896b-11e6-9198-aba9692ede8a.jpg)
+
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/DirectorsCut.java)
 
 An example of a minimal Orion360 video player, with forced view rotation control.
 
 It is characteristic to 360 content that the end user is able to decide where to look at, and that there is (hopefully interesting) content available at all directions. While this freedom of exploration is one of the best treats of consuming content in 360 degrees, it is also contrary to traditional video and photo production where a director or a photographer decides the direction where to aim the camera and how to frame the shot, and thus carefully leads the user through the story by ensuring that she sees the relevant cues.
 
-In 360, most of the time it is desirable to let the end user be in charge of the virtual camera ie. turn the device or pan the content with a finger. Yet there are occasions where a decision needs to be made on behalf of the user. The primary concern is that in case of video content the playback progresses at a constant pace, and in order to keep up the rhythm the story telling must proceed as well - but at the moment of a cut or a major event, the user may be looking at a 'wrong' direction and hence miss important cues, making the storyline feel very confusing!
+In 360, most of the time it is desirable to let the end user be in charge of the virtual camera ie. turn the device or pan the content with a finger. Yet there are occasions where a decision needs to be made on behalf of the user. The primary concern is that in case of video content the playback progresses at a constant pace, and in order to keep up the rhythm the story telling must proceed as well - but at the moment of a cut or a major event, the user might be looking at a 'wrong' direction and hence miss important cues, making the storyline feel very confusing!
 
 The solution is to force the view to certain direction at a certain moment of time. This is, of course, a tool that should not be used without a very good reason, and that requires skill to do well.
 
 The first decision to be made is the very first frame of the video. There are a few typical use cases that are covered in the example:
 
-1. Case A: The user is holding the device in hand at some random angle, but presumably at an orientation that feels comfortable to her. In this case, we want to rotate the view so that viewing begins from the center of the video, ie. from the 'front' direction of the content. The experience would be the same for a user who is sitting in a bus and looking down-forward to a device that lies on her hand that is resting on her knees, and for a user who is lying on a sofa and looking up-forward to a device held with a raised arm. This is also the default configuration for Orion360, and the developer needs to do nothing to accomplish this.
-2. Case B: In case the director wants to make an artistic decision in the opening scene, she might want to force the view away from the 'front' direction of the content, to make the viewer first slightly confused and to find the 'front' direction where the action mostly takes place by panning the view there herself. This would be a rather rarely used effect and a variation of Case A.
-3. Case C: If the user makes use of a VR frame to view the content, the solution presented in Case A is not appropriate. It is crucial that the nadir is aligned with user's perception of 'down' direction, and also the horizon line appears to be in its natural place.
-4. Case D: Similar to Case B, the director may want to start from a certain viewing direction. However, when using a VR frame, only the yaw angle (azimuth/compass angle) should be enforced, to keep the content aligned with the user's perception of 'down' direction at all times.
+- Case A: The user is holding the device in hand at some random angle, but presumably at an orientation that feels comfortable to her. In this case, we want to rotate the view so that viewing begins from the center of the video, ie. from the 'front' direction of the content. The experience would be the same for a user who is sitting in a bus and looking down-forward to a device that lies on her hand that is resting on her knees, and for a user who is lying on a sofa and looking up-forward to a device held with a raised arm. This is also the default configuration for Orion360, and the developer needs to do nothing to accomplish this.
+- Case B: In case the director wants to make an artistic decision in the opening scene, she might want to force the view away from the 'front' direction of the content, to make the viewer first slightly confused and to find the 'front' direction where the action mostly takes place by panning the view there herself. This would be a rather rarely used effect and a variation of Case A.
+- Case C: If the user makes use of a VR frame to view the content, the solution presented in Case A is not appropriate. It is crucial that the nadir is aligned with user's perception of 'down' direction, and also the horizon line appears to be in its natural place.
+- Case D: Similar to Case B, the director may want to start from a certain viewing direction. However, when using a VR frame, only the yaw angle (azimuth/compass angle) should be enforced, to keep the content aligned with the user's perception of 'down' direction at all times.
 
 After the question of the initial viewing rotation is settled, the director may want to add some additional forced viewing directions. The most suitable places are when there is a cut and the viewer is taken to another place and time anyway - it is not that disturbing if also the viewing direction is re-oriented at the same exact moment.
 
@@ -465,7 +497,7 @@ Finally, the director may want to perform animated camera operations, such as pa
 Example: Interactive Hotspots
 -----------------------------
 
-![alt tag](https://cloud.githubusercontent.com/assets/12032146/18544261/84e2ad82-7b3c-11e6-87d6-0cc91eabfffe.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12032146/19034335/8aa0d1f8-896b-11e6-861a-1fb04902aa54.jpg)
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/InteractiveHotspots.java)
 
@@ -476,3 +508,5 @@ This example initializes 4 hotspots ("Start" buttons) at front, back, left & rig
 There is a fifth hotspot that acts as a reticle, continuously showing the position where the user is looking/pointing at. When the reticle is moved close enough to one of the "Start" hotspots, a pre-selection animation begins (roll). If the user keeps looking at the "Start" button long enough, it is triggered and a post-selection animation begins (escape), video dimming is removed, and playback starts. However, if the user moves away from the "Start" button before the pre-selection animation ends, selection is canceled.
 
 This is a fairly complex example. To structure information into easily digestable pieces, a simple Hotspot class is represented, and then improved by adding more and more features to it by the means of inheritance.
+
+> While Orion360 SDK Basic allows creating interactive, animated hotspots that can be selected by tapping or gazing, the Pro version of the SDK provides better performance and makes implementing this feature _much_ easier for the developer, as it has built-in support for 3D objects that can be selected by tapping or gazing, pie-style animations for custom timed selection graphics, etc. The main difference is that with Basic version the developer needs to build this on the client side and make lots of calls from the UI thread, while Pro version provides these features built-in and runs them in the GL thread.
