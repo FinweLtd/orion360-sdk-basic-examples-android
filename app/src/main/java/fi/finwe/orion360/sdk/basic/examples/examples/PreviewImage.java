@@ -183,7 +183,7 @@ public class PreviewImage extends Activity {
         // Propagate activity lifecycle events to Orion360 video view.
 		mOrionVideoView.onResume();
 
-        // Preview image is an overlay on top of the video layer. Set preview image fully
+        // Preview image is an overlay on top of the video layer. Set preview image to fully
         // opaque (and completely cover the video layer) with alpha value 1.0, hide the
         // preview image with alpha value 0.0, or blend with video using alpha value in
         // range (0.0-1.0). Here we start by covering the video layer with a preview image.
