@@ -396,7 +396,21 @@ Example: Doughnut
 
 [View code](app/src/main/java/fi/finwe/orion360/sdk/basic/examples/examples/Doughnut.java)
 
-TODO
+An example of a minimal Orion360 video player, with doughnut video configuration.
+
+While the full spherical (360x180) content is the primary target in panoramic photo and video shooting, there are camera solutions that do not capture the full sphere, and sometimes this is quite acceptable. For example, consider viewing a basketball game that is shot from the side of the basketball court - during the gameplay, there is little reason for wasting pixels to include the direction straight below the camera, which probably contains a bunch of cables anyway.
+
+This example showcases how to configure Orion360 video view for a doughnut shape video source. Notice that Orion360 is quite flexible, and allows many different shapes using the same principles that are presented here. The configuration is done as follows:
+
+- Typically panoramic content is projected on a spherical surface (consider you are inside a basketball, looking its inner surface from the center point - this is your canvas). With 3D graphics, this surface can be implemented with a polygon mesh. Orion360 views allow configuring limits for this mesh horizontally and vertically in degrees. By default, a full sphere is configured by setting the limits to [-180.0, 180.0] horizontally and [-90,90] vertically (zero angle refers to video frame center). For a doughnut shape video, we can use smaller vertical angles to limit our spherical canvas from top and bottom, resulting to a doughnut shape canvas.
+
+- Since we now have a smaller canvas, we should also configure the surface model to use less resources by adjusting the mesh density, which can be thought of as a number of rows and columns on the sphere surface. Good rule of thumb is to have one row / column for each 6 degrees of field-of-view. The default number is thus 60 columns for 360 degrees horizontally, and 30 rows for 180 degrees vertically. For a doughnut shape video, the proper number of rows can be calculated by dividing the new vertical span by 6 and rounding it up.
+
+- We can also configure which part of the video frame is mapped where on the canvas. In the normal case, we use the whole video frame to cover the canvas completely. However, doughnut shape videos tend to be really wide, and the maximum width supported by hardware video decoder easily becomes a limiting factor for video quality. You can make much better use of the video frame by splitting your doughnut video to left and right halves and stacking them in the video frame. Then, in the player application, use Orion360 to map the top part of the video texture to left side of the doughnut and bottom part of the video texture to right side of the doughnut.
+
+- Now that we have a doughnut shape canvas, the user should not be able to pan outside of the canvas or else black areas will become visible! Fortunately, Orion360 allows configuring limits for the viewable scene: when user is about to pan too far, the panning will stop automatically (and the view will be dragged along with the device).
+
+- There is one more important thing: how to handle rolling the device between landscape and portrait orientations? Surely a wider vertical span will be revealed when device is rotated from landscape to portrait. Orion360 uses 16 control points at the edges of the viewport and automatically adjusts the zooming (field-of-view) so that black areas won't be revealed. Another option is disable the part of the sensor fusion algorithm that tells which way is down, and thus prevent the issue from appearing at all.
 
 Example: Screenshot
 -------------------
