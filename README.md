@@ -17,9 +17,10 @@ The aim of the examples is to show how the most common features can be implement
 
 Finally, all the examples are collected under a single application that can be compiled from this project, installed and run on your own Android device. This way you can try out the reference implementation with ease, and also experiment by modifying the examples. Notice that you are allowed to utilize the example code and resources in your own app project as described in the copyright section of the source code files.
 
-> The application is also available from [Google Play](https://play.google.com/store/apps/details?id=fi.finwe.orion360.sdk.basic.examples)
-
 Happy coding! 
+
+> The application is also available in [Google Play](https://play.google.com/store/apps/details?id=fi.finwe.orion360.sdk.basic.examples)
+
 
 Table of Contents
 -----------------
