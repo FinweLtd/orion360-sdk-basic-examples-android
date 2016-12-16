@@ -4,8 +4,7 @@
 
 This repository contains a set of examples for creating a 360 photo/video player using Orion360 SDK (Basic) for Android and Android Studio IDE.
 
-> Before using the SDK, read evaluation kit End-User Licence Agreement (EULA)
-> ![alt tag](https://github.com/FinweLtd/orion360-sdk-basic-examples-android/blob/master/Finwe_Orion360_SDK_Basic_Evaluation_Kit_License_en_US-20161212_1500.pdf)
+> Before using the SDK, read evaluation kit End-User Licence Agreement [EULA](https://github.com/FinweLtd/orion360-sdk-basic-examples-android/blob/master/Finwe_Orion360_SDK_Basic_Evaluation_Kit_License_en_US-20161212_1500.pdf)
 
 Preface
 -------
