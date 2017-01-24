@@ -59,9 +59,9 @@ https://developer.android.com/studio/install.html
 
 Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum is **Android API level 14: Android 4.0 IceCreamSandwitch**.
 
-> If you haven't already studied the Hello World project for Orion360 SDK (Basic), you should do that first and then continue with this example project. https://github.com/FinweLtd/orion360-sdk-basic-hello-android
-
 Orion360 SDK is a commercial product and requires a license file to work. An evaluation license is provided with this example app. You can get a watermarked evaluation license file also for your own package name by creating an account to https://store.make360app.com, starting a new SDK project, providing your own package name, and selecting FREE Trial.
+
+> If you haven't already studied the Hello World project for Orion360 SDK (Basic), you should do that first and then continue with this example project. https://github.com/FinweLtd/orion360-sdk-basic-hello-android
 
 Cloning and Running the Project
 -------------------------------
