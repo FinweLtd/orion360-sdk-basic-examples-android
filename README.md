@@ -57,7 +57,7 @@ Basic Android software development skills are enough for understanding, modifyin
 As a first step, you should install Android Studio IDE (recommended version is 2.2 or newer):
 https://developer.android.com/studio/install.html
 
-Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum is **Android API level 14: Android 4.0 IceCreamSandwitch**.
+Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum is **Android API level 14: Android 4.0 IceCreamSandwich**.
 
 Orion360 SDK is a commercial product and requires a license file to work. An evaluation license is provided with this example app. You can get a watermarked evaluation license file also for your own package name by creating an account to https://store.make360app.com, starting a new SDK project, providing your own package name, and selecting FREE Trial.
 
