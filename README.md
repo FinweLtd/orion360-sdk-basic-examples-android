@@ -4,6 +4,8 @@
 
 This repository contains a set of examples for creating a 360 photo/video player using Orion360 SDK (Basic) for Android and Android Studio IDE.
 
+> Before using the SDK, read [Licence Agreement](https://github.com/FinweLtd/orion360-sdk-basic-examples-android/blob/master/Finwe_Orion360_SDK_Basic_Evaluation_Kit_License_en_US-20161212_1500.pdf)
+
 Preface
 -------
 
@@ -55,7 +57,9 @@ Basic Android software development skills are enough for understanding, modifyin
 As a first step, you should install Android Studio IDE (recommended version is 2.2 or newer):
 https://developer.android.com/studio/install.html
 
-Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum is **Android API level 14: Android 4.0 IceCreamSandwitch**.
+Then, using the SDK Manager tool that comes with the IDE, install one or more Android SDKs. Notice that for Orion360 SDK Basic the minimum is **Android API level 14: Android 4.0 IceCreamSandwich**.
+
+Orion360 SDK is a commercial product and requires a license file to work. An evaluation license is provided with this example app. You can get a watermarked evaluation license file also for your own package name by creating an account to https://store.make360app.com, starting a new SDK project, providing your own package name, and selecting FREE Trial.
 
 > If you haven't already studied the Hello World project for Orion360 SDK (Basic), you should do that first and then continue with this example project. https://github.com/FinweLtd/orion360-sdk-basic-hello-android
 
