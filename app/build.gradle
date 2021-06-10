@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 30
     defaultConfig {
         applicationId "fi.finwe.orion360.sdk.basic.examples"
         minSdkVersion 14
-        targetSdkVersion 26
-        versionCode 1000002
-        versionName "1.0.00.002"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 30
+        versionCode 1000003
+        versionName "1.0.00.003"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -21,12 +20,16 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation files('libs/google-play-zip-file_lib.jar')
-    implementation 'fi.finwe.util:finwe-util:1.0.00'
-    implementation 'fi.finwe.orion360:orion360-sdk-basic:1.2.11' // From Finwe maven repo at Bintray
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+
+    // From Finwe maven repo at GitHub
+    implementation 'fi.finwe.orion360:orion360-sdk-basic-public:1.2.11'
+    //noinspection GradleDependency
+    implementation 'fi.finwe.util:finwe-util-public:1.0.00'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 }

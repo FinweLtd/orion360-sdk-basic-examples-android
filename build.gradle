@@ -3,20 +3,26 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:4.2.1'
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
 
+        // This is required for retrieving packages from Finwe's public maven repo at GitHub.
         maven {
-            url 'https://finwe.bintray.com/orion360-sdk-public' // For Orion360 SDK
+            name = "FinweOrion360SDKPublicMaven"
+            url = uri("https://maven.pkg.github.com/finweltd/orion360-sdk-public-maven")
+            credentials {
+                username = "orion360sdk"
+                password = "\u0067hp_6zjSXtyiCnFn3r6XdlVXpeWmGIMovz2fHHqe"
+            }
         }
     }
 }
